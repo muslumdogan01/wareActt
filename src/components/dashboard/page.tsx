@@ -3,9 +3,9 @@ import React from "react";
 
 const Dashboard = () => {
   return (
-    <div className=" w-full hidden lg:flex  justify-center items-baseline    relative">
+    <div className=" w-full hidden lg:flex  justify-center items-baseline 4xl:mt-[40px] mt-[120px]  relative">
 
-      <section className="flex justify-center items-center pt-52 relative z-50">
+      <section className="flex justify-center items-center  relative z-50">
         <div className="w-full max-w-[1016px] relative">
           <div className="absolute top-[-28px] left-[-105px]">
             <Image

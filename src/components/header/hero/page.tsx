@@ -3,7 +3,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className=" lg:absolute lg:top-[110px] 2xl:top-[210px] w-full z-50">
+    <div className=" lg:absolute lg:top-[110px] 2xl:top-[160px] w-full z-50">
       <div className="w-full h-full relative">
         <section className="container mx-auto relative">
           <div className="w-full justify-between items-center flex flex-col lg:flex-row px-8 pt-2 pb-[50px] lg:pb-0 xl:pt-9">
