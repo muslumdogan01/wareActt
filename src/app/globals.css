@@ -28,3 +28,13 @@ body {
   background-size: 16px 16px;
   filter: drop-shadow(0px 4px 100px rgba(0, 0, 0, 0.1));
 }
+
+
+.angled-section {
+  width: 100%;
+  height: 554px;
+  background-color: white;
+  background-image: radial-gradient(#ddd 1px, transparent 1px);
+  background-size: 20px 20px;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+}

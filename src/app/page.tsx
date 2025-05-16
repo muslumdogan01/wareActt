@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="w-full h-screen">
-      <div className="relative w-full xl:min-h-[554px] 2xl:min-h-[800px] 3xl:min-h-[900px]  z-0">
+      <div className="relative w-full xl:min-h-[554px] 2xl:min-h-[800px] 3xl:min-h-[900px] z-0">
         <Image
           src="/images/header/headerBg.png"
           alt="Header background"
@@ -31,9 +31,9 @@ export default function Home() {
           <Image
             src="/icons/content/square.svg"
             alt="kare"
-            width={240}
-            height={240}
-            className="absolute right-16 bottom-[-60px] z-20"
+            width={440}
+            height={440}
+            className="absolute right-[-6rem] bottom-10 z-20"
             priority
           />
        
