@@ -1,9 +1,29 @@
-
-import React from "react";
+'use client'
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 
 const Hero = () => {
+    const [topValue, setTopValue] = useState("120px");
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 2130px)");
+
+    const handleResize = () => {
+      setTopValue(mediaQuery.matches ? "120px" : "150px");
+    };
+
+    handleResize(); // ilk durumda kontrol et
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
   return (
-    <div className=" lg:absolute lg:top-[110px] 2xl:top-[160px] w-full z-50">
+    <div className=" w-full z-50"
+        style={{
+        position: "absolute",
+        top: topValue,
+      }}
+    >
       <div className="w-full h-full relative">
         <section className="container mx-auto relative">
           <div className="w-full justify-between items-center flex flex-col lg:flex-row px-8 pt-2 pb-[50px] lg:pb-0 xl:pt-9">
@@ -31,6 +51,19 @@ const Hero = () => {
                 See Pricing
               </button>
             </div>
+ 
+          </div>
+                               <div className=" flex justify-end -mt-[7rem] -mr-[8rem] 2xl:-mt-[8.5rem]  3xl:-mt-[20rem] 4xl:-mt-[20rem] 2xl:-mr-[12rem] z-50">
+                    <Image
+                      src="/icons/content/square.svg"
+                      alt="kare"
+                      width={440}
+                      height={440}
+                      className="transition-all duration-300 ease-in-out 2xl:w-[500px] 2xl:h-[500px] "
+                      sizes="(min-width: 1536px) 640px, 450px"
+                      priority
+                    />
+                 
           </div>
         </section>
 

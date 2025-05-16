@@ -6,43 +6,27 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="w-full h-screen">
-      <div className="relative w-full xl:min-h-[554px] 2xl:min-h-[800px] 3xl:min-h-[900px] z-0">
-        <Image
-          src="/images/header/headerBg.png"
-          alt="Header background"
-          fill
-          priority
-          className="object-fill hidden 4xl:block"
-        />
+      <div className="relative w-full h-[900px] 4xl:h-[600px] z-0">
+
         <Image
           src="/icons/header/headerBg.svg"
           alt="Header background"
           fill
           priority
           sizes="100vw"
-          className="object-cover block 4xl:hidden"
+          className="object-cover "
         />
 
         {/* Hero içerik */}
-        <div className="relative z-10">
+        <div className="relative  z-10">
           <Hero />
         </div>
-        <div className=" w-full container mx-auto hidden lg:block">
-          <Image
-            src="/icons/content/square.svg"
-            alt="kare"
-            width={440}
-            height={440}
-            className="absolute right-[-6rem] bottom-10 z-20"
-            priority
-          />
-       
-        </div>
-
       </div>
 
       {/* Dashboard alanı */}
-      <div className="4xl:-mt-[230px] -mt-[230px] relative h-[600px] -z-10 bg-[#065AF1] pt-[100px] hidden lg:block">
+      <div className=" -mt-[40rem]  relative 4xl:h-[950px] h-[730px]  -z-10 bg-[#065AF1] pt-[100px] hidden lg:block">
+       
+
         <Dashboard />
       </div>
 
