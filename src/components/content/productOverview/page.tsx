@@ -40,7 +40,7 @@ const containerRef = useRef<HTMLDivElement>(null)
   const centerWidth = Math.max(1400, availableWidth)
 
   return (
-   <div className="relative w-full" ref={containerRef}>
+   <div className="relative w-full hidden lg:block" ref={containerRef}>
       <div
         className="flex items-center justify-center mr-96"
         style={{
