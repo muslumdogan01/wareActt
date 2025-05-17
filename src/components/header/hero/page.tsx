@@ -1,32 +1,39 @@
-'use client'
+"use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const Hero = () => {
-    const [topValue, setTopValue] = useState("120px");
+  const [topValue, setTopValue] = useState("120px");
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 2130px)");
+useEffect(() => {
+  const updateTopValue = () => {
+    const width = window.innerWidth;
 
-    const handleResize = () => {
-      setTopValue(mediaQuery.matches ? "120px" : "150px");
-    };
+    if (width <= 768) {
+      setTopValue("40px"); // sadece mobile
+    } else if (width <= 2130) {
+      setTopValue("120px"); // orta boy ekranlar
+    } else {
+      setTopValue("150px"); // geniş ekranlar
+    }
+  };
 
-    handleResize(); // ilk durumda kontrol et
-    mediaQuery.addEventListener("change", handleResize);
+  updateTopValue(); // İlk yüklemede çalıştır
+  window.addEventListener("resize", updateTopValue); // Dinle
 
-    return () => mediaQuery.removeEventListener("change", handleResize);
-  }, []);
+  return () => window.removeEventListener("resize", updateTopValue); // Temizlik
+}, []);
   return (
-    <div className=" w-full z-50"
-        style={{
+    <div
+      className=" w-full z-50 "
+      style={{
         position: "absolute",
         top: topValue,
       }}
     >
       <div className="w-full h-full relative">
         <section className="container mx-auto relative">
-          <div className="w-full justify-between items-center flex flex-col lg:flex-row px-8 pt-2 pb-[50px] lg:pb-0 xl:pt-9">
+          <div className="w-full justify-between items-center flex flex-col lg:flex-row px-5 pt-2  lg:pb-0 xl:pt-9">
             <h1 className="text-2xl  xl:text-[56px] hidden lg:flex text-left font-semibold leading-[1.22] text-black">
               3PL Warehouse <br /> Management Software <br /> for Next Level
               Logistics
@@ -51,22 +58,19 @@ const Hero = () => {
                 See Pricing
               </button>
             </div>
- 
           </div>
-                               <div className=" flex justify-end -mt-[7rem] -mr-[8rem] 2xl:-mt-[8.5rem]  3xl:-mt-[20rem] 4xl:-mt-[20rem] 2xl:-mr-[12rem] z-50">
-                    <Image
-                      src="/icons/content/square.svg"
-                      alt="kare"
-                      width={440}
-                      height={440}
-                      className="transition-all duration-300 ease-in-out 2xl:w-[500px] 2xl:h-[500px] "
-                      sizes="(min-width: 1536px) 640px, 450px"
-                      priority
-                    />
-                 
+          <div className="hidden lg:flex  justify-end -mt-[7rem] -mr-[8rem] 2xl:-mt-[8.5rem]  3xl:-mt-[20rem] 4xl:-mt-[20rem] 2xl:-mr-[12rem] z-50">
+            <Image
+              src="/icons/content/square.svg"
+              alt="kare"
+              width={440}
+              height={440}
+              className="transition-all duration-300 ease-in-out 2xl:w-[500px] 2xl:h-[500px] "
+              sizes="(min-width: 1536px) 640px, 450px"
+              priority
+            />
           </div>
         </section>
-
       </div>
     </div>
   );

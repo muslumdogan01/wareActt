@@ -21,7 +21,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
   return (
     <div
       className={`transition-all duration-300 ease-in-out ${
-        isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+        isOpen ? "min-h-[900px] opacity-100" : "max-h-0 opacity-0"
       } bg-white`}
     >
       {isOpen && (

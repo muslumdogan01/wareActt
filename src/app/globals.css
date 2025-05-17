@@ -21,6 +21,7 @@ body {
   height: 100vh;
   overflow-x: hidden !important;
   background-color: #f3f4f6;
+  padding: 0;
 }
 .dot-grid {
   width: 100%;

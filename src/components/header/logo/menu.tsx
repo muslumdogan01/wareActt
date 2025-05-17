@@ -3,13 +3,9 @@ import React from "react";
 
 const Menu = () => {
   return (
-    <Image
-      src="/icons/header/menu.svg"
-      alt="menu"
-      width={30}
-      height={30}
-      
-    />
+    <div className="flex justify-center items-center">
+      <Image src="/icons/header/menu.svg" alt="menu" width={30} height={30} />
+    </div>
   );
 };
 
