@@ -17,6 +17,6 @@
     <pattern id="pattern0_56_126" patternContentUnits="objectBoundingBox" width="0.0111111" height="0.0288809">
       <use xlink:href="#image0_56_126" transform="scale(0.000111111 0.000288809)"/>
     </pattern>
-    <image id="image0_56_126" width="100" height="100" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACYSURBVHgB7da7DYMwFIbRX5nMo3gT2IyMkE0YgTgKiCYIisg050if5MLdlR/JrrSm1txa1nUNtxjyHcKvhtBVzfEwtkro5nM1nQ1kCt0sF5pDN9sjfhYdPFqvC/ueoZuS89NRQ1djjocxhlvU7D+ueV2XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwZ28aNUYPAv0QJAAAAABJRU5ErkJggg=="/>
+    <image id="image0_56_126" width="100" height="100" preserveAspectRatio="xMidYMid slice" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACYSURBVHgB7da7DYMwFIbRX5nMo3gT2IyMkE0YgTgKiCYIisg050if5MLdlR/JrrSm1txa1nUNtxjyHcKvhtBVzfEwtkro5nM1nQ1kCt0sF5pDN9sjfhYdPFqvC/ueoZuS89NRQ1djjocxhlvU7D+ueV2XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwZ28aNUYPAv0QJAAAAABJRU5ErkJggg=="/>
   </defs>
 </svg>
