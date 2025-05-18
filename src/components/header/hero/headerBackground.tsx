@@ -1,0 +1,83 @@
+// src/components/HeaderBackground.tsx
+export default function HeaderBackground() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xlinkHref="http://www.w3.org/1999/xlink"
+        className="absolute w-full h-full inset-0"
+  viewBox="0 0 1440 990"
+  preserveAspectRatio="xMidYMid meet"
+      width="100%"
+      height="658"
+    
+      fill="none"
+    >
+      <g filter="url(#filter0_d_56_126)">
+        <path
+          d="M0 0H1440V484L739.353 552.118C726.481 553.37 713.519 553.37 700.647 552.118L0 484V0Z"
+          fill="white"
+        />
+        <path
+          d="M0 0H1440V484L739.353 552.118C726.481 553.37 713.519 553.37 700.647 552.118L0 484V0Z"
+          fill="url(#pattern0_56_126)"
+          fillOpacity="0.2"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_56_126"
+          x="-100"
+          y="-96"
+          width="1640"
+          height="753.057"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood fillOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="4" />
+          <feGaussianBlur stdDeviation="50" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_56_126"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_56_126"
+            result="shape"
+          />
+        </filter>
+        <pattern
+          id="pattern0_56_126"
+          patternContentUnits="objectBoundingBox"
+          width="0.0111111"
+          height="0.0288809"
+        >
+          <use
+            xlinkHref="#image0_56_126"
+            transform="scale(0.000111111 0.000288809)"
+          />
+        </pattern>
+        <image
+          id="image0_56_126"
+          width="100"
+          height="100"
+          preserveAspectRatio="xMidYMid meet"
+          xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACYSURBVHgB7da7DYMwFIbRX5nMo3gT2IyMkE0YgTgKiCYIisg050if5MLdlR/JrrSm1txa1nUNtxjyHcKvhtBVzfEwtkro5nM1nQ1kCt0sF5pDN9sjfhYdPFqvC/ueoZuS89NRQ1djjocxhlvU7D+ueV2XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwZ28aNUYPAv0QJAAAAABJRU5ErkJggg=="
+        />
+      </defs>
+    </svg>
+  );
+}

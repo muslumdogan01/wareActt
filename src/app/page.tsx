@@ -1,18 +1,21 @@
-/* eslint-disable @next/next/no-img-element */
 import Content from "@/components/content/page";
 import MobileDashboard from "@/components/dashboard/mobileDashboard";
 import Dashboard from "@/components/dashboard/page";
 import Hero from "@/components/header/hero/page";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="w-full h-screen">
-      <div className="relative  w-full bg-white lg:bg-transparent h-[485px] lg:h-[900px] 4xl:h-[600px] z-0">
+      <div className="relative w-full bg-white lg:bg-transparent h-[485px] lg:h-[900px] 4xl:h-[600px] z-0">
 
-        <img
-          src="/icons/header/headerBg.svg"
+        <Image
+          src="/icons/header/background.svg"
           alt="Header background"
-          className="object-cover w-full h-[485px] lg:h-[900px] 4xl:h-[600px] hidden lg:block"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover hidden lg:block"
         />
 
         {/* Hero içerik */}
