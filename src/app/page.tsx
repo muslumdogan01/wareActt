@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import Content from "@/components/content/page";
 import MobileDashboard from "@/components/dashboard/mobileDashboard";
 import Dashboard from "@/components/dashboard/page";
 import Hero from "@/components/header/hero/page";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -12,7 +12,6 @@ export default function Home() {
         <img
           src="/icons/header/headerBg.svg"
           alt="Header background"
-
           className="object-cover w-full h-[485px] lg:h-[900px] 4xl:h-[600px] hidden lg:block"
         />
 
