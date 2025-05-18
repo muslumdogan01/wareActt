@@ -7,15 +7,13 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="w-full h-screen">
-      <div className="relative w-full bg-white lg:bg-transparent h-[485px] lg:h-[900px] 4xl:h-[600px] z-0">
+      <div className="relative  w-full bg-white lg:bg-transparent h-[485px] lg:h-[900px] 4xl:h-[600px] z-0">
 
-        <Image
+        <img
           src="/icons/header/headerBg.svg"
           alt="Header background"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover hidden lg:block"
+
+          className="object-cover w-full h-[485px] lg:h-[900px] 4xl:h-[600px] hidden lg:block"
         />
 
         {/* Hero içerik */}
