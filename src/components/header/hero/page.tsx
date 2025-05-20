@@ -33,9 +33,9 @@ const Hero = () => {
       style={isDesktop ? { position: "absolute", top: topValue } : {}}
     >
       {/* 👇 alt yapı aynı */}
-      <div className="w-full h-full relative">
+      <div className="w-full h-full relative ">
         <section className="container mx-auto relative">
-          <div className="w-full justify-between items-center flex flex-col lg:flex-row px-5 pt-2 lg:pb-0 xl:pt-9">
+          <div className="w-full justify-between items-center flex flex-col lg:flex-row px-5 lg:pb-0 xl:pt-9">
             <h1 className="text-2xl xl:text-[56px] hidden lg:flex text-left font-semibold leading-[1.22] text-black">
               3PL Warehouse <br /> Management Software <br /> for Next Level
               Logistics
