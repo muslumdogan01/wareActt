@@ -10,7 +10,11 @@ const Content = () => {
         <ReusableSlider iconPosition="top" />
       </div>
       <DeliveryInfo/>
-      <ProductOverview/>
+<div className="  hidden lg:block w-full bg-[url('/icons/content/productBg.svg')] bg-no-repeat bg-cover ">
+  <ProductOverview />
+</div>
+
+
     </div>
   );
 };
