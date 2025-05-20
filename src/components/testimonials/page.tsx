@@ -3,7 +3,7 @@ import ReusableSlider from '../content/cards/page'
 
 const Testimonials = () => {
   return (
-      <div className="bg-[#F4F6FF] ">
+      <div className="bg-[#F4F6FF] block lg:hidden">
         <div className="flex flex-col justify-center items-center pt-[100px]">
           <h1 className="text-black text-center font-inter text-[36px] font-semibold leading-[132%]">
             and discover <br />
