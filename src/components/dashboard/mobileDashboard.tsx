@@ -75,7 +75,7 @@ const MobileDashboard = () => {
   };
 
   return (
-    <div className="relative w-full py-[100px] ">
+    <div className="relative w-full py-[100px] bg-white ">
       <div
         className="overflow-hidden touch-pan-y"
         onTouchStart={handleTouchStart}

@@ -89,39 +89,50 @@ export default function TestimonialsCarousel() {
   const avatarRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [barLeft, setBarLeft] = useState(0);
 
-  const handleAvatarClick = (index: number) => {
-    setActiveIndex(index);
+const handleAvatarClick = (index: number) => {
+  setActiveIndex(index);
 
-    const avatarElement = avatarRefs.current[index];
-    if (avatarElement) {
-      avatarElement.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
+  const avatarElement = avatarRefs.current[index];
+  if (avatarElement) {
+    avatarElement.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
 
-      const containerLeft =
-        avatarElement.parentElement?.parentElement?.getBoundingClientRect()
-          .left || 0;
-      const avatarLeft = avatarElement.getBoundingClientRect().left;
+    const container =
+      avatarElement.parentElement?.parentElement as HTMLElement | null;
+    const containerRect = container?.getBoundingClientRect();
+    const avatarRect = avatarElement.getBoundingClientRect();
 
-      const offset =
-        avatarLeft - containerLeft + avatarElement.offsetWidth / 2 - 25;
-      setBarLeft(offset);
+    if (containerRect) {
+      // Ortadaki referans noktasını bul
+      const containerCenter = containerRect.width / 2;
+      const avatarCenter =
+        avatarRect.left - containerRect.left + avatarRect.width / 2;
+
+      // Mavi bar'ın ortalanması için sol konumunu hesapla
+      const newBarLeft = avatarCenter - 50; // çünkü bar'ın genişliği 100px
+
+      setBarLeft(newBarLeft);
     }
-  };
+  }
+};
 
 useEffect(() => {
   const avatarElement = avatarRefs.current[activeIndex];
-  if (avatarElement) {
-    const containerLeft =
-      avatarElement.parentElement?.parentElement?.getBoundingClientRect().left || 0;
-    const avatarLeft = avatarElement.getBoundingClientRect().left;
+  const container =
+    avatarElement?.parentElement?.parentElement as HTMLElement | null;
+  const containerRect = container?.getBoundingClientRect();
+  const avatarRect = avatarElement?.getBoundingClientRect();
 
-    const offset =
-      avatarLeft - containerLeft + avatarElement.offsetWidth / 2 - 25;
+  if (containerRect && avatarRect) {
+    const containerCenter = containerRect.width / 2;
+    const avatarCenter =
+      avatarRect.left - containerRect.left + avatarRect.width / 2;
 
-    setBarLeft(offset);
+    const newBarLeft = avatarCenter - 50;
+    setBarLeft(newBarLeft);
   }
 }, []);
 

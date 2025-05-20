@@ -29,7 +29,7 @@ export default function Home() {
      <div>
        <Content />
      </div>
-      <div className="flex lg:hidden flex-col items-center justify-center bg-white ">
+      <div className="flex lg:hidden flex-col items-center justify-center ">
         <MobileDashboard />
       </div>
         <Testimonials/>

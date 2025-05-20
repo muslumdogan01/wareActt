@@ -6,7 +6,10 @@ import Image from "next/image";
 const Insight = () => {
 
   return (
-<div className="w-full px-4 py-8 bg-[#f5f5f5]">
+<div className="w-full px-4 py-[100px] ">
+      <div className=' flex flex-col justify-center w-full'>
+      <h1 className='text-4xl text-black font-semibold leading-[1.3] '>Insight</h1>
+    </div>
       <Swiper
         spaceBetween={20}
         slidesPerView={"auto"}
@@ -18,7 +21,7 @@ const Insight = () => {
             style={{ width: "auto" }}
             className="flex"
           >
-            <div className="w-[228px] h-[350px] rounded-2xl overflow-hidden shadow-xl bg-black text-white flex flex-col">
+            <div className="w-[288px] h-[350px] rounded-2xl overflow-hidden shadow-xl bg-black text-white flex flex-col">
               {/* Görsel */}
               <div className="relative w-full h-[180px]">
                 <Image
@@ -50,11 +53,7 @@ const Insight = () => {
       </Swiper>
     </div>
   );
-  // return (
-  //   <div className='mt-[100px] flex flex-col justify-center w-full'>
-  //     <h1 className='text-4xl text-black font-semibold leading-[1.3] '>Insight</h1>
-  //   </div>
-  // )
+
 }
 
 export default Insight

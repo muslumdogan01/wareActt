@@ -21,7 +21,7 @@ const Testimonials = () => {
       <div>
         <TestimonialsCarousel />
       </div>
-      <div>
+      <div className="w-full bg-[#F4F6FF]">
         <Insight />
       </div>
     </div>
