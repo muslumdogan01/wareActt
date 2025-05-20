@@ -11,42 +11,38 @@ const ReusableSlider = ({
   const data = [
     {
       title: "Suspendisse <br/> mattis non leo",
-  icon: iconPosition === "bottom" ? "/icons/content/testiCircle.svg" : "/icons/content/blueCircle.svg",
-    width:
-      iconPosition === "bottom"
-        ? "w-[312px] "
-        : "w-[200px] ",
-    height:
-      iconPosition === "bottom"
-        ? "h-[270px] "
-        : "h-[240px] ",
-      hasBorder: iconPosition === "bottom",
-      
-    },
-    {
-      title: "Suspendisse <br/> mattis non leo",
-  icon: iconPosition === "bottom" ? "/icons/content/testiCircle.svg" : "/icons/content/blueCircle.svg",
-    width:
-      iconPosition === "bottom"
-        ? "w-[312px] "
-        : "w-[200px] ",
-    height:
-      iconPosition === "bottom"
-        ? "h-[270px] "
-        : "h-[240px] ",
+      icon:
+        iconPosition === "bottom"
+          ? "/icons/content/testiCircle.svg"
+          : "/icons/content/blueCircle.svg",
+      width:
+        iconPosition === "bottom" ? "w-[312px] " : "w-[200px] xl:w-[392px]",
+      height:
+        iconPosition === "bottom" ? "h-[270px] " : "h-[240px] xl:h-[450px]",
       hasBorder: iconPosition === "bottom",
     },
     {
       title: "Suspendisse <br/> mattis non leo",
-  icon: iconPosition === "bottom" ? "/icons/content/testiCircle.svg" : "/icons/content/blueCircle.svg",
-    width:
-      iconPosition === "bottom"
-        ? "w-[312px] "
-        : "w-[200px] ",
-    height:
-      iconPosition === "bottom"
-        ? "h-[270px] "
-        : "h-[240px] ",
+      icon:
+        iconPosition === "bottom"
+          ? "/icons/content/testiCircle.svg"
+          : "/icons/content/blueCircle.svg",
+      width:
+        iconPosition === "bottom" ? "w-[312px] " : "w-[200px] xl:w-[392px]",
+      height:
+        iconPosition === "bottom" ? "h-[270px] " : "h-[240px] xl:h-[450px]",
+      hasBorder: iconPosition === "bottom",
+    },
+    {
+      title: "Suspendisse <br/> mattis non leo",
+      icon:
+        iconPosition === "bottom"
+          ? "/icons/content/testiCircle.svg"
+          : "/icons/content/blueCircle.svg",
+      width:
+        iconPosition === "bottom" ? "w-[312px] " : "w-[200px] xl:w-[392px]",
+      height:
+        iconPosition === "bottom" ? "h-[270px] " : "h-[240px] xl:h-[450px]",
       hasBorder: iconPosition === "bottom",
     },
   ];
@@ -54,24 +50,24 @@ const ReusableSlider = ({
   return (
     <div className="w-full overflow-hidden  lg:mt-[70px] md:flex  md:justify-center md:items-center">
       <Swiper
-  slidesPerView={"auto"}
-  spaceBetween={iconPosition === "bottom" ? 24 : -84}
-  breakpoints={{
-    700: {
-      spaceBetween: iconPosition === "bottom" ? 24 : -84,
-      allowTouchMove: false,
-    },
-    1040: {
-      spaceBetween: iconPosition === "bottom" ? 24 : -84,
-      allowTouchMove: false,
-    },
-  }}
-     
+        spaceBetween={16}
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+          },
+        }}
       >
         {data.map((item, index) => (
           <SwiperSlide
             key={index}
-            className="!w-[calc(100vw-80px)] max-w-[300px] xl:max-w-[420px] "
+            className={`${
+              iconPosition === "bottom" ? "max-w-[312px]" : "max-w-[200px]"
+            } xl:max-w-[392px]`}
           >
             <SliderCard
               title={item.title}
