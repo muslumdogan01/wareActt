@@ -9,12 +9,11 @@ const Content = () => {
       <div className="md:flex md:w-full md:justify-center md:items-center lg:pt-[423px]">
         <ReusableSlider iconPosition="top" />
       </div>
-      <DeliveryInfo/>
-<div className="  hidden lg:block w-full bg-[url('/icons/content/productBg.svg')] bg-no-repeat bg-cover ">
-  <ProductOverview />
-</div>
-
-
+      <DeliveryInfo />
+      <div className="  hidden lg:block w-full bg-[url('/icons/content/productBg.svg')] bg-no-repeat bg-cover  4xl:py-40">
+        <ProductOverview />
+      </div>
+     
     </div>
   );
 };

@@ -10,40 +10,62 @@ const ReusableSlider = ({
 }) => {
   const data = [
     {
-      title: "Suspendisse mattis non leo",
-      icon: "/icons/content/blueCircle.svg",
-      width: "w-[200px] md:w-[240px] lg:w-[280px] xl:w-[320px]",
-      height: "h-[240px] md:h-[280px] lg:h-[320px] xl:h-[360px]",
+      title: "Suspendisse <br/> mattis non leo",
+  icon: iconPosition === "bottom" ? "/icons/content/testiCircle.svg" : "/icons/content/blueCircle.svg",
+    width:
+      iconPosition === "bottom"
+        ? "w-[312px] "
+        : "w-[200px] ",
+    height:
+      iconPosition === "bottom"
+        ? "h-[270px] "
+        : "h-[240px] ",
+      hasBorder: iconPosition === "bottom",
+      
     },
     {
-      title: "Suspendisse mattis non leo",
-      icon: "/icons/content/blueCircle.svg",
-      width: "w-[200px] md:w-[240px] lg:w-[280px] xl:w-[320px]",
-      height: "h-[240px] md:h-[280px] lg:h-[320px] xl:h-[360px]",
+      title: "Suspendisse <br/> mattis non leo",
+  icon: iconPosition === "bottom" ? "/icons/content/testiCircle.svg" : "/icons/content/blueCircle.svg",
+    width:
+      iconPosition === "bottom"
+        ? "w-[312px] "
+        : "w-[200px] ",
+    height:
+      iconPosition === "bottom"
+        ? "h-[270px] "
+        : "h-[240px] ",
+      hasBorder: iconPosition === "bottom",
     },
     {
-      title: "Suspendisse mattis non leo",
-      icon: "/icons/content/blueCircle.svg",
-      width: "w-[200px] md:w-[240px] lg:w-[280px] xl:w-[320px]",
-      height: "h-[240px] md:h-[280px] lg:h-[320px] xl:h-[360px]",
+      title: "Suspendisse <br/> mattis non leo",
+  icon: iconPosition === "bottom" ? "/icons/content/testiCircle.svg" : "/icons/content/blueCircle.svg",
+    width:
+      iconPosition === "bottom"
+        ? "w-[312px] "
+        : "w-[200px] ",
+    height:
+      iconPosition === "bottom"
+        ? "h-[270px] "
+        : "h-[240px] ",
+      hasBorder: iconPosition === "bottom",
     },
   ];
 
   return (
-    <div className="w-full overflow-hidden  lg:mt-[70px] md:flex pl-10 lg:pl-0 md:justify-center md:items-center">
+    <div className="w-full overflow-hidden  lg:mt-[70px] md:flex  md:justify-center md:items-center">
       <Swiper
-        slidesPerView={"auto"}
-        spaceBetween={16}
-        breakpoints={{
-          700: {
-            spaceBetween: 24,
-            allowTouchMove: false,
-          },
-          1040: {
-            spaceBetween: 24,
-            allowTouchMove: false,
-          },
-        }}
+  slidesPerView={"auto"}
+  spaceBetween={iconPosition === "bottom" ? 24 : -84}
+  breakpoints={{
+    700: {
+      spaceBetween: iconPosition === "bottom" ? 24 : -84,
+      allowTouchMove: false,
+    },
+    1040: {
+      spaceBetween: iconPosition === "bottom" ? 24 : -84,
+      allowTouchMove: false,
+    },
+  }}
      
       >
         {data.map((item, index) => (
@@ -57,6 +79,7 @@ const ReusableSlider = ({
               iconPosition={iconPosition}
               width={item.width}
               height={item.height}
+              hasBorder={item.hasBorder}
             />
           </SwiperSlide>
         ))}
