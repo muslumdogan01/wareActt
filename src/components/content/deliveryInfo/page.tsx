@@ -4,7 +4,7 @@ const DeliveryInfo = () => {
   return (
     <div className="w-full flex justify-center items-center px-4  ">
       {/* Ana container: yan yana hizalama */}
-      <div className="lg:max-w-[1280px] w-full flex py-28 lg:py-15  flex-col lg:flex-row gap-4 lg:gap-16 justify-center items-center relative">
+      <div className="lg:max-w-[1280px] w-full flex pt-28 lg:pt-0 lg:py-15  flex-col lg:flex-row gap-4 lg:gap-16 justify-center items-center relative">
       <h2 className="lg:absolute z-40 lg:top-28 text-center lg:left-42 text-4xl font-semibold leading-[1.32] text-black">
               Teslimat, Paketleme <br className="lg:hidden block" /> ve <br className="hidden lg:block" /> Kargo Hizmeti Sunuyoruz!
             </h2>

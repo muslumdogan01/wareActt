@@ -37,3 +37,12 @@ body {
   background-size: 20px 20px;
   clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
 }
+
+/* Custom scrollbar */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
