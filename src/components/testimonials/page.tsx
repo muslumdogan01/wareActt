@@ -1,6 +1,7 @@
 import React from "react";
 import ReusableSlider from "../content/cards/page";
 import TestimonialsCarousel from "./testimoSlider";
+import Insight from "./insight/page";
 
 const Testimonials = () => {
   return (
@@ -17,7 +18,12 @@ const Testimonials = () => {
       </div>
       <ReusableSlider iconPosition="bottom" />
 
-      <TestimonialsCarousel />
+      <div>
+        <TestimonialsCarousel />
+      </div>
+      <div>
+        <Insight />
+      </div>
     </div>
   );
 };

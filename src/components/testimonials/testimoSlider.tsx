@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
@@ -110,10 +111,19 @@ export default function TestimonialsCarousel() {
     }
   };
 
-  useEffect(() => {
-    handleAvatarClick(activeIndex); // İlk başta da çizgi yerine gelsin
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+useEffect(() => {
+  const avatarElement = avatarRefs.current[activeIndex];
+  if (avatarElement) {
+    const containerLeft =
+      avatarElement.parentElement?.parentElement?.getBoundingClientRect().left || 0;
+    const avatarLeft = avatarElement.getBoundingClientRect().left;
+
+    const offset =
+      avatarLeft - containerLeft + avatarElement.offsetWidth / 2 - 25;
+
+    setBarLeft(offset);
+  }
+}, []);
 
   return (
     <div className="max-w-md mx-auto p-6 ">
