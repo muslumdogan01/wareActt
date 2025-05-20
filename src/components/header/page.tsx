@@ -16,7 +16,7 @@ const Header = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <div className="w-full z-20 lg:absolute lg:top-0 lg:left-0 px-4 lg:px-0 bg-white lg:bg-transparent flex flex-col">
+    <div className="w-full  z-20 lg:absolute lg:top-0 lg:left-0 px-4 lg:px-0 bg-white lg:bg-transparent flex flex-col">
       <div className="container mx-auto">
         <header className="w-full relative  z-50 h-full ">
           <div className=" flex lg:flex-row md:flex-col  items-center justify-between xl:px-4 py-[30px]">

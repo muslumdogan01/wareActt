@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="w-full h-screen overflow-x-hidden">
-      <div className="relative w-full bg-white lg:bg-transparent min-h-[485px] lg:h-[900px] 4xl:h-[600px] z-0">
+      <div className="relative w-full bg-white lg:bg-transparent h-[440px] lg:h-[900px] 4xl:h-[600px] z-0">
         <Image
           src="/icons/header/background.svg"
           alt="Header background"
