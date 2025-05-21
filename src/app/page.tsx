@@ -1,7 +1,9 @@
 import Content from "@/components/content/page";
 import MobileDashboard from "@/components/dashboard/mobileDashboard";
 import Dashboard from "@/components/dashboard/page";
+import FAQSection from "@/components/faq/page";
 import Hero from "@/components/header/hero/page";
+import SignupCard from "@/components/signup/page";
 import Testimonials from "@/components/testimonials/page";
 import Image from "next/image";
 
@@ -32,7 +34,15 @@ export default function Home() {
       <div className="flex lg:hidden flex-col items-center justify-center ">
         <MobileDashboard />
       </div>
-        <Testimonials/>
+       <div>
+         <Testimonials/>
+       </div>
+       <div className="bg-white">
+        <FAQSection/>
+       </div>
+       <div className="bg-white">
+        <SignupCard/>
+       </div>
     </div>
   );
 }

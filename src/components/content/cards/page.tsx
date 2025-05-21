@@ -49,19 +49,9 @@ const ReusableSlider = ({
 
   return (
     <div className="w-full overflow-hidden  lg:mt-[70px] md:flex  md:justify-center md:items-center">
-      <Swiper
-        spaceBetween={16}
-        breakpoints={{
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 24,
-          },
-        }}
-      >
+<Swiper
+spaceBetween={20} slidesPerView={"auto"} 
+>
         {data.map((item, index) => (
           <SwiperSlide
             key={index}

@@ -131,7 +131,7 @@ useEffect(() => {
     const avatarCenter =
       avatarRect.left - containerRect.left + avatarRect.width / 2;
 
-    const newBarLeft = avatarCenter - 50;
+    const newBarLeft = avatarCenter - -70;
     setBarLeft(newBarLeft);
   }
 }, []);
