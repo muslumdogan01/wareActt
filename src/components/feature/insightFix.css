@@ -1,0 +1,5 @@
+.insight-swiper .swiper,
+.insight-swiper .swiper-wrapper,
+.insight-swiper .swiper-slide {
+  background: transparent !important;
+}
