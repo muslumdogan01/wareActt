@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div className="w-full hidden lg:flex justify-center items-baseline relative">
       <section className="flex justify-center items-center relative z-20">
-        <div className="w-full max-w-[1016px] relative -mt-60 @[5300px]/Dash:-mt-20 z-20">
+        <div className="w-full max-w-[1016px] relative -mt-80 @[3300px]/Dash:-mt-60 @[5300px]/Dash:-mt-50 @[7300px]/Dash:-mt-35 z-20">
           {/* Sol üst süs */}
           <div className="absolute -top-2 z-10 left-[-105px]">
             <Image
