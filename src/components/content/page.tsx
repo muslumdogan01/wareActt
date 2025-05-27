@@ -6,7 +6,7 @@ import ProductOverview from "./productOverview/page";
 const Content = () => {
   return (
     <div className="w-full h-full flex flex-col  relative">
-      <div className="md:flex md:w-full md:justify-center md:items-center pt-4 lg:pt-[423px]">
+      <div className="md:flex md:w-full md:justify-center md:items-center pt-4 lg:pt-[285px]">
         <ReusableSlider iconPosition="top" />
       </div>
       <DeliveryInfo />

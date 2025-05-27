@@ -10,9 +10,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="w-full relative @container/Dashboard ">
-      <div className="bg-[#065AF1] w-full">
-              <div className="relative w-full bg-white lg:bg-transparent  h-[480px] lg:h-[900px] 4xl:h-[600px] z-0">
+    <div className="w-full relative  ">
+      <div className="relative w-full bg-white lg:bg-[#065AF1] min-h-[470px] lg:min-h-[900px] z-0">
         <Image
           src="/icons/header/background.svg"
           alt="Header background"
@@ -25,13 +24,11 @@ export default function Home() {
         <div className="relative  z-10">
           <Hero />
         </div>
-        {/* <div className="hidden lg:block absolute bottom-0 left-0 w-full h-[510px] bg-[#065AF1]  -z-10"></div> */}
-      </div>
+        <div className="w-full  justify-center  z-20 absolute -bottom-70 4xl:-bottom-90 hidden lg:flex">
+          <Dashboard />
+        </div>
       </div>
 
-      <div className="  relative  h-[50px]  @container/Dash @[5300px]/Dashboard:h-[150px] @[7300px]/Dashboard:h-[250px]  z-20 bg-[#065AF1]  hidden lg:block">
-        <Dashboard />
-      </div>
       <div>
         <Content />
       </div>

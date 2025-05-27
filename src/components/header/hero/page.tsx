@@ -1,41 +1,14 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Hero = () => {
-  const [topValue, setTopValue] = useState("120px");
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const updateTopValue = () => {
-      const width = window.innerWidth;
-
-      if (width < 1024) {
-        setIsDesktop(false); // lg'den küçükse
-      } else {
-        setIsDesktop(true); // lg ve üstü
-        if (width <= 2130) {
-          setTopValue("120px");
-        } else {
-          setTopValue("150px");
-        }
-      }
-    };
-
-    updateTopValue(); // İlk yüklemede çalıştır
-    window.addEventListener("resize", updateTopValue); // Dinle
-    return () => window.removeEventListener("resize", updateTopValue); // Temizlik
-  }, []);
-
   return (
-    <div
-      className="w-full z-50"
-      style={isDesktop ? { position: "absolute", top: topValue } : {}}
-    >
+    <div className="w-full z-50">
       {/* 👇 alt yapı aynı */}
       <div className="w-full h-full relative ">
         <section className="container mx-auto relative">
-          <div className="w-full justify-between items-center flex flex-col lg:flex-row px-5 lg:pb-0 xl:pt-9">
+          <div className="w-full justify-between items-center flex flex-col lg:flex-row px-5 absolute lg:top-[150px]">
             <h1 className="text-2xl xl:text-[56px] hidden lg:flex text-left font-semibold leading-[1.22] text-black">
               3PL Warehouse <br /> Management Software <br /> for Next Level
               Logistics
@@ -61,15 +34,14 @@ const Hero = () => {
               </button>
             </div>
           </div>
-          <div className="hidden lg:flex justify-end -mt-[7rem] -mr-[8rem] 2xl:-mt-[8.5rem]  3xl:-mt-[20rem] 4xl:-mt-[20rem] 2xl:-mr-[12rem] z-50">
+          <div className="hidden lg:flex absolute -right-40 overflow-hidden top-[200px] z-50">
             <Image
               src="/icons/content/square.svg"
               alt="kare"
-              width={440}
-              height={440}
-              className="transition-all duration-300 ease-in-out 2xl:w-[500px] 2xl:h-[500px]"
-              sizes="(min-width: 1536px) 640px, 450px"
-              priority
+              width={400}
+              height={400}
+              className="transition-all duration-300 ease-in-out "
+            
             />
           </div>
         </section>
