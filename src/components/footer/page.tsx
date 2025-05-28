@@ -103,7 +103,7 @@ export default function Footer() {
       </div>
       <div className="w-full lg:bg-white/10 lg:min-h-[325px] mb-[50px] lg:mb-0 lg:pt-[60px]">
         <div className="2xl:max-w-[1440px] mx-auto">
-          <div className="w-full flex flex-col lg:flex-row lg:justify-between items-center mb-[50px] lg:mb-0 px-4">
+          <div className="w-full flex flex-col lg:flex-row lg:justify-between items-center mb-[50px] lg:mb-0 px-4 lg:px-0">
             <h1 className="hidden lg:block text-white text-[14px] not-italic font-normal leading-[140%]">
               © 2024 WareAct. All rights reserved
             </h1>
