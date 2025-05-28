@@ -42,14 +42,17 @@ export default function Home() {
       <div>
         <Feature />
       </div>
-      <div className="bg-white lg:flex lg:flex-col lg:justify-center">
-           <div className="max-w-[1440px] mx-auto -mt-70 z-20 relative">
-            <InsightWeb />
-          </div>
-        <FAQSection />
-      </div>
-      <div className="bg-white">
-        <SignupCard />
+      <div className="bg-white lg:bg-[url('/images/content/productBg.png')] lg:bg-no-repeat lg:bg-cover lg:flex lg:flex-col lg:justify-center">
+        <div className="max-w-[1440px] mx-auto -mt-70 z-20 relative hidden lg:block">
+          <InsightWeb />
+        </div>
+        <div className="lg:max-w-[1440px] lg:mx-auto">
+          <FAQSection />
+        </div>
+
+        <div className="">
+          <SignupCard />
+        </div>
       </div>
     </div>
   );
