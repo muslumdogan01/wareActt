@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import TestimonialsWeb from "./testimonialsWeb";
-import InsightWeb from "./insightWeb";
 import Image from "next/image";
 
 const Feature = () => {
@@ -9,7 +8,7 @@ const Feature = () => {
     <>
       <div className="bg-[#F3F4F6] relative w-full z-10">
         <section className="relative  z-20 bg-[url('/icons/features/nokta.svg')] hidden  bg-no-repeat bg-cover lg:flex flex-col items-center justify-center ">
-          <div className="w-full max-w-[1230px] ">
+          <div className="w-full max-w-[1230px] mt-[200px]">
             <div className=" w-full relative">
               <div className="space-y-6 absolute top-0 left-0">
                 <div>
@@ -149,11 +148,8 @@ const Feature = () => {
               </div>
             </div>
           </div>
-          <div className="w-full max-w-[1230px] ">
+          <div className="w-full max-w-[1230px] mb-[280px]">
             <TestimonialsWeb />
-          </div>
-          <div className="max-w-[1440px] mx-auto">
-            <InsightWeb />
           </div>
         </section>
       </div>

@@ -2,6 +2,7 @@ import Content from "@/components/content/page";
 import MobileDashboard from "@/components/dashboard/mobileDashboard";
 import Dashboard from "@/components/dashboard/page";
 import FAQSection from "@/components/faq/page";
+import InsightWeb from "@/components/feature/insightWeb";
 import Feature from "@/components/feature/page";
 import Hero from "@/components/header/hero/page";
 import SignupCard from "@/components/signup/page";
@@ -41,7 +42,10 @@ export default function Home() {
       <div>
         <Feature />
       </div>
-      <div className="bg-white">
+      <div className="bg-white lg:flex lg:flex-col lg:justify-center">
+           <div className="max-w-[1440px] mx-auto -mt-70 z-20 relative">
+            <InsightWeb />
+          </div>
         <FAQSection />
       </div>
       <div className="bg-white">
