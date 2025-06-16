@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Hero = () => {
@@ -29,9 +30,12 @@ const Hero = () => {
               <button className="cursor-pointer hover:bg-white hover:border-[#065AF1] hover:border-[1px] transition-all duration-300 ease-in-out hover:text-[#065AF1] block lg:hidden mt-[30px] bg-[#065AF1] text-white  w-[179px] h-[40px] rounded-[100px]">
                 Book a Demo
               </button>
-              <button className="cursor-pointer hover:bg-white hover:border-[#065AF1] hover:border-[1px] transition-all duration-300 ease-in-out hover:text-[#065AF1] hidden lg:block mt-[30px] bg-[#065AF1] text-white  w-[179px] h-[40px] rounded-[100px]">
-                See Pricing
-              </button>
+
+              <Link href="/pricing">
+                <button className="cursor-pointer hover:bg-white hover:border-[#065AF1] hover:border-[1px] transition-all duration-300 ease-in-out hover:text-[#065AF1] hidden lg:block mt-[30px] bg-[#065AF1] text-white w-[179px] h-[40px] rounded-[100px]">
+                  See Pricing
+                </button>
+              </Link>
             </div>
           </div>
           <div className="hidden lg:flex absolute -right-40 overflow-hidden top-[200px] z-50">
@@ -41,7 +45,6 @@ const Hero = () => {
               width={400}
               height={400}
               className="transition-all duration-300 ease-in-out "
-            
             />
           </div>
         </section>

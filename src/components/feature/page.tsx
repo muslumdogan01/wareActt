@@ -2,6 +2,7 @@
 import React from "react";
 import TestimonialsWeb from "./testimonialsWeb";
 import Image from "next/image";
+import Link from "next/link";
 
 const Feature = () => {
   return (
@@ -25,9 +26,12 @@ const Feature = () => {
                     verbum tamdiu damnatio.
                   </p>
                 </div>
-                <button className="cursor-pointer hover:bg-blue-50 inline-flex items-center px-[20px] py-[10px] gap-[10px] rounded-[100px] border border-[#065AF1] text-[#065AF1] font-inter text-[14px] not-italic font-semibold leading-[140%]">
+                <Link
+                  href="/features"
+                  className="cursor-pointer hover:bg-blue-50 inline-flex items-center px-[20px] py-[10px] gap-[10px] rounded-[100px] border border-[#065AF1] text-[#065AF1] font-inter text-[14px] not-italic font-semibold leading-[140%]"
+                >
                   More Feature
-                </button>
+                </Link>
               </div>
               <div className="grid grid-cols-1 gap-16 items-center  ">
                 <div className="flex flex-col justify-end items-end">

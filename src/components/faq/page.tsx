@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 
 const faqData = [
@@ -43,9 +44,12 @@ export default function FAQSection() {
           F.A.Q Lorem ipsum <br />
           dolor sit amet
         </h2>
-        <button className="w-fit cursor-pointer hidden  hover:bg-blue-50 lg:inline-flex items-center px-[20px] py-[10px] gap-[10px] rounded-[100px] border border-[#065AF1] text-[#065AF1] font-inter text-[14px] not-italic font-semibold leading-[140%]">
+        <Link
+          href="/faq"
+          className="w-fit cursor-pointer hidden hover:bg-blue-50 lg:inline-flex items-center px-[20px] py-[10px] gap-[10px] rounded-[100px] border border-[#065AF1] text-[#065AF1] font-inter text-[14px] not-italic font-semibold leading-[140%]"
+        >
           More F.A.Q
-        </button>
+        </Link>
       </div>
       <div className="space-y-3 w-full lg:max-w-[600px] mt-5 lg:mt-0">
         {faqData.map((item, index) => {
