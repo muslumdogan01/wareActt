@@ -1,5 +1,7 @@
 "use client";
 
+import FAQSection from "@/components/faq/page";
+import SignupCard from "@/components/signup/page";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,14 +26,34 @@ const insightItems = [
     title: "Curabitur blandit tempus",
     tags: ["#digital", "#marketing"],
   },
+  {
+    image: "/images/insight/insight3.png",
+    title: "Curabitur blandit tempus",
+    tags: ["#digital", "#marketing"],
+  },
+  {
+    image: "/images/insight/insight3.png",
+    title: "Curabitur blandit tempus",
+    tags: ["#digital", "#marketing"],
+  },
+  {
+    image: "/images/insight/insight3.png",
+    title: "Curabitur blandit tempus",
+    tags: ["#digital", "#marketing"],
+  },
+  {
+    image: "/images/insight/insight3.png",
+    title: "Curabitur blandit tempus",
+    tags: ["#digital", "#marketing"],
+  },
 ];
 
 const Insight = () => {
   return (
-    <div className="w-full relative ">
+    <div className="w-full relative bg-white">
       <div className="bg-[url('/icons/featuresPage/headerBg.svg')] bg-cover bg-center h-[348px] w-full ">
         <div className="container mx-auto relative">
-          <div className="px-4 flex flex-col absolute top-[160px] w-full  bg-red-50 ">
+          <div className="px-4 flex flex-col absolute top-[160px] w-full ">
             <h1 className="text-black font-inter text-[56px] not-italic font-semibold leading-[122%]">
               Insight
             </h1>
@@ -64,11 +86,13 @@ const Insight = () => {
             <div className="w-1/2 min-h-[490px] relative ">
               <div className="flex flex-col pl-[70px] mt-[85px] ">
                 <h1 className="text-white font-inter text-[30px] not-italic font-normal leading-[140%]">
-                  How We Built Our Own <br /> CLI for Better Application <br /> Bootstrapping
+                  How We Built Our Own <br /> CLI for Better Application <br />{" "}
+                  Bootstrapping
                 </h1>
                 <p className="mt-[10px] text-white font-inter text-[16px] not-italic font-normal leading-[26px]">
-                  See how we mastered application bootstrapping <br /> with a CLI tool,
-                  simplifying project setups and <br /> development workflows...
+                  See how we mastered application bootstrapping <br /> with a
+                  CLI tool, simplifying project setups and <br /> development
+                  workflows...
                 </p>
                 <Link
                   href="/features"
@@ -76,51 +100,57 @@ const Insight = () => {
                 >
                   More Feature
                 </Link>
-                           <div className="flex  gap-[10px] mt-[63px] ">
-                <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                  #dropshiping
-                </span>
-                <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                  #e-commerce
-                </span>
-              </div>
+                <div className="flex  gap-[10px] mt-[63px] ">
+                  <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
+                    #dropshiping
+                  </span>
+                  <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
+                    #e-commerce
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-          <div className="flex w-full space-x-[24px]">
-                {insightItems.map((item, index) => (
-                  <div
-                    key={index}
-                    className="w-[288px] h-[350px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col"
-                  >
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/insight/insight.png"
-                        alt="Warehouse"
-                        fill
-                        className="object-cover rounded-lg"
-                      />
-                    </div>
-        
-                    {/* Alt içerik */}
-                    <div className="flex flex-col justify-end h-full pl-5">
-                      <h3 className="text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
-                        Suspendisse <br /> mattis non leo
-                      </h3>
-        
-                      <div className="flex  gap-[10px] mb-[15px]">
-                        <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                          #dropshiping
-                        </span>
-                        <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                          #e-commerce
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+        <div className="px-4 mt-[74px] grid grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4  gap-[24px]">
+          {insightItems.map((item, index) => (
+            <div
+              key={index}
+              className="w-[288px] h-[350px] 2xl:w-[350px] 2xl:h-[400px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col"
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src="/images/insight/insight.png"
+                  alt="Warehouse"
+                  fill
+                  className="object-cover rounded-lg"
+                />
               </div>
+
+              {/* Alt içerik */}
+              <div className="flex flex-col justify-end h-full pl-5">
+                <h3 className="text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
+                  Suspendisse <br /> mattis non leo
+                </h3>
+
+                <div className="flex  gap-[10px] mb-[15px]">
+                  <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
+                    #dropshiping
+                  </span>
+                  <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
+                    #e-commerce
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="lg:max-w-[1440px] lg:mx-auto">
+          <FAQSection />
+        </div>
+        <div>
+          <SignupCard />
+        </div>
       </div>
     </div>
   );

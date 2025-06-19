@@ -11,7 +11,7 @@ export default function SignupCard() {
 
   return (
     <div className="flex items-center justify-center px-4  lg:mb-60">
-      <div className="w-[361px] h-[370px] lg:w-[1224px] lg:h-[235px] mb-[100px] lg:mb-0 2xl:h-[255px] rounded-[30px] bg-[#065AF1] lg:bg-transparent lg:bg-[url('/icons/signup/bg.svg')]  lg:bg-no-repeat lg:bg-cover  flex flex-col">
+      <div className="w-[361px] h-[370px] lg:w-[1224px] lg:h-[257px] mb-[100px] lg:mb-0 2xl:h-[255px] rounded-[30px] bg-[#065AF1] lg:bg-transparent lg:bg-[url('/icons/signup/bg.svg')]  lg:bg-no-repeat lg:bg-cover  flex flex-col">
         <div className="flex-1 w-full flex flex-col lg:flex-row justify-center  lg:justify-evenly  lg:items-center">
           <h2 className="text-white text-3xl font-normal text-center lg:text-left mb-[30px] leading-[1.3]">
             Take the first step <br className="hidden lg:block" /> to create your account
