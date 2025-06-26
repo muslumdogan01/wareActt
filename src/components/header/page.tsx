@@ -43,9 +43,11 @@ const Header = () => {
               <button className="w-[151px] h-[40px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1]  cursor-pointer border-[1px]">
                 Book a Demo
               </button>
-              <button className="w-[151px] h-[40px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1]  cursor-pointer border-[1px]">
-               Sign Up
-              </button>
+              <Link href="/sign-up">
+                <button className="w-[151px] h-[40px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1]  cursor-pointer border-[1px]">
+                  Sign Up
+                </button>
+              </Link>
             </div>
 
             {/* Hamburger (Mobile only) */}
@@ -60,7 +62,6 @@ const Header = () => {
           <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
         </header>
       </div>
-      
     </div>
   );
 };

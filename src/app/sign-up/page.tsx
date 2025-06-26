@@ -93,21 +93,21 @@ export default function SignUp() {
         <h2 className="text-2xl font-bold text-center">Sign up to create account</h2>
         <p className="text-sm text-gray-500 text-center">Please complete all fields accurately.</p>
 
-        <input name="fullName" onChange={handleChange} placeholder="First & Last Name" className="input" />
-        <input name="companyName" onChange={handleChange} placeholder="Company Name" className="input" />
-        <input name="brandName" onChange={handleChange} placeholder="Brand Name" className="input" />
-        <input name="email" onChange={handleChange} placeholder="Email" className="input" type="email" />
+        <input name="fullName" onChange={handleChange} placeholder="First & Last Name"  className="input border border-gray-300" />
+        <input name="companyName" onChange={handleChange} placeholder="Company Name"  className="input border border-gray-300" />
+        <input name="brandName" onChange={handleChange} placeholder="Brand Name"  className="input border border-gray-300" />
+        <input name="email" onChange={handleChange} placeholder="Email"  className="input border border-gray-300" type="email" />
         <input name="password" onChange={handleChange} placeholder="Password" className="input" type="password" />
-        <input name="confirmPassword" onChange={handleChange} placeholder="Password (re-enter please)" className="input" type="password" />
+        <input name="confirmPassword" onChange={handleChange} placeholder="Password (re-enter please)"  className="input border border-gray-300" type="password" />
 
-        <input name="addressCompanyName" onChange={handleChange} placeholder="Company Name" className="input" />
-        <input name="country" onChange={handleChange} placeholder="Country" className="input" />
-        <input name="state" onChange={handleChange} placeholder="State" className="input" />
-        <input name="address1" onChange={handleChange} placeholder="Address Line 1" className="input" />
-        <input name="address2" onChange={handleChange} placeholder="Address Line 2" className="input" />
-        <input name="city" onChange={handleChange} placeholder="City" className="input" />
-        <input name="zip" onChange={handleChange} placeholder="Zip Code" className="input" />
-        <input name="phone" onChange={handleChange} placeholder="Phone Number" className="input" />
+        <input name="addressCompanyName" onChange={handleChange} placeholder="Company Name"  className="input border border-gray-300" />
+        <input name="country" onChange={handleChange} placeholder="Country"  className="input border border-gray-300" />
+        <input name="state" onChange={handleChange} placeholder="State"  className="input border border-gray-300" />
+        <input name="address1" onChange={handleChange} placeholder="Address Line 1"  className="input border border-gray-300" />
+        <input name="address2" onChange={handleChange} placeholder="Address Line 2"  className="input border border-gray-300" />
+        <input name="city" onChange={handleChange} placeholder="City"  className="input border border-gray-300" />
+        <input name="zip" onChange={handleChange} placeholder="Zip Code"  className="input border border-gray-300" />
+        <input name="phone" onChange={handleChange} placeholder="Phone Number"  className="input border border-gray-300" />
 
         <label className="flex items-center space-x-2">
           <input type="checkbox" name="acceptTerms" onChange={handleChange} />
