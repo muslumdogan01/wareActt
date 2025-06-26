@@ -1,3 +1,4 @@
+'use client'
 import Content from "@/components/content/page";
 import MobileDashboard from "@/components/dashboard/mobileDashboard";
 import Dashboard from "@/components/dashboard/page";

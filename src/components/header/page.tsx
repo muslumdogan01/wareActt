@@ -40,11 +40,11 @@ const Header = () => {
             </div>
 
             <div className="hidden md:flex ml-6 space-x-[9px]">
-              <button className="rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1] py-[10px] px-[20px] cursor-pointer border-[1px]">
+              <button className="w-[151px] h-[40px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1]  cursor-pointer border-[1px]">
                 Book a Demo
               </button>
-              <button className="rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1] py-[10px] px-[20px] cursor-pointer border-[1px]">
-                Sign In / Sign Up
+              <button className="w-[151px] h-[40px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1]  cursor-pointer border-[1px]">
+               Sign Up
               </button>
             </div>
 
