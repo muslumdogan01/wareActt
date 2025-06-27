@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
@@ -8,8 +8,13 @@ interface FormData {
 }
 
 const SignUpForm: React.FC = () => {
-  const [accountType, setAccountType] = useState<"business" | "personal">("business");
-  const [formData, setFormData] = useState<{ business: FormData; personal: FormData }>({
+  const [accountType, setAccountType] = useState<"business" | "personal">(
+    "business"
+  );
+  const [formData, setFormData] = useState<{
+    business: FormData;
+    personal: FormData;
+  }>({
     business: {},
     personal: {},
   });
@@ -17,22 +22,21 @@ const SignUpForm: React.FC = () => {
   const [accepted, setAccepted] = useState(false);
   const [termsError, setTermsError] = useState(false);
   const [states, setStates] = useState<string[]>([]);
-const [countryData, setCountryData] = useState<Country[]>([]);
+  const [countryData, setCountryData] = useState<Country[]>([]);
 
-interface Country {
-  name: string;
-  iso3: string;
-  iso2: string;
-  states: {
-    id: number;
+  interface Country {
     name: string;
-    state_code: string;
-    latitude: string;
-    longitude: string;
-    type: string | null;
-  }[];
-}
-
+    iso3: string;
+    iso2: string;
+    states: {
+      id: number;
+      name: string;
+      state_code: string;
+      latitude: string;
+      longitude: string;
+      type: string | null;
+    }[];
+  }
 
   const businessFields = [
     "fullName",
@@ -43,30 +47,29 @@ interface Country {
     "country",
     "state",
     "address1",
-    "city"
+    "city",
   ];
 
   const personalFields = ["fullName", "email", "password", "passwordConfirm"];
 
-useEffect(() => {
-  axios
-    .get<Country[]>("/data/countries.json")
-    .then((res) => setCountryData(res.data))
-    .catch((err) => console.error("Country fetch error:", err));
-}, []);
+  useEffect(() => {
+    axios
+      .get<Country[]>("/data/countries.json")
+      .then((res) => setCountryData(res.data))
+      .catch((err) => console.error("Country fetch error:", err));
+  }, []);
 
-useEffect(() => {
-  const selectedCountry: Country | undefined = countryData.find(
-    (c) => c.name === formData[accountType].country
-  );
+  useEffect(() => {
+    const selectedCountry: Country | undefined = countryData.find(
+      (c) => c.name === formData[accountType].country
+    );
 
-  if (selectedCountry) {
-    setStates(selectedCountry.states.map((s) => s.name));
-  } else {
-    setStates([]);
-  }
-}, [formData[accountType].country, countryData]);
-
+    if (selectedCountry) {
+      setStates(selectedCountry.states.map((s) => s.name));
+    } else {
+      setStates([]);
+    }
+  }, [formData[accountType].country, countryData]);
 
   const validate = (fields: string[], type: "business" | "personal") => {
     const newErrors: { [key: string]: boolean } = {};
@@ -88,7 +91,8 @@ useEffect(() => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const requiredFields = accountType === "business" ? businessFields : personalFields;
+    const requiredFields =
+      accountType === "business" ? businessFields : personalFields;
     const newErrors = validate(requiredFields, accountType);
     const isTermsAccepted = accepted;
     setErrors(newErrors);
@@ -114,7 +118,10 @@ useEffect(() => {
       };
 
       try {
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`, dataToSend);
+        const res = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
+          dataToSend
+        );
         alert("✅ Success! User registered.");
         console.log(res.data);
       } catch (err) {
@@ -124,7 +131,9 @@ useEffect(() => {
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -138,120 +147,173 @@ useEffect(() => {
     }
   };
 
-  const renderInput = (name: string, type: string = "text", placeholder?: string) => (
+  const renderInput = (
+    name: string,
+    type: string = "text",
+    placeholder?: string,
+    className?: string
+  ) => (
     <input
       name={name}
       type={type}
       placeholder={placeholder || name}
       value={formData[accountType][name] || ""}
       onChange={handleChange}
-      className={`input border rounded px-3 py-2 w-full ${
-        errors[name] ? "border-red-500" : "border-gray-300"
-      }`}
+      className={`text-[#7E8299] text-[12px] font-semibold focus:outline-none focus:ring-0 leading-[12px] rounded-[6px] border border-[#E1E3EA] px-3 py-[10px] ${
+        className || "w-full h-[38px]"
+      } ${errors[name] ? "border-red-500" : "border-gray-300"}`}
     />
   );
 
-  const renderSelect = (name: string, options: string[]) => (
+  const renderSelect = (
+    name: string,
+    options: string[],
+    className?: string
+  ) => (
     <select
       name={name}
       value={formData[accountType][name] || ""}
       onChange={handleChange}
-      className={`input border rounded px-3 py-2 w-full bg-white ${
-        errors[name] ? "border-red-500" : "border-gray-300"
-      }`}
+      className={` text-[#7E8299] text-[12px] font-semibold leading-[12px] rounded-[6px] border border-[#E1E3EA] px-3 py-[10px] ${
+        className || "w-full h-[38px]"
+      } ${errors[name] ? "border-red-500" : "border-gray-300"}`}
     >
       <option value="">Select {name}</option>
       {options.map((opt) => (
-        <option key={opt} value={opt}>{opt}</option>
+        <option key={opt} value={opt}>
+          {opt}
+        </option>
       ))}
     </select>
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen max-h-screen overflow-y-auto flex items-center justify-center bg-gray-100 ">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-xl bg-white p-8 rounded-2xl shadow-lg space-y-4"
+        className="w-full max-w-[490px] bg-white p-[50px] rounded-2xl shadow-lg space-y-4 flex flex-col justify-center items-center"
       >
-        <h2 className="text-[#181C32] text-center font-inter text-[24px] font-semibold leading-[24px] tracking-[-0.24px]">Sign up to create account</h2>
+        <h2 className="text-[#181C32] text-center font-inter text-[24px] font-semibold leading-[24px] tracking-[-0.24px]">
+          Sign up to create account
+        </h2>
         <p className="text-[#A1A5B7] text-center font-inter text-[14px] font-medium leading-[14px]">
-          Please complete all fields accurately, as this information will be used to generate your invoices.
+          Please complete all fields accurately, as this information will be
+          used to generate your invoices.
         </p>
-<div className="flex gap-4 justify-center">
-  <button
-    type="button"
-    onClick={() => setAccountType("business")}
-    className={`w-36 py-4 rounded-[12px] flex flex-col items-center justify-center transition-all duration-300
+        <div className="flex gap-4 justify-center mt-[40px] mb-[30px] ">
+          <button
+            type="button"
+            onClick={() => setAccountType("business")}
+            className={`w-[80px] h-[87px] py-4 rounded-[12px] flex flex-col items-center justify-center transition-all duration-300
       ${
         accountType === "business"
-          ? "border border-[#E1E3EA] border-b-[3px] border-b-[#3E97FF] bg-white"
+          ? "border border-[#E1E3EA] border-b-[4px] border-b-[#3E97FF] bg-white"
           : "border border-dashed border-[#E1E3EA] hover:border-[#3E97FF] bg-white"
       }`}
-  >
-    <Image
-      src={`/icons/signup/${accountType === "business" ? "bus2.svg" : "bus.svg"}`}
-      alt="business"
-      width={30}
-      height={30}
-      className="mb-1"
-    />
-    <span
-      className={`text-sm font-semibold transition-colors duration-300 ${
-        accountType === "business" ? "text-[#3E97FF]" : "text-gray-600"
-      }`}
-    >
-      Business
-    </span>
-  </button>
+          >
+            <Image
+              src={`/icons/signup/${
+                accountType === "business" ? "bus2.svg" : "bus.svg"
+              }`}
+              alt="business"
+              width={30}
+              height={30}
+              className="mb-1"
+            />
+            <span
+              className={`text-sm font-semibold transition-colors duration-300 ${
+                accountType === "business" ? "text-[#3E97FF]" : "text-gray-600"
+              }`}
+            >
+              Business
+            </span>
+          </button>
 
-  <button
-    type="button"
-    onClick={() => setAccountType("personal")}
-    className={`w-36 py-4 rounded-[12px] flex flex-col items-center justify-center transition-all duration-300
+          <button
+            type="button"
+            onClick={() => setAccountType("personal")}
+            className={`w-[80px] h-[87px] py-4 rounded-[12px] flex flex-col items-center justify-center transition-all duration-300
       ${
         accountType === "personal"
-          ? "border border-[#E1E3EA] border-b-[3px] border-b-[#3E97FF] bg-white"
+          ? "border border-[#E1E3EA] border-b-[4px] border-b-[#3E97FF] bg-white"
           : "border border-dashed border-[#E1E3EA] hover:border-[#3E97FF] bg-white"
       }`}
-  >
-    <Image
-      src={`/icons/signup/${accountType === "personal" ? "pers2.svg" : "pers.svg"}`}
-      alt="personal"
-      width={30}
-      height={30}
-      className="mb-1"
-    />
-    <span
-      className={`text-sm font-semibold transition-colors duration-300 ${
-        accountType === "personal" ? "text-[#3E97FF]" : "text-gray-600"
-      }`}
-    >
-      Personal
-    </span>
-  </button>
-</div>
+          >
+            <Image
+              src={`/icons/signup/${
+                accountType === "personal" ? "pers2.svg" : "pers.svg"
+              }`}
+              alt="personal"
+              width={30}
+              height={30}
+              className="mb-1"
+            />
+            <span
+              className={`text-sm font-semibold transition-colors duration-300 ${
+                accountType === "personal" ? "text-[#3E97FF]" : "text-gray-600"
+              }`}
+            >
+              Personal
+            </span>
+          </button>
+        </div>
 
         {accountType === "business" && (
           <>
-            {renderInput("fullName", "text", "First & Last Name")}
-            {renderInput("companyName")}
-            {renderInput("storeName", "text", "Amazon Store Name")}
-            {renderInput("email", "email")}
-            {renderInput("password", "password")}
-            {renderInput("passwordConfirm", "password", "Password (re-enter please)")}
-            <div className="grid grid-cols-2 gap-4">
-              {renderSelect("country", countryData.map((c) => c.name))}
-              {renderSelect("state", states)}
+            {renderInput(
+              "fullName",
+              "text",
+              "First & Last Name",
+              "w-full h-[32px]"
+            )}
+            {renderInput("companyName", "w-full h-[32px]")}
+            {renderInput(
+              "storeName",
+              "text",
+              "Amazon Store Name",
+              "w-full h-[32px]"
+            )}
+            {renderInput(
+              "email",
+              "email",
+              "w-full h-[32px]",
+              "w-full h-[32px]"
+            )}
+            {renderInput("password", "password", "w-full h-[32px]")}
+            {renderInput(
+              "passwordConfirm",
+              "password",
+              "Password (re-enter please)",
+              "w-full h-[32px]"
+            )}
+<div className="flex items-center justify-center  w-full">
+  <hr className="flex-grow border-t border-[#EFF2F5]" />
+  <span className="mx-3 text-[12px] font-medium leading-[12px] text-[#A1A5B7] whitespace-nowrap">Company Address</span>
+  <hr className="flex-grow border-t border-[#EFF2F5]" />
+</div>
+            <div className="flex w-full gap-4">
+              <div className="flex-1">
+                {renderSelect(
+                  "country",
+                  countryData.map((c) => c.name)
+                )}
+              </div>
+              <div className="flex-1">{renderSelect("state", states)}</div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {renderInput("address1", "text", "Address Line 1")}
-              {renderInput("address2", "text", "Address Line 2")}
+            <div className="flex w-full gap-4">
+              <div className="flex-1">
+                {renderInput("address1", "text", "Address Line 1")}
+              </div>
+              <div className="flex-1">
+                {renderInput("address2", "text", "Address Line 2")}
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              {renderInput("city")}
-              {renderInput("zip")}
+            <div className="flex w-full gap-4">
+              <div className="flex-1">{renderInput("city")}</div>
+              <div className="flex-1">{renderInput("zip")}</div>
             </div>
-            {formData[accountType].country && renderInput("eoriNumber", "text", "EORI Number (optional)")}
+            {formData[accountType].country &&
+              renderInput("eoriNumber", "text", "EORI Number (optional)")}
           </>
         )}
 
@@ -260,7 +322,11 @@ useEffect(() => {
             {renderInput("fullName", "text", "First & Last Name")}
             {renderInput("email", "email")}
             {renderInput("password", "password")}
-            {renderInput("passwordConfirm", "password", "Password (re-enter please)")}
+            {renderInput(
+              "passwordConfirm",
+              "password",
+              "Password (re-enter please)"
+            )}
           </>
         )}
 
@@ -272,12 +338,33 @@ useEffect(() => {
               setAccepted(e.target.checked);
               if (termsError) setTermsError(false);
             }}
-            className={`h-4 w-4 appearance-none border rounded-sm checked:bg-blue-500 checked:border-transparent ${
-              termsError ? "border-red-500 border-2" : "border-gray-300 border"
-            }`}
+            className={`
+    w-[20px] h-[20px] border border-[#D9D9D9] rounded-[4px] appearance-none flex items-center justify-center
+    checked:bg-white
+    checked:border-[#3E97FF]
+    relative
+    before:content-['✓']
+    before:absolute
+    before:inset-0
+    before:flex
+    before:items-center
+    before:justify-center
+    before:text-gray-500
+    before:text-[14px]
+    before:font-semibold
+    before:opacity-0
+    checked:before:opacity-100
+    transition-all
+  `}
           />
-          <span>
-            I accept the <a href="#" className="text-blue-500">Terms and Conditions</a>
+          <span className=" text-[##5E62] text-[13px] font-semibold leading-[14px] ">
+            I accept the{" "}
+            <a
+              href="#"
+              className="text-[#3E97FF] text-[13px] font-semibold leading-[14px] "
+            >
+              Terms and Conditions
+            </a>
           </span>
         </div>
 
@@ -288,8 +375,11 @@ useEffect(() => {
           Sign up
         </button>
 
-        <p className="text-center text-sm">
-          Already have an Account? <a href="#" className="text-blue-500">Sign in</a>
+        <p className="text-center text-sm leading-[14px] text-[#A1A5B7] font-medium ">
+          Already have an Account?{" "}
+          <a href="#" className="text-sm leading-[14px] text-[#3E97FF] font-medium">
+            Sign in
+          </a>
         </p>
       </form>
     </div>
