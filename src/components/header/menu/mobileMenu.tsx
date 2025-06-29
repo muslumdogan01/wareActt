@@ -50,9 +50,11 @@ const MobileMenu = ({ isOpen, setIsOpen }: MobileMenuProps) => {
             );
           })}
           <div className="mt-36 space-y-[20px] w-full flex flex-col justify-center items-center">
-            <button className=" border-[1px] border-[#065AF1] rounded-[100px] text-base leading-[1.4] transition-all duration-300 ease-in-out text-[#065AF1] hover:bg-blue-400 hover:text-white py-5 w-full max-w-[361px] ">
-              Sign In / Sign Up
-            </button>
+      <Link href="/sign-up" className="py-5 w-full max-w-[361px]">
+  <button className="border-[1px] border-[#065AF1] rounded-[100px] text-base leading-[1.4] transition-all duration-300 ease-in-out text-[#065AF1] hover:bg-blue-400 hover:text-white py-5 w-full max-w-[361px]">
+    Sign Up
+  </button>
+</Link>
             <button className=" border-[1px] border-[#065AF1] rounded-[100px] text-base leading-[1.4] transition-all duration-300 ease-in-out text-[#065AF1] hover:bg-blue-400 hover:text-white  py-5 w-full max-w-[361px] ">
               Book a Demo
             </button>
