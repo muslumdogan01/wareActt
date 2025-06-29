@@ -275,11 +275,11 @@ const SignUpForm: React.FC = () => {
             )}
             {renderInput(
               "email",
-              "email",
-              "w-full h-[32px]",
-              "w-full h-[32px]"
+              "lş",
+              "Email",
+              
             )}
-            {renderInput("password", "password", "w-full h-[32px]")}
+            {renderInput("password", "password", "Password")}
             {renderInput(
               "passwordConfirm",
               "password",
