@@ -2,6 +2,7 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   [key: string]: string;
@@ -23,6 +24,7 @@ const SignUpForm: React.FC = () => {
   const [termsError, setTermsError] = useState(false);
   const [states, setStates] = useState<string[]>([]);
   const [countryData, setCountryData] = useState<Country[]>([]);
+  const router = useRouter();
 
   interface Country {
     name: string;
@@ -122,7 +124,7 @@ const SignUpForm: React.FC = () => {
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
           dataToSend
         );
-        alert("✅ Success! User registered.");
+        router.push("/sign-up/welcome");
         console.log(res.data);
       } catch (err) {
         console.error("❌ Registration failed:", err);
@@ -188,157 +190,159 @@ const SignUpForm: React.FC = () => {
   );
 
   return (
-    <div className="h-auto flex justify-center m-5 bg-gray-100 ">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-[490px] bg-white p-[50px] rounded-2xl shadow-lg space-y-4 flex flex-col justify-center items-center"
-      >
-        <h2 className="text-[#181C32] text-center font-inter text-[24px] font-semibold leading-[24px] tracking-[-0.24px]">
-          Sign up to create account
-        </h2>
-        <p className="text-[#A1A5B7] text-center font-inter text-[14px] font-medium leading-[14px]">
-          Please complete all fields accurately, as this information will be
-          used to generate your invoices.
-        </p>
-        <div className="flex gap-4 justify-center mt-[40px] mb-[30px] ">
-          <button
-            type="button"
-            onClick={() => setAccountType("business")}
-            className={`w-[80px] h-[87px] py-4 rounded-[12px] flex flex-col items-center justify-center transition-all duration-300
+    <div className="py-20 overflow-y-auto">
+      <div className="h-auto  flex flex-col items-center  justify-center  ">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-[490px] bg-white p-[50px] rounded-2xl shadow-lg space-y-4 flex flex-col justify-center items-center"
+        >
+          <h2 className="text-[#181C32] text-center font-inter text-[24px] font-semibold leading-[24px] tracking-[-0.24px]">
+            Sign up to create account
+          </h2>
+          <p className="text-[#A1A5B7] text-center font-inter text-[14px] font-medium leading-[14px]">
+            Please complete all fields accurately, as this information will be
+            used to generate your invoices.
+          </p>
+          <div className="flex gap-4 justify-center mt-[40px] mb-[30px] ">
+            <button
+              type="button"
+              onClick={() => setAccountType("business")}
+              className={`cursor-pointer w-[80px] h-[87px] py-4 rounded-[12px] flex flex-col items-center justify-center transition-all duration-300
       ${
         accountType === "business"
           ? "border border-[#E1E3EA] border-b-[4px] border-b-[#3E97FF] bg-white"
           : "border border-dashed border-[#E1E3EA] hover:border-[#3E97FF] bg-white"
       }`}
-          >
-            <Image
-              src={`/icons/signup/${
-                accountType === "business" ? "bus2.svg" : "bus.svg"
-              }`}
-              alt="business"
-              width={30}
-              height={30}
-              className="mb-1"
-            />
-            <span
-              className={`text-sm font-semibold transition-colors duration-300 ${
-                accountType === "business" ? "text-[#3E97FF]" : "text-gray-600"
-              }`}
             >
-              Business
-            </span>
-          </button>
+              <Image
+                src={`/icons/signup/${
+                  accountType === "business" ? "bus2.svg" : "bus.svg"
+                }`}
+                alt="business"
+                width={30}
+                height={30}
+                className="mb-1"
+              />
+              <span
+                className={`text-sm font-semibold transition-colors duration-300 ${
+                  accountType === "business"
+                    ? "text-[#3E97FF]"
+                    : "text-gray-600"
+                }`}
+              >
+                Business
+              </span>
+            </button>
 
-          <button
-            type="button"
-            onClick={() => setAccountType("personal")}
-            className={`w-[80px] h-[87px] py-4 rounded-[12px] flex flex-col items-center justify-center transition-all duration-300
+            <button
+              type="button"
+              onClick={() => setAccountType("personal")}
+              className={`cursor-pointer w-[80px] h-[87px] py-4 rounded-[12px] flex flex-col items-center justify-center transition-all duration-300
       ${
         accountType === "personal"
           ? "border border-[#E1E3EA] border-b-[4px] border-b-[#3E97FF] bg-white"
           : "border border-dashed border-[#E1E3EA] hover:border-[#3E97FF] bg-white"
       }`}
-          >
-            <Image
-              src={`/icons/signup/${
-                accountType === "personal" ? "pers2.svg" : "pers.svg"
-              }`}
-              alt="personal"
-              width={30}
-              height={30}
-              className="mb-1"
-            />
-            <span
-              className={`text-sm font-semibold transition-colors duration-300 ${
-                accountType === "personal" ? "text-[#3E97FF]" : "text-gray-600"
-              }`}
             >
-              Personal
-            </span>
-          </button>
-        </div>
+              <Image
+                src={`/icons/signup/${
+                  accountType === "personal" ? "pers2.svg" : "pers.svg"
+                }`}
+                alt="personal"
+                width={30}
+                height={30}
+                className="mb-1"
+              />
+              <span
+                className={`text-sm font-semibold transition-colors duration-300 ${
+                  accountType === "personal"
+                    ? "text-[#3E97FF]"
+                    : "text-gray-600"
+                }`}
+              >
+                Personal
+              </span>
+            </button>
+          </div>
 
-        {accountType === "business" && (
-          <>
-            {renderInput(
-              "fullName",
-              "text",
-              "First & Last Name",
-              "w-full h-[32px]"
-            )}
-            {renderInput("companyName", "w-full h-[32px]")}
-            {renderInput(
-              "storeName",
-              "text",
-              "Amazon Store Name",
-              "w-full h-[32px]"
-            )}
-            {renderInput(
-              "email",
-              "lş",
-              "Email",
-              
-            )}
-            {renderInput("password", "password", "Password")}
-            {renderInput(
-              "passwordConfirm",
-              "password",
-              "Password (re-enter please)",
-              "w-full h-[32px]"
-            )}
-<div className="flex items-center justify-center  w-full">
-  <hr className="flex-grow border-t border-[#EFF2F5]" />
-  <span className="mx-3 text-[12px] font-medium leading-[12px] text-[#A1A5B7] whitespace-nowrap">Company Address</span>
-  <hr className="flex-grow border-t border-[#EFF2F5]" />
-</div>
-            <div className="flex w-full gap-4">
-              <div className="flex-1">
-                {renderSelect(
-                  "country",
-                  countryData.map((c) => c.name)
-                )}
+          {accountType === "business" && (
+            <>
+              {renderInput(
+                "fullName",
+                "text",
+                "First & Last Name",
+                "w-full h-[32px]"
+              )}
+              {renderInput("companyName", "w-full h-[32px]")}
+              {renderInput(
+                "storeName",
+                "text",
+                "Amazon Store Name",
+                "w-full h-[32px]"
+              )}
+              {renderInput("email", "lş", "Email")}
+              {renderInput("password", "password", "Password")}
+              {renderInput(
+                "passwordConfirm",
+                "password",
+                "Password (re-enter please)",
+                "w-full h-[32px]"
+              )}
+              <div className="flex items-center justify-center  w-full">
+                <hr className="flex-grow border-t border-[#EFF2F5]" />
+                <span className="mx-3 text-[12px] font-medium leading-[12px] text-[#A1A5B7] whitespace-nowrap">
+                  Company Address
+                </span>
+                <hr className="flex-grow border-t border-[#EFF2F5]" />
               </div>
-              <div className="flex-1">{renderSelect("state", states)}</div>
-            </div>
-            <div className="flex w-full gap-4">
-              <div className="flex-1">
-                {renderInput("address1", "text", "Address Line 1")}
+              <div className="flex w-full gap-4">
+                <div className="flex-1">
+                  {renderSelect(
+                    "country",
+                    countryData.map((c) => c.name)
+                  )}
+                </div>
+                <div className="flex-1">{renderSelect("state", states)}</div>
               </div>
-              <div className="flex-1">
-                {renderInput("address2", "text", "Address Line 2")}
+              <div className="flex w-full gap-4">
+                <div className="flex-1">
+                  {renderInput("address1", "text", "Address Line 1")}
+                </div>
+                <div className="flex-1">
+                  {renderInput("address2", "text", "Address Line 2")}
+                </div>
               </div>
-            </div>
-            <div className="flex w-full gap-4">
-              <div className="flex-1">{renderInput("city")}</div>
-              <div className="flex-1">{renderInput("zip")}</div>
-            </div>
-            {formData[accountType].country &&
-              renderInput("eoriNumber", "text", "EORI Number (optional)")}
-          </>
-        )}
+              <div className="flex w-full gap-4">
+                <div className="flex-1">{renderInput("city")}</div>
+                <div className="flex-1">{renderInput("zip")}</div>
+              </div>
+              {formData[accountType].country &&
+                renderInput("eoriNumber", "text", "EORI Number (optional)")}
+            </>
+          )}
 
-        {accountType === "personal" && (
-          <>
-            {renderInput("fullName", "text", "First & Last Name")}
-            {renderInput("email", "email")}
-            {renderInput("password", "password")}
-            {renderInput(
-              "passwordConfirm",
-              "password",
-              "Password (re-enter please)"
-            )}
-          </>
-        )}
+          {accountType === "personal" && (
+            <>
+              {renderInput("fullName", "text", "First & Last Name")}
+              {renderInput("email", "email")}
+              {renderInput("password", "password")}
+              {renderInput(
+                "passwordConfirm",
+                "password",
+                "Password (re-enter please)"
+              )}
+            </>
+          )}
 
-        <div className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            checked={accepted}
-            onChange={(e) => {
-              setAccepted(e.target.checked);
-              if (termsError) setTermsError(false);
-            }}
-            className={`
+          <div className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              checked={accepted}
+              onChange={(e) => {
+                setAccepted(e.target.checked);
+                if (termsError) setTermsError(false);
+              }}
+              className={`
     w-[20px] h-[20px] border border-[#D9D9D9] rounded-[4px] appearance-none flex items-center justify-center
     checked:bg-white
     checked:border-[#3E97FF]
@@ -356,32 +360,56 @@ const SignUpForm: React.FC = () => {
     checked:before:opacity-100
     transition-all
   `}
-          />
-          <span className=" text-[##5E62] text-[13px] font-semibold leading-[14px] ">
-            I accept the{" "}
+            />
+            <span className=" text-[##5E62] text-[13px] font-semibold leading-[14px] ">
+              I accept the{" "}
+              <a
+                href="#"
+                className="text-[#3E97FF] text-[13px] font-semibold leading-[14px] "
+              >
+                Terms and Conditions
+              </a>
+            </span>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-2 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600"
+          >
+            Sign up
+          </button>
+
+          <p className="text-center text-sm leading-[14px] text-[#A1A5B7] font-medium ">
+            Already have an Account?{" "}
             <a
               href="#"
-              className="text-[#3E97FF] text-[13px] font-semibold leading-[14px] "
+              className="text-sm leading-[14px] text-[#3E97FF] font-medium"
             >
-              Terms and Conditions
+              Sign in
             </a>
+          </p>
+        </form>
+        <div className="w-full flex justify-center mt-[72px] items-center space-x-[10px] ">
+          <p className="flex text-center ">
+            <span className="text-[14px] text-[#181C32] italic font-normal leading-[24px] ">
+              Created by&nbsp;
+            </span>
+            <span className="text-[14px] text-[#181C32] font-semibold leading-[24px] ">
+              WAREACT
+            </span>
+          </p>
+          <span className="w-[1px] h-[38px] bg-[#D9D9D9] "></span>
+          <span>
+            <Image
+              src={"/icons/signup/createdBy.svg"}
+              height={24}
+              width={110}
+              alt={"wareact"}
+              className="opacity-100"
+            />
           </span>
         </div>
-
-        <button
-          type="submit"
-          className="w-full py-2 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600"
-        >
-          Sign up
-        </button>
-
-        <p className="text-center text-sm leading-[14px] text-[#A1A5B7] font-medium ">
-          Already have an Account?{" "}
-          <a href="#" className="text-sm leading-[14px] text-[#3E97FF] font-medium">
-            Sign in
-          </a>
-        </p>
-      </form>
+      </div>
     </div>
   );
 };
