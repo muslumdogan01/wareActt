@@ -347,6 +347,8 @@ const SignUpForm: React.FC = () => {
     checked:bg-white
     checked:border-[#3E97FF]
     relative
+    ${accepted ? "bg-white border-[#3E97FF]" : "border-[#D9D9D9]"}
+  ${termsError ? "border-red-500" : ""}
     before:content-['✓']
     before:absolute
     before:inset-0
@@ -401,7 +403,7 @@ const SignUpForm: React.FC = () => {
           <span className="w-[1px] h-[38px] bg-[#D9D9D9] "></span>
           <span>
             <Image
-              src={"/icons/signup/createdBy.svg"}
+              src={"/icons/signup/footer.png"}
               height={24}
               width={110}
               alt={"wareact"}

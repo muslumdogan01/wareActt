@@ -52,7 +52,7 @@ export default function WelcomePage() {
                 <span className="w-[1px] h-[38px] bg-[#D9D9D9] "></span>
                 <span>
                   <Image
-                    src={"/icons/signup/createdBy.svg"}
+                    src={"/icons/signup/footer.png"}
                     height={24}
                     width={110}
                     alt={"wareact"}
