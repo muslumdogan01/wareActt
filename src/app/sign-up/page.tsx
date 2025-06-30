@@ -4,12 +4,11 @@ import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
 interface FormData {
-  [key: string]: string;
+  [key: string]: string | undefined;
 }
-
 interface Country {
+  phone_code: string;
   name: string;
   iso3: string;
   iso2: string;
@@ -40,25 +39,38 @@ const SignUpForm: React.FC = () => {
     "passwordConfirm",
     "country",
     "state",
+    "phone"
   ];
 
-  useEffect(() => {
-    axios
-      .get<Country[]>("/data/countries.json")
-      .then((res) => setCountryData(res.data))
-      .catch((err) => console.error("Country fetch error:", err));
-  }, []);
+useEffect(() => {
+  axios
+    .get<Country[]>("/data/countries.json")
+    .then((res) => setCountryData(res.data))
+    .catch((err) => console.error("Country fetch error:", err));
+}, []);
 
-  useEffect(() => {
-    const selectedCountry = countryData.find(
-      (c) => c.name === formData.country
-    );
-    if (selectedCountry) {
-      setStates(selectedCountry.states.map((s) => s.name));
-    } else {
-      setStates([]);
-    }
-  }, [formData.country, countryData]);
+useEffect(() => {
+  const selectedCountry = countryData.find(
+    (c) => c.name === formData.country
+  );
+
+  if (selectedCountry) {
+    setStates(selectedCountry.states.map((s) => s.name));
+    
+    // Eğer otomatik olarak ülke kodunu da doldurmak istersen:
+    setFormData((prevData) => ({
+      ...prevData,
+      phoneCode: selectedCountry.phone_code || ""
+    }));
+  } else {
+    setStates([]);
+    setFormData((prevData) => ({
+      ...prevData,
+      phoneCode: ""
+    }));
+  }
+}, [formData.country, countryData]);
+
 
   const validate = () => {
     const newErrors: { [key: string]: boolean } = {};
@@ -86,7 +98,7 @@ const SignUpForm: React.FC = () => {
         email: formData.email,
         password: formData.password,
         password_confirmation: formData.passwordConfirm,
-        phone: "905555555555",
+         phone: `${formData.phoneCode}${formData.phone}`,
         company_name: formData.companyName,
         brand_name: formData.storeName,
         country_id: formData.country,
@@ -113,18 +125,39 @@ const SignUpForm: React.FC = () => {
     }
   };
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
+const handleChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+) => {
+  const { name, value } = e.target;
+
+
+  if (name === "phoneCode") {
+    let updatedValue = value.trim();
+    if (updatedValue && !updatedValue.startsWith("+")) {
+      updatedValue = "+" + updatedValue.replace(/\+/g, "");
+    }
+
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: updatedValue,
     });
-    if (errors[name]) {
-      setErrors({ ...errors, [name]: false });
+
+    if (errors["phone"]) {
+      setErrors({ ...errors, phone: false });
     }
-  };
+
+    return;
+  }
+
+  setFormData({
+    ...formData,
+    [name]: value,
+  });
+
+  if (errors[name]) {
+    setErrors({ ...errors, [name]: false });
+  }
+};
 
   const renderInput = (name: string, type: string, placeholder: string) => (
     <input
@@ -133,7 +166,7 @@ const SignUpForm: React.FC = () => {
       placeholder={placeholder}
       value={formData[name] || ""}
       onChange={handleChange}
-      className={`w-full px-3 py-2 text-sm border rounded focus:outline-none focus:ring-1 ${
+      className={`w-full px-3 py-2 leading-[12px] text-[#7E8299] text-[12px] border rounded focus:outline-none focus:ring-0 font-semibold ${
         errors[name] ? "border-red-500" : "border-[#E1E3EA]"
       }`}
     />
@@ -145,7 +178,7 @@ const SignUpForm: React.FC = () => {
         name={name}
         value={formData[name] || ""}
         onChange={handleChange}
-        className={`appearance-none w-full px-3 py-2 text-sm border rounded focus:outline-none focus:ring-1 ${
+        className={`appearance-none w-full text-[#7E8299] font-semibold px-3 py-2 text-[12px] leading-[12px] border rounded focus:outline-none focus:ring-0 ${
           errors[name] ? "border-red-500" : "border-[#E1E3EA]"
         }`}
       >
@@ -183,7 +216,7 @@ const SignUpForm: React.FC = () => {
       <div className="h-auto  flex flex-col items-center  justify-center  ">
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-xl bg-white p-10 rounded-xl shadow-lg space-y-4"
+          className="w-full max-w-[490px] bg-white p-10 rounded-xl shadow-lg space-y-4"
         >
           <h2 className="text-xl font-semibold text-center text-[#181C32]">
             Sign up to create account
@@ -195,10 +228,18 @@ const SignUpForm: React.FC = () => {
 
           {renderInput("fullName", "text", "First & Last Name")}
           {renderInput("companyName", "text", "Company Name")}
-          {renderInput("storeName", "text", "Amazon Store Name")}
+          {renderInput("storeName", "text", "Brand Name")}
           {renderInput("email", "email", "Email")}
           {renderInput("password", "password", "Password")}
           {renderInput("passwordConfirm", "password", "Confirm Password")}
+
+          <div className="flex items-center justify-center w-full">
+            <hr className="flex-grow border-t border-[#EFF2F5]" />
+            <span className="mx-3 text-[12px] font-medium leading-[12px] text-[#A1A5B7] whitespace-nowrap">
+              Company Address
+            </span>
+            <hr className="flex-grow border-t border-[#EFF2F5]" />
+          </div>
 
           <div className="flex gap-4">
             {renderSelect(
@@ -217,6 +258,40 @@ const SignUpForm: React.FC = () => {
             {renderInput("city", "text", "City")}
             {renderInput("zip", "text", "Zipcode")}
           </div>
+              <div className="flex gap-4 w-full">
+  <div className="flex-1">
+    <input
+      list="countryCodes"
+      name="phoneCode"
+      type="text"
+      placeholder="+Country Code"
+      value={formData.phoneCode || ""}
+      onChange={handleChange}
+      className={`w-full px-3 py-2 text-sm border rounded focus:outline-none ${
+        errors["phone"] ? "border-red-500" : "border-gray-300"
+      }`}
+    />
+    <datalist id="countryCodes">
+      {countryData.map((c) => (
+        <option key={c.name} value={`+${c.phone_code}`}>
+          {c.name}
+        </option>
+      ))}
+    </datalist>
+  </div>
+  <div className="flex-1">
+    <input
+      name="phone"
+      type="tel"
+      placeholder="Phone Number"
+      value={formData.phone || ""}
+      onChange={handleChange}
+      className={`w-full px-3 py-2 text-sm border rounded focus:outline-none ${
+        errors["phone"] ? "border-red-500" : "border-gray-300"
+      }`}
+    />
+  </div>
+</div>
 
           {formData.country &&
             renderInput("eoriNumber", "text", "EORI Number (optional)")}
@@ -235,9 +310,9 @@ const SignUpForm: React.FC = () => {
                 termsError ? "border-red-500" : ""
               } before:content-['✓'] before:absolute before:inset-0 before:flex before:items-center before:justify-center before:text-gray-500 before:text-[14px] before:font-semibold before:opacity-0 checked:before:opacity-100 transition-all`}
             />
-            <label className="text-sm text-[#5E6278]">
+            <label className="text-[13px] leading-[14px] font-semibold text-[#5E6278]">
               I accept the{" "}
-              <a href="#" className="text-[#3E97FF] underline">
+              <a href="#" className="text-[#3E97FF] ">
                 Terms and Conditions
               </a>
             </label>
