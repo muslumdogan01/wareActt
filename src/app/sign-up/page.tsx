@@ -12,6 +12,7 @@ interface Country {
   name: string;
   iso3: string;
   iso2: string;
+  numeric_code: string;
   states: {
     id: number;
     name: string;
@@ -23,10 +24,10 @@ interface Country {
 }
 
 const SignUpForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({});
+  const [formData, setFormData] = useState<FormData>({ phoneCode: "+1" });
   const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
   const [countryData, setCountryData] = useState<Country[]>([]);
-  const [states, setStates] = useState<string[]>([]);
+  const [states, setStates] = useState<{ id: number; name: string }[]>([]);
   const [accepted, setAccepted] = useState(false);
   const [termsError, setTermsError] = useState(false);
   const router = useRouter();
@@ -39,38 +40,37 @@ const SignUpForm: React.FC = () => {
     "passwordConfirm",
     "country",
     "state",
-    "phone"
+    "phone",
   ];
 
-useEffect(() => {
-  axios
-    .get<Country[]>("/data/countries.json")
-    .then((res) => setCountryData(res.data))
-    .catch((err) => console.error("Country fetch error:", err));
-}, []);
+  useEffect(() => {
+    axios
+      .get<Country[]>("/data/countries.json")
+      .then((res) => setCountryData(res.data))
+      .catch((err) => console.error("Country fetch error:", err));
+  }, []);
 
-useEffect(() => {
-  const selectedCountry = countryData.find(
-    (c) => c.name === formData.country
-  );
+  useEffect(() => {
+    const selectedCountry = countryData.find(
+      (c) => c.name === formData.country
+    );
 
-  if (selectedCountry) {
-    setStates(selectedCountry.states.map((s) => s.name));
-    
-    // Eğer otomatik olarak ülke kodunu da doldurmak istersen:
-    setFormData((prevData) => ({
-      ...prevData,
-      phoneCode: selectedCountry.phone_code || ""
-    }));
-  } else {
-    setStates([]);
-    setFormData((prevData) => ({
-      ...prevData,
-      phoneCode: ""
-    }));
-  }
-}, [formData.country, countryData]);
-
+    if (selectedCountry) {
+      setStates(selectedCountry.states.map((s) => ({ id: s.id, name: s.name })));
+      setFormData((prevData) => ({
+        ...prevData,
+        phoneCode: selectedCountry.phone_code || ""
+      }));
+    } else {
+      setStates([]);
+      if (formData.country) {
+        setFormData((prevData) => ({
+          ...prevData,
+          phoneCode: ""
+        }));
+      }
+    }
+  }, [formData.country, countryData]);
 
   const validate = () => {
     const newErrors: { [key: string]: boolean } = {};
@@ -83,6 +83,9 @@ useEffect(() => {
       newErrors["password"] = true;
       newErrors["passwordConfirm"] = true;
     }
+       if (formData.password && formData.password.length < 8) {
+      newErrors["password"] = true; 
+    }
     return newErrors;
   };
 
@@ -93,16 +96,23 @@ useEffect(() => {
     setTermsError(!accepted);
 
     if (Object.keys(newErrors).length === 0 && accepted) {
-      const dataToSend = {
+      const selectedCountry = countryData.find(
+        (c) => c.name === formData.country
+      );
+      const selectedState = selectedCountry?.states.find(
+        (s) => s.name === formData.state
+      );
+const countryIndex = countryData.findIndex(c => c.name === formData.country);
+   const dataToSend = {
         name: formData.fullName,
         email: formData.email,
         password: formData.password,
         password_confirmation: formData.passwordConfirm,
-         phone: `${formData.phoneCode}${formData.phone}`,
+        phone: `${formData.phoneCode}${formData.phone}`,
         company_name: formData.companyName,
         brand_name: formData.storeName,
-        country_id: formData.country,
-        state_id: formData.state,
+        country_id: countryIndex >= 0 ? countryIndex + 1 : null,
+        state_id: selectedState?.id || null,
         address1: formData.address1,
         address2: formData.address2,
         city: formData.city,
@@ -125,39 +135,38 @@ useEffect(() => {
     }
   };
 
-const handleChange = (
-  e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-) => {
-  const { name, value } = e.target;
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
 
+    if (name === "phoneCode") {
+      let updatedValue = value.trim();
+      if (updatedValue && !updatedValue.startsWith("+")) {
+        updatedValue = "+" + updatedValue.replace(/\+/g, "");
+      }
 
-  if (name === "phoneCode") {
-    let updatedValue = value.trim();
-    if (updatedValue && !updatedValue.startsWith("+")) {
-      updatedValue = "+" + updatedValue.replace(/\+/g, "");
+      setFormData({
+        ...formData,
+        [name]: updatedValue,
+      });
+
+      if (errors["phone"]) {
+        setErrors({ ...errors, phone: false });
+      }
+
+      return;
     }
 
     setFormData({
       ...formData,
-      [name]: updatedValue,
+      [name]: value,
     });
 
-    if (errors["phone"]) {
-      setErrors({ ...errors, phone: false });
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: false });
     }
-
-    return;
-  }
-
-  setFormData({
-    ...formData,
-    [name]: value,
-  });
-
-  if (errors[name]) {
-    setErrors({ ...errors, [name]: false });
-  }
-};
+  };
 
   const renderInput = (name: string, type: string, placeholder: string) => (
     <input
@@ -166,13 +175,16 @@ const handleChange = (
       placeholder={placeholder}
       value={formData[name] || ""}
       onChange={handleChange}
-      className={`w-full px-3 py-2 leading-[12px] text-[#7E8299] text-[12px] border rounded focus:outline-none focus:ring-0 font-semibold ${
+      className={`w-full px-3 py-2 leading-[12px] text-gray-600 text-[12px] border rounded focus:outline-none focus:ring-0 font-semibold ${
         errors[name] ? "border-red-500" : "border-[#E1E3EA]"
       }`}
     />
   );
 
-  const renderSelect = (name: string, options: string[]) => (
+  const renderSelectWithIds = (
+    name: string,
+    options: { id: number; name: string }[]
+  ) => (
     <div className="relative w-full">
       <select
         name={name}
@@ -184,8 +196,8 @@ const handleChange = (
       >
         <option value="">Select {name}</option>
         {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
+          <option key={opt.id} value={opt.name}>
+            {opt.name}
           </option>
         ))}
       </select>
@@ -212,7 +224,7 @@ const handleChange = (
   );
 
   return (
-    <div className="py-20 overflow-y-auto">
+    <div className="py-40  h-screen w-full">
       <div className="h-auto  flex flex-col items-center  justify-center  ">
         <form
           onSubmit={handleSubmit}
@@ -242,11 +254,11 @@ const handleChange = (
           </div>
 
           <div className="flex gap-4">
-            {renderSelect(
+            {renderSelectWithIds(
               "country",
-              countryData.map((c) => c.name)
+              countryData.map((c, index) => ({ id: index + 1, name: c.name }))
             )}
-            {renderSelect("state", states)}
+            {renderSelectWithIds("state", states)}
           </div>
 
           <div className="flex gap-4">
@@ -258,40 +270,50 @@ const handleChange = (
             {renderInput("city", "text", "City")}
             {renderInput("zip", "text", "Zipcode")}
           </div>
-              <div className="flex gap-4 w-full">
-  <div className="flex-1">
-    <input
-      list="countryCodes"
-      name="phoneCode"
-      type="text"
-      placeholder="+Country Code"
-      value={formData.phoneCode || ""}
-      onChange={handleChange}
-      className={`w-full px-3 py-2 text-sm border rounded focus:outline-none ${
-        errors["phone"] ? "border-red-500" : "border-gray-300"
-      }`}
-    />
-    <datalist id="countryCodes">
-      {countryData.map((c) => (
-        <option key={c.name} value={`+${c.phone_code}`}>
-          {c.name}
-        </option>
-      ))}
-    </datalist>
+  <div className="flex w-full">
+<div className="w-[110px]  text-gray-600 relative">
+  <select
+    name="phoneCode"
+    value={formData.phoneCode || ""}
+    onChange={handleChange}
+    className={`w-full px-3 space-x-[22px] py-2 text-sm border rounded appearance-none focus:outline-none ${
+      errors["phone"] ? "border-red-500" : "border-gray-300"
+    }`}
+  >
+{countryData.map((c) => (
+  <option key={c.name} value={`+${c.phone_code}`}>
+    +{c.phone_code}
+  </option>
+))}
+  </select>
+  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+    <svg
+      className="w-4 h-4 text-gray-400"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path d="M19 9l-7 7-7-7" />
+    </svg>
   </div>
-  <div className="flex-1">
+</div>
+
+
+  <div className="w-full">
     <input
       name="phone"
       type="tel"
       placeholder="Phone Number"
       value={formData.phone || ""}
       onChange={handleChange}
-      className={`w-full px-3 py-2 text-sm border rounded focus:outline-none ${
-        errors["phone"] ? "border-red-500" : "border-gray-300"
-      }`}
+  className={`w-full pr-6 px-3 py-2 text-sm border rounded focus:outline-none appearance-none ${
+    errors["phone"] ? "border-red-500" : "border-gray-300"
+  }`}
     />
   </div>
 </div>
+
 
           {formData.country &&
             renderInput("eoriNumber", "text", "EORI Number (optional)")}
