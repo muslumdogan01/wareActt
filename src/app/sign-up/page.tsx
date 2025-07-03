@@ -51,29 +51,30 @@ const SignUpForm: React.FC = () => {
       .catch((err) => console.error("Country fetch error:", err));
   }, []);
 
-  useEffect(() => {
-    const selectedCountry = countryData.find(
-      (c) => c.name === formData.country
-    );
+useEffect(() => {
+  if (!formData.country || countryData.length === 0) return;
 
-    if (selectedCountry) {
-      setStates(
-        selectedCountry.states.map((s) => ({ id: s.id, name: s.name }))
-      );
-      setFormData((prevData) => ({
-        ...prevData,
-        phoneCode: selectedCountry.phone_code || "",
-      }));
-    } else {
-      setStates([]);
-      if (formData.country) {
-        setFormData((prevData) => ({
-          ...prevData,
-          phoneCode: "",
-        }));
-      }
-    }
-  }, [formData.country, countryData]);
+  const selectedCountry = countryData.find(
+    (c) => c.name === formData.country
+  );
+
+  if (selectedCountry) {
+    setStates(
+      selectedCountry.states.map((s) => ({ id: s.id, name: s.name }))
+    );
+    setFormData((prevData) => ({
+      ...prevData,
+      phoneCode: `+${selectedCountry.phone_code}`,
+    }));
+  } else {
+    setStates([]);
+    setFormData((prevData) => ({
+      ...prevData,
+      phoneCode: "",
+    }));
+  }
+}, [formData.country, countryData]);
+
 
   const validate = () => {
     const newErrors: { [key: string]: boolean } = {};
