@@ -126,7 +126,7 @@ const countryIndex = countryData.findIndex(c => c.name === formData.country);
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
           dataToSend
         );
-        router.push("/sign-up/welcome");
+      router.push("/email/verify");
         console.log(res.data);
       } catch (err) {
         console.error("❌ Registration failed:", err);
