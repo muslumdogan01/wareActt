@@ -30,6 +30,7 @@ const SignUpForm: React.FC = () => {
   const [states, setStates] = useState<{ id: number; name: string }[]>([]);
   const [accepted, setAccepted] = useState(false);
   const [termsError, setTermsError] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
   const router = useRouter();
 
   const requiredFields = [
@@ -124,24 +125,21 @@ const SignUpForm: React.FC = () => {
         eori_number: formData.eoriNumber,
         terms: true,
       };
-try {
-  const res = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
-    dataToSend
-  );
+      try {
+        const res = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
+          dataToSend
+        );
 
-  console.log("REGISTER RESPONSE 🧾", res.data);
-
-  if (res.data.status) {
- 
-    router.push("/sign-up/confirmation");
-  } else {
-    alert("⚠️ " + res.data.message);
-  }
-} catch (err) {
-  console.error("❌ Registration failed:", err);
-  alert("Something went wrong. Please try again later.");
-}
+        if (res.data.status) {
+          router.push("/sign-up/confirmation");
+        } else {
+          setFormError(res.data.message || "Something went wrong.");
+        }
+      } catch (err) {
+        console.error("❌ Registration failed:", err);
+        setFormError("Something went wrong. Please try again later.");
+      }
     }
   };
 
@@ -163,6 +161,10 @@ try {
 
       if (errors["phone"]) {
         setErrors({ ...errors, phone: false });
+      }
+      const fieldName = name as string;
+      if (fieldName === "email" && formError) {
+        setFormError(null);
       }
 
       return;
@@ -252,6 +254,11 @@ try {
           {renderInput("companyName", "text", "Company Name")}
           {renderInput("storeName", "text", "Brand Name")}
           {renderInput("email", "email", "Email")}
+          {formError === "Warning.Register Unique Email" && (
+            <p className="text-sm text-red-600 ">
+              ⚠️ This email is already registered. Please use another email.
+            </p>
+          )}
           {renderInput("password", "password", "Password")}
           {renderInput("passwordConfirm", "password", "Confirm Password")}
 
