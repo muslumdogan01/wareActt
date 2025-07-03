@@ -134,7 +134,9 @@ try {
 
   if (res.data.status) {
     const { user_id, email_hash, depot_id } = res.data;
-  router.push(`/email/verify/${user_id}/${email_hash}?depotid=${depot_id}`);
+
+    // ✅ Doğru yönlendirme
+    router.push(`/email/verify?id=${user_id}&hash=${email_hash}&depotid=${depot_id}`);
   } else {
     alert("⚠️ " + res.data.message);
   }
