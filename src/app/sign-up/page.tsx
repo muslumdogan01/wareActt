@@ -124,21 +124,24 @@ const SignUpForm: React.FC = () => {
         eori_number: formData.eoriNumber,
         terms: true,
       };
-      try {
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
-          dataToSend
-        );
+try {
+  const res = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
+    dataToSend
+  );
 
-        const { id, hash, depotid } = res.data;
+  console.log("REGISTER RESPONSE 🧾", res.data);
 
-        router.push(`/email/verify?id=${id}&hash=${hash}&depotid=${depotid}`);
-
-        console.log("✅ Registered:", res.data);
-      } catch (err) {
-        console.error("❌ Registration failed:", err);
-        alert("Something went wrong. Please try again later.");
-      }
+  if (res.data.status) {
+    const { user_id, email_hash, depot_id } = res.data;
+  router.push(`/email/verify/${user_id}/${email_hash}?depotid=${depot_id}`);
+  } else {
+    alert("⚠️ " + res.data.message);
+  }
+} catch (err) {
+  console.error("❌ Registration failed:", err);
+  alert("Something went wrong. Please try again later.");
+}
     }
   };
 
