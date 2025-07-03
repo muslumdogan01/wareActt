@@ -9,42 +9,50 @@ const insightItems = [
   {
     image: "/images/insight/insight.png",
     title: "Suspendisse mattis non leo",
+    slug: "suspendisse-mattis-non-leo",
     tags: ["#dropshiping", "#e-commerce"],
   },
   {
-    image: "/images/insight/insight2.png",
+    image: "/images/insight/ins2.png",
     title: "Cras gravida convallis",
+    slug: "cras-gravida-convallis",
     tags: ["#logistics", "#b2b"],
   },
   {
-    image: "/images/insight/insight3.png",
+    image: "/images/insight/ins3.png",
     title: "Curabitur blandit tempus",
+    slug: "curabitur-blandit-tempus",
     tags: ["#digital", "#marketing"],
   },
   {
-    image: "/images/insight/insight3.png",
-    title: "Curabitur blandit tempus",
-    tags: ["#digital", "#marketing"],
+    image: "/images/insight/ins4.png",
+    title: "Aliquam tincidunt mauris",
+    slug: "aliquam-tincidunt-mauris",
+    tags: ["#automation", "#technology"],
   },
   {
-    image: "/images/insight/insight3.png",
-    title: "Curabitur blandit tempus",
-    tags: ["#digital", "#marketing"],
+    image: "/images/insight/insight.png",
+    title: "Vestibulum auctor dapibus neque",
+    slug: "vestibulum-auctor-dapibus-neque",
+    tags: ["#warehouse", "#ai"],
   },
   {
-    image: "/images/insight/insight3.png",
-    title: "Curabitur blandit tempus",
-    tags: ["#digital", "#marketing"],
+    image: "/images/insight/ins2.png",
+    title: "Pellentesque habitant morbi",
+    slug: "pellentesque-habitant-morbi",
+    tags: ["#3pl", "#innovation"],
   },
   {
-    image: "/images/insight/insight3.png",
-    title: "Curabitur blandit tempus",
-    tags: ["#digital", "#marketing"],
+    image: "/images/insight/ins3.png",
+    title: "Integer vitae libero ac risus",
+    slug: "integer-vitae-libero-ac-risus",
+    tags: ["#logistics", "#automation"],
   },
   {
-    image: "/images/insight/insight3.png",
-    title: "Curabitur blandit tempus",
-    tags: ["#digital", "#marketing"],
+    image: "/images/insight/ins4.png",
+    title: "Vivamus elementum semper nisi",
+    slug: "vivamus-elementum-semper-nisi",
+    tags: ["#ecommerce", "#trends"],
   },
 ];
 
@@ -57,10 +65,10 @@ const Insight = () => {
             <h1 className="text-black font-inter text-[56px] not-italic font-semibold leading-[122%]">
               Insight
             </h1>
-            <h1 className="mt-[10px] text-black font-inter text-[18px] not-italic font-normal leading-[146%]">
+            <h2 className="mt-[10px] text-black font-inter text-[18px] not-italic font-normal leading-[146%]">
               Built for 3PL warehouses, our software automates everything from
               inventory tracking
-            </h1>
+            </h2>
           </div>
           <div className="absolute top-22 2xl:right-[-80px] right-[-45px]">
             <Image
@@ -72,7 +80,9 @@ const Insight = () => {
           </div>
         </div>
       </div>
+
       <div className="container mx-auto ">
+     
         <div className="px-4 w-full  mt-[80px] ">
           <div className="flex w-full bg-black rounded-[30px]">
             <div className="w-1/2  min-h-[490px] relative">
@@ -86,20 +96,17 @@ const Insight = () => {
             <div className="w-1/2 min-h-[490px] relative ">
               <div className="flex flex-col pl-[70px] mt-[85px] ">
                 <h1 className="text-white font-inter text-[30px] not-italic font-normal leading-[140%]">
-                  How We Built Our Own <br /> CLI for Better Application <br />{" "}
-                  Bootstrapping
+                  How We Built Our Own <br /> CLI for Better Application <br /> Bootstrapping
                 </h1>
                 <p className="mt-[10px] text-white font-inter text-[16px] not-italic font-normal leading-[26px]">
-                  See how we mastered application bootstrapping <br /> with a
-                  CLI tool, simplifying project setups and <br /> development
-                  workflows...
+                  See how we mastered application bootstrapping <br /> with a CLI tool, simplifying project setups and <br /> development workflows...
                 </p>
-                <Link
-                  href="/features"
-                  className="mt-[40px] cursor-pointer hover:underline  items-center text-white font-inter text-[12px] not-italic font-medium leading-[20px]"
-                >
-                  More Feature
-                </Link>
+       <Link
+  href={`/insight/${insightItems[3].slug}`}
+  className="mt-[40px] cursor-pointer hover:underline items-center text-white font-inter text-[12px] not-italic font-medium leading-[20px]">
+  Read More
+</Link>
+
                 <div className="flex  gap-[10px] mt-[63px] ">
                   <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
                     #dropshiping
@@ -112,39 +119,40 @@ const Insight = () => {
             </div>
           </div>
         </div>
-        <div className="px-4 mt-[74px] grid grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4  gap-[24px]">
+
+    
+        <div className="px-4 mt-[74px] grid grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-[24px]">
           {insightItems.map((item, index) => (
-            <div
-              key={index}
-              className="w-[288px] h-[350px] 2xl:w-[350px] 2xl:h-[400px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col"
-            >
-              <div className="relative w-full h-full">
-                <Image
-                  src="/images/insight/insight.png"
-                  alt="Warehouse"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-
-              {/* Alt içerik */}
-              <div className="flex flex-col justify-end h-full pl-5">
-                <h3 className="text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
-                  Suspendisse <br /> mattis non leo
-                </h3>
-
-                <div className="flex  gap-[10px] mb-[15px]">
-                  <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                    #dropshiping
-                  </span>
-                  <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                    #e-commerce
-                  </span>
+            <Link href={`/insight/${item.slug}`} key={index}>
+              <div className="w-[288px] h-[350px] 2xl:w-[350px] 2xl:h-[400px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col cursor-pointer">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
+                <div className="flex flex-col justify-end h-full pl-5">
+                  <h3 className="text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
+                    {item.title}
+                  </h3>
+                  <div className="flex gap-[10px] mb-[15px]">
+                    {item.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
+
         <div className="lg:max-w-[1440px] lg:mx-auto">
           <FAQSection />
         </div>
