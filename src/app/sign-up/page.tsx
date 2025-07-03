@@ -133,10 +133,8 @@ try {
   console.log("REGISTER RESPONSE 🧾", res.data);
 
   if (res.data.status) {
-    const { user_id, email_hash, depot_id } = res.data;
-
-    // ✅ Doğru yönlendirme
-    router.push(`/email/verify?id=${user_id}&hash=${email_hash}&depotid=${depot_id}`);
+ 
+    router.push("/sign-up/confirmation");
   } else {
     alert("⚠️ " + res.data.message);
   }

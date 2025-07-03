@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-export default function WelcomePage() {
+export default function Confirmation() {
   return (
     <div className="bg-[#F4F4F4] flex flex-col justify-center items-center h-full w-full relative">
       <div className=" bg-white flex flex-col justify-center items-center rounded-[20px] py-[80px] space-y-[20px] px-[89px] ">
