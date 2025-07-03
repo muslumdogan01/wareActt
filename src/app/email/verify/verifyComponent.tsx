@@ -26,7 +26,9 @@ export default function EmailVerifyPage() {
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/email/verify?id=${id}&hash=${hash}&depotid=${depotid}`
         );
 
-        if (res.data.message === "Warning.Already verified") {
+        const msg = res.data.message?.toLowerCase();
+
+        if (msg?.includes("already")) {
           setStatus("already");
         } else if (res.data.status) {
           setStatus("success");
@@ -34,8 +36,8 @@ export default function EmailVerifyPage() {
           setStatus("error");
         }
 
-        // 🎯 Sadece başarı veya daha önce doğrulama varsa yönlendir
-        if (res.data.status || res.data.message === "Warning.Already verified") {
+        // ⏳ Başarı ya da zaten doğrulanmışsa → yönlendirme
+        if (res.data.status || msg?.includes("already")) {
           setTimeout(() => {
             router.push("/login");
           }, 3000);
@@ -58,11 +60,12 @@ export default function EmailVerifyPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-center border">
-        <div className="text-3xl mb-4 font-semibold text-blue-600">📩 Email Verification</div>
-        <p className="text-gray-700 mb-4">{statusMessage[status]}</p>
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-center border border-gray-200">
+        <h1 className="text-2xl font-bold text-blue-600 mb-4">📩 Email Verification</h1>
+        <p className="text-gray-700 text-sm mb-4">{statusMessage[status]}</p>
+
         {(status === "success" || status === "already") && (
-          <p className="text-sm text-gray-400">Redirecting to login page...</p>
+          <p className="text-xs text-gray-400">Redirecting to login page...</p>
         )}
       </div>
     </div>
