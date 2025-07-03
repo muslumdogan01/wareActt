@@ -56,17 +56,19 @@ const SignUpForm: React.FC = () => {
     );
 
     if (selectedCountry) {
-      setStates(selectedCountry.states.map((s) => ({ id: s.id, name: s.name })));
+      setStates(
+        selectedCountry.states.map((s) => ({ id: s.id, name: s.name }))
+      );
       setFormData((prevData) => ({
         ...prevData,
-        phoneCode: selectedCountry.phone_code || ""
+        phoneCode: selectedCountry.phone_code || "",
       }));
     } else {
       setStates([]);
       if (formData.country) {
         setFormData((prevData) => ({
           ...prevData,
-          phoneCode: ""
+          phoneCode: "",
         }));
       }
     }
@@ -83,8 +85,8 @@ const SignUpForm: React.FC = () => {
       newErrors["password"] = true;
       newErrors["passwordConfirm"] = true;
     }
-       if (formData.password && formData.password.length < 8) {
-      newErrors["password"] = true; 
+    if (formData.password && formData.password.length < 8) {
+      newErrors["password"] = true;
     }
     return newErrors;
   };
@@ -102,8 +104,10 @@ const SignUpForm: React.FC = () => {
       const selectedState = selectedCountry?.states.find(
         (s) => s.name === formData.state
       );
-const countryIndex = countryData.findIndex(c => c.name === formData.country);
-   const dataToSend = {
+      const countryIndex = countryData.findIndex(
+        (c) => c.name === formData.country
+      );
+      const dataToSend = {
         name: formData.fullName,
         email: formData.email,
         password: formData.password,
@@ -120,14 +124,17 @@ const countryIndex = countryData.findIndex(c => c.name === formData.country);
         eori_number: formData.eoriNumber,
         terms: true,
       };
-
       try {
         const res = await axios.post(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
           dataToSend
         );
-      router.push("/email/verify");
-        console.log(res.data);
+
+        const { id, hash, depotid } = res.data;
+
+        router.push(`/email/verify?id=${id}&hash=${hash}&depotid=${depotid}`);
+
+        console.log("✅ Registered:", res.data);
       } catch (err) {
         console.error("❌ Registration failed:", err);
         alert("Something went wrong. Please try again later.");
@@ -270,50 +277,48 @@ const countryIndex = countryData.findIndex(c => c.name === formData.country);
             {renderInput("city", "text", "City")}
             {renderInput("zip", "text", "Zipcode")}
           </div>
-  <div className="flex w-full">
-<div className="w-[110px]  text-gray-600 relative">
-  <select
-    name="phoneCode"
-    value={formData.phoneCode || ""}
-    onChange={handleChange}
-    className={`w-full px-3 space-x-[22px] py-2 text-sm border rounded appearance-none focus:outline-none ${
-      errors["phone"] ? "border-red-500" : "border-gray-300"
-    }`}
-  >
-{countryData.map((c) => (
-  <option key={c.name} value={`+${c.phone_code}`}>
-    +{c.phone_code}
-  </option>
-))}
-  </select>
-  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-    <svg
-      className="w-4 h-4 text-gray-400"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-    >
-      <path d="M19 9l-7 7-7-7" />
-    </svg>
-  </div>
-</div>
+          <div className="flex w-full">
+            <div className="w-[110px]  text-gray-600 relative">
+              <select
+                name="phoneCode"
+                value={formData.phoneCode || ""}
+                onChange={handleChange}
+                className={`w-full px-3 space-x-[22px] py-2 text-sm border rounded appearance-none focus:outline-none ${
+                  errors["phone"] ? "border-red-500" : "border-gray-300"
+                }`}
+              >
+                {countryData.map((c) => (
+                  <option key={c.name} value={`+${c.phone_code}`}>
+                    +{c.phone_code}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
 
-
-  <div className="w-full">
-    <input
-      name="phone"
-      type="tel"
-      placeholder="Phone Number"
-      value={formData.phone || ""}
-      onChange={handleChange}
-  className={`w-full pr-6 px-3 py-2 text-sm border rounded focus:outline-none appearance-none ${
-    errors["phone"] ? "border-red-500" : "border-gray-300"
-  }`}
-    />
-  </div>
-</div>
-
+            <div className="w-full">
+              <input
+                name="phone"
+                type="tel"
+                placeholder="Phone Number"
+                value={formData.phone || ""}
+                onChange={handleChange}
+                className={`w-full pr-6 px-3 py-2 text-sm border rounded focus:outline-none appearance-none ${
+                  errors["phone"] ? "border-red-500" : "border-gray-300"
+                }`}
+              />
+            </div>
+          </div>
 
           {formData.country &&
             renderInput("eoriNumber", "text", "EORI Number (optional)")}
