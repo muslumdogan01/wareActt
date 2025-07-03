@@ -13,32 +13,20 @@ export default function WelcomePage() {
           alt={"wareactlogo"}
         />
         <h1 className="text-[24px] font-semibold leading-[24px] tracking-[-0.24px] text-center">
-          Congratulations!
+          Email Confirmation
         </h1>
         <p className="text-[14px] font-medium leading-[22px] text-[#A1A5B7] text-center">
-          You have successfully signed up. Our managers will review and <br />
-          approve your account. You will be notified via email as soon as
-          possible.
+     Please verify your email with the link we sent to your email.
         </p>
-        <Image
-          width={163}
-          height={196}
-          src={"/icons/signup/welcome.svg"}
-          alt={"welcome"}
-        />
         <a
-          href="#"
-          className="inline-flex items-center gap-[10px] bg-[#3E97FF] text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300"
+          href="https://mail.google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-[#3492ff] hover:bg-[#1c78e6] text-white text-sm font-medium px-6 py-2 rounded-lg transition"
         >
-          <Image
-            width={20}
-            height={20}
-            src="/icons/signup/insta.svg"
-            alt="Instagram"
-            className="w-5 h-5"
-          />
-          <span>Follow Us</span>
+          Open Gmail
         </a>
+
       </div>
               <div className="w-full flex justify-center absolute bottom-[27px] items-center space-x-[10px] ">
                 <p className="flex text-center ">
