@@ -59,10 +59,10 @@ const insightItems = [
 const Insight = () => {
   return (
     <div className="w-full relative bg-white">
-      <div className="bg-[url('/icons/featuresPage/headerBg.svg')] bg-cover bg-center h-[348px] w-full ">
+      <div className="lg:bg-[url('/icons/featuresPage/headerBg.svg')] lg:bg-cover lg:bg-center lg:h-[348px] w-full ">
         <div className="container mx-auto relative">
-          <div className="px-4 flex flex-col absolute top-[160px] w-full ">
-            <h1 className="text-black font-inter text-[56px] not-italic font-semibold leading-[122%]">
+          <div className="px-4 text-center lg:text-left flex flex-col lg:absolute lg:top-[160px] w-full ">
+            <h1 className="text-black font-inter  text-[56px] not-italic font-semibold leading-[122%]">
               Insight
             </h1>
             <h2 className="mt-[10px] text-black font-inter text-[18px] not-italic font-normal leading-[146%]">
@@ -70,7 +70,7 @@ const Insight = () => {
               inventory tracking
             </h2>
           </div>
-          <div className="absolute top-22 2xl:right-[-80px] right-[-45px]">
+          <div className="lg:block hidden absolute top-22 2xl:right-[-80px] right-[-45px]">
             <Image
               src="/icons/featuresPage/square.svg"
               alt="Header background"
@@ -82,10 +82,9 @@ const Insight = () => {
       </div>
 
       <div className="container mx-auto ">
-     
         <div className="px-4 w-full  mt-[80px] ">
-          <div className="flex w-full bg-black rounded-[30px]">
-            <div className="w-1/2  min-h-[490px] relative">
+          <div className="flex lg:flex-row flex-col w-full bg-black rounded-[30px]">
+            <div className="lg:w-1/2 w-[350px] min-h-[290px] lg:min-h-[490px] relative">
               <Image
                 src="/images/featuresPage/fea1.png"
                 alt="Header background"
@@ -93,21 +92,26 @@ const Insight = () => {
                 className="object-cover p-[5px] rounded-[30px]"
               />
             </div>
-            <div className="w-1/2 min-h-[490px] relative ">
-              <div className="flex flex-col pl-[70px] mt-[85px] ">
-                <h1 className="text-white font-inter text-[30px] not-italic font-normal leading-[140%]">
-                  How We Built Our Own <br /> CLI for Better Application <br /> Bootstrapping
+            <div className="lg:w-1/2 lg:min-h-[490px] min-h-[440px] relative px-4 lg:px-0">
+              <div className="flex flex-col lg:pl-[70px] mt-[85px] ">
+                <h1 className="text-white font-inter lg:text-[30px] text-[26px] not-italic font-normal leading-[140%]">
+                  How We Built Our Own <br /> CLI for Better Application <br />{" "}
+                  Bootstrapping
                 </h1>
                 <p className="mt-[10px] text-white font-inter text-[16px] not-italic font-normal leading-[26px]">
-                  See how we mastered application bootstrapping <br /> with a CLI tool, simplifying project setups and <br /> development workflows...
+                  See how we mastered application bootstrapping{" "}
+                  <br className="hidden lg:block" /> with a CLI tool,
+                  simplifying project setups and{" "}
+                  <br className="hidden lg:block" /> development workflows...
                 </p>
-       <Link
-  href={`/insight/${insightItems[3].slug}`}
-  className="mt-[40px] cursor-pointer hover:underline items-center text-white font-inter text-[12px] not-italic font-medium leading-[20px]">
-  Read More
-</Link>
+                <Link
+                  href={`/insight/${insightItems[3].slug}`}
+                  className="lg:mt-[40px] mt-[24px] cursor-pointer hover:underline items-center text-white font-inter text-[12px] not-italic font-medium leading-[20px]"
+                >
+                  Read More
+                </Link>
 
-                <div className="flex  gap-[10px] mt-[63px] ">
+                <div className="flex  gap-[10px] lg:mt-[63px] mt-[24px]">
                   <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
                     #dropshiping
                   </span>
@@ -120,11 +124,10 @@ const Insight = () => {
           </div>
         </div>
 
-    
         <div className="px-4 mt-[74px] grid grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-[24px]">
           {insightItems.map((item, index) => (
             <Link href={`/insight/${item.slug}`} key={index}>
-              <div className="w-[288px] h-[350px] 2xl:w-[350px] 2xl:h-[400px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col cursor-pointer">
+              <div className="lg:w-[288px] lg:h-[350px] w-[360px] h-[322px] 2xl:w-[350px] 2xl:h-[400px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col cursor-pointer">
                 <div className="relative w-full h-full">
                   <Image
                     src={item.image}
@@ -141,7 +144,7 @@ const Insight = () => {
                     {item.tags.map((tag, i) => (
                       <span
                         key={i}
-                            className="bg-[#065AF1] min-w-[92px] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
+                        className="bg-[#065AF1] min-w-[92px] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
                       >
                         {tag}
                       </span>

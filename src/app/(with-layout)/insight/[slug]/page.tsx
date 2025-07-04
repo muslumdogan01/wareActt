@@ -1,5 +1,6 @@
 "use client";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -90,9 +91,9 @@ const InsightDetailPage = () => {
 
   return (
     <div className="w-full bg-white">
-      <div className="bg-[url('/icons/content/insightDetail.svg')] bg-cover bg-center h-[348px] w-full ">
+      <div className="lg:bg-[url('/icons/content/insightDetail.svg')] lg:bg-cover lg:bg-center lg:h-[348px] w-full ">
         <div className="container mx-auto relative">
-          <div className="px-4 flex flex-col absolute top-[130px] w-full ">
+          <div className="px-4 flex flex-col lg:absolute lg:top-[130px] w-full ">
             <div>
               <Link
                 href="/insight"
@@ -101,22 +102,22 @@ const InsightDetailPage = () => {
                 ← Back to Insight
               </Link>
             </div>
-            <h2 className="whitespace-pre-line text-black font-inter text-[56px] not-italic font-semibold leading-[122%] mt-[20px]">
+            <h2 className="whitespace-pre-line text-black font-inter lg:text-[56px] text-[36px]  not-italic font-semibold leading-[122%] mt-[20px]">
               {selectedItem.title}
             </h2>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto mt-[100px] mb-[200px] flex flex-col items-center text-center ">
-        <div className="w-full max-w-[1300px] flex flex-col items-center">
-          <div className="w-[1016px] h-[564px] relative rounded-xl mb-[50px]">
+      <div className="container mx-auto lg:mt-[100px] mt-[50px] mb-[200px] flex flex-col items-center text-center ">
+        <div className="w-full max-w-[1300px] flex flex-col items-center px-4 lg:px-0">
+          <div className="lg:w-[1016px] lg:h-[564px] w-[361px] h-[200px] relative rounded-xl mb-[50px]">
             <Image
               src={selectedItem.image}
               alt={selectedItem.title}
               fill
               sizes="(min-width: 1024px) 1016px, 100vw"
-              className="object-cover rounded-2xl"
+              className="object-cover lg:rounded-2xl rounded-4xl px-1 lg:px-0"
             />
           </div>
 
@@ -129,40 +130,57 @@ const InsightDetailPage = () => {
               You may also like
             </h2>
           </div>
-          <div className=" grid grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-[24px]">
-            {insightItems
-              .filter((item) => item.slug !== slug)
-              .slice(0, 4)
-              .map((item, index) => (
-                <Link href={`/insight/${item.slug}`} key={index}>
-                  <div className="w-[288px] h-[350px]   rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col cursor-pointer">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover rounded-lg"
-                      />
-                    </div>
-                    <div className="flex flex-col justify-end h-full pl-5">
-                      <h3 className="whitespace-pre-line text-left text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
-                        {item.subtitle}
-                      </h3>
-                      <div className="flex gap-[10px] mb-[15px]">
-                        {item.tags.map((tag, i) => (
-                          <span
-                            key={i}
-                            className="bg-[#065AF1] min-w-[92px] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+       <Swiper
+
+  slidesPerView={"auto"}
+  className="w-full"
+  breakpoints={{
+   640: {
+      spaceBetween: 0,
+    },
+    768: {
+      spaceBetween: 0,
+    },
+    1024: {
+      slidesPerView: 4,
+      allowTouchMove: false,
+      spaceBetween: 24,
+    },
+  
+  }}
+  allowTouchMove={true}
+>
+  {[...Array(5)].map((_, i) => (
+    <SwiperSlide key={i} style={{ width: "auto", }} className="flex">
+      <div className="w-[288px] h-[350px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col">
+        <div className="relative w-full h-full">
+          <Image
+            src="/images/insight/insight.png"
+            alt="Warehouse"
+            fill
+            className="object-cover rounded-lg"
+          />
+        </div>
+
+        <div className="flex flex-col justify-end h-full pl-5">
+          <h3 className="text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
+            Suspendisse <br /> mattis non leo
+          </h3>
+
+          <div className="flex gap-[10px] mb-[15px]">
+            <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
+              #dropshiping
+            </span>
+            <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
+              #e-commerce
+            </span>
           </div>
+        </div>
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
         </div>
       </div>
     </div>
