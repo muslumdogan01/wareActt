@@ -33,7 +33,7 @@ const insightItems = [
   {
     image: "/images/insight/insight.png",
     title: "Vestibulum auctor dapibus neque",
-    slug: "vestibulum-auctor-dapibus-neque",
+    slug: "suspendisse-mattis-non-leo",
     tags: ["#warehouse", "#ai"],
   },
   {
@@ -141,7 +141,7 @@ const Insight = () => {
                     {item.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
+                            className="bg-[#065AF1] min-w-[92px] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
                       >
                         {tag}
                       </span>
