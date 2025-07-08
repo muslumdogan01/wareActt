@@ -9,7 +9,7 @@ const Hero = () => {
       {/* 👇 alt yapı aynı */}
       <div className="w-full h-full relative ">
         <section className="container mx-auto relative">
-          <div className="w-full justify-between items-center flex flex-col lg:flex-row px-5 absolute lg:top-[150px]">
+          <div className="w-full  justify-between items-center flex flex-col lg:flex-row px-5 absolute lg:top-[150px]">
             <h1 className="text-2xl xl:text-[56px] hidden lg:flex text-left font-semibold leading-[1.22] text-black">
               3PL Warehouse <br /> Management Software <br /> for Next Level
               Logistics

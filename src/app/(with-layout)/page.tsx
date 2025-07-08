@@ -26,7 +26,7 @@ export default function Home() {
         <div className="relative  z-10">
           <Hero />
         </div>
-        <div className="w-full  justify-center  z-20 absolute -bottom-70 4xl:-bottom-90 hidden lg:flex">
+        <div className="w-full justify-center  z-20 absolute -bottom-70 4xl:-bottom-90 hidden lg:flex">
           <Dashboard />
         </div>
       </div>
