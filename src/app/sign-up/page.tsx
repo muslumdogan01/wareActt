@@ -7,6 +7,7 @@ import Image from "next/image";
 interface FormData {
   [key: string]: string | undefined;
 }
+
 interface Country {
   phone_code: string;
   name: string;
@@ -32,6 +33,7 @@ const SignUpForm: React.FC = () => {
   const [termsError, setTermsError] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const requiredFields = [
     "fullName",
@@ -51,30 +53,55 @@ const SignUpForm: React.FC = () => {
       .catch((err) => console.error("Country fetch error:", err));
   }, []);
 
-useEffect(() => {
-  if (!formData.country || countryData.length === 0) return;
+  useEffect(() => {
+    if (!formData.country || countryData.length === 0) return;
 
-  const selectedCountry = countryData.find(
-    (c) => c.name === formData.country
-  );
-
-  if (selectedCountry) {
-    setStates(
-      selectedCountry.states.map((s) => ({ id: s.id, name: s.name }))
+    const selectedCountryIndex = countryData.findIndex(
+      (c) => c.name === formData.country
     );
-    setFormData((prevData) => ({
-      ...prevData,
-      phoneCode: `+${selectedCountry.phone_code}`,
-    }));
-  } else {
-    setStates([]);
-    setFormData((prevData) => ({
-      ...prevData,
-      phoneCode: "",
-    }));
-  }
-}, [formData.country, countryData]);
+    console.log("Selected Country:", formData.country);
+    console.log(
+      "Selected Country Index + 1 (country_id):",
+      selectedCountryIndex + 1
+    );
+    const selectedCountry = countryData[selectedCountryIndex];
 
+    if (selectedCountry) {
+      const countryId = selectedCountryIndex + 1; // çünkü id = sıra numarası gibi (örnek: Antigua için 10)
+
+      axios
+        .get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/states/${countryId}?size=1000`
+        )
+        .then((res) => {
+          if (res.data?.status && res.data.states) {
+            setStates(
+              res.data.states.map((s: { id: number; name: string }) => ({
+                id: s.id,
+                name: s.name,
+              }))
+            );
+          } else {
+            setStates([]);
+          }
+        })
+        .catch((err) => {
+          console.error("❌ State fetch error:", err);
+          setStates([]);
+        });
+
+      setFormData((prevData) => ({
+        ...prevData,
+        phoneCode: `+${selectedCountry.phone_code}`,
+      }));
+    } else {
+      setStates([]);
+      setFormData((prevData) => ({
+        ...prevData,
+        phoneCode: "",
+      }));
+    }
+  }, [formData.country, countryData]);
 
   const validate = () => {
     const newErrors: { [key: string]: boolean } = {};
@@ -95,6 +122,7 @@ useEffect(() => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const newErrors = validate();
     setErrors(newErrors);
     setTermsError(!accepted);
@@ -140,6 +168,8 @@ useEffect(() => {
       } catch (err) {
         console.error("❌ Registration failed:", err);
         setFormError("Something went wrong. Please try again later.");
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -358,9 +388,14 @@ useEffect(() => {
 
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg"
+            className="w-[151px] h-[40px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1] border-[1px] flex items-center justify-center"
+            disabled={isSubmitting}
           >
-            Sign up
+            {isSubmitting ? (
+              <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></div>
+            ) : (
+              "Sign Up"
+            )}
           </button>
         </form>
         <div className="w-full flex justify-center mt-[72px] items-center space-x-[10px] ">
