@@ -67,7 +67,7 @@ const SignUpForm: React.FC = () => {
     const selectedCountry = countryData[selectedCountryIndex];
 
     if (selectedCountry) {
-      const countryId = selectedCountryIndex + 1; // çünkü id = sıra numarası gibi (örnek: Antigua için 10)
+      const countryId = selectedCountryIndex + 1; 
 
       axios
         .get(

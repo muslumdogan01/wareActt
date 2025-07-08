@@ -91,7 +91,7 @@ const Integrations = () => {
           >
             {integrations.map((item, i) => (
               <SwiperSlide key={i} style={{ width: "auto" }} className="flex ">
-                <div className="w-[200px] lg:w-[392px] 2xl:w-[488px] rounded-[30px]  bg-white border border-[#065AF11A] shadow-[inset_0px_0px_30px_-4px_#0A28BF0F] text-white flex flex-col ">
+                <div  className="w-[200px] lg:w-[392px] 2xl:w-[488px] rounded-[30px]  bg-white border border-[#065AF11A] shadow-[inset_0px_0px_30px_-4px_#0A28BF0F] text-white flex flex-col ">
                   <div className="pl-5 lg:py-[50px] py-[30px] pr-4">
                     <div className="relative w-full flex justify-start">
                       <Image
