@@ -5,7 +5,7 @@ import React from "react";
 
 const Features = () => {
   return (
-    <div className="w-full relative bg-white">
+    <div className="w-full relative bg-white ">
       <div className="lg:bg-[url('/icons/featuresPage/headerBg.svg')] lg:bg-cover lg:bg-center lg:h-[348px] w-full ">
         <div className="container mx-auto relative">
           <div className="px-4 text-center lg:text-left flex flex-col lg:absolute lg:top-[160px] w-full ">
@@ -29,7 +29,7 @@ const Features = () => {
       </div>
 
       <div className="container mx-auto ">
-        <div className="px-4 w-full  ">
+        <div className="px-4 w-full ">
           <div className="w-full lg:flex lg:space-x-[52px] pt-[50px]">
             <div className=" hidden lg:flex ">
               <span className="w-[2px] h-[130px] bg-[#065AF1] "></span>
