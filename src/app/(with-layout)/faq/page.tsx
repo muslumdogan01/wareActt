@@ -6,27 +6,47 @@ import SignupCard from "@/components/signup/page";
 
 const faqData = [
   {
-    question: "İhtiyacınız olan her türlü teslimat,",
+    question: "How can WareAct benefit my business?",
     answer:
       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
   },
   {
-    question: "İhtiyacınız olan her türlü teslimat,",
+    question: "Is WareAct suitable for small warehouses?",
     answer:
       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
   },
   {
-    question: "İhtiyacınız olan her türlü teslimat,",
+    question: "Can WareAct integrate with marketplaces?",
     answer:
       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
   },
   {
-    question: "İhtiyacınız olan her türlü teslimat,",
+    question: "Can WareAct integrate with carriers?",
     answer:
       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
   },
   {
-    question: "İhtiyacınız olan her türlü teslimat,",
+    question: "Is WareAct cloud-based or on-premise?",
+    answer:
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+  },
+  {
+    question: "How secure is WareAct?",
+    answer:
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+  },
+  {
+    question: "How do I get started with WareAct?",
+    answer:
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+  },
+  {
+    question: "What is the cost of WareAct software?",
+    answer:
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+  },
+  {
+    question: "How does the pricing work with WareAct?",
     answer:
       "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
   },
