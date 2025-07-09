@@ -84,7 +84,7 @@ const Insight = () => {
       <div className="container mx-auto ">
         <div className="px-4 w-full  mt-[80px] ">
           <div className="flex lg:flex-row flex-col w-full bg-black rounded-[30px]">
-            <div className="lg:w-1/2 w-[350px] min-h-[290px] lg:min-h-[490px] relative">
+            <div className="lg:w-1/2 w-[350px] md:w-full md:min-h-[390px] min-h-[290px] lg:min-h-[490px] relative">
               <Image
                 src="/images/featuresPage/fea1.png"
                 alt="Header background"
@@ -124,7 +124,7 @@ const Insight = () => {
           </div>
         </div>
 
-        <div className="px-4 mt-[74px] grid grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-[24px]">
+        <div className="px-4 mt-[74px] grid grid-cols-1 justify-items-center  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-[24px]">
           {insightItems.map((item, index) => (
             <Link href={`/insight/${item.slug}`} key={index}>
               <div className="lg:w-[288px] lg:h-[350px] w-[360px] h-[322px] 2xl:w-[350px] 2xl:h-[400px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col cursor-pointer">
