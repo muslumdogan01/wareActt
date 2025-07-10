@@ -120,60 +120,61 @@ const SignUpForm: React.FC = () => {
     return newErrors;
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    const newErrors = validate();
-    setErrors(newErrors);
-    setTermsError(!accepted);
+ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-    if (Object.keys(newErrors).length === 0 && accepted) {
-      const selectedCountry = countryData.find(
-        (c) => c.name === formData.country
-      );
-      const selectedState = selectedCountry?.states.find(
-        (s) => s.name === formData.state
-      );
-      const countryIndex = countryData.findIndex(
-        (c) => c.name === formData.country
-      );
-      const dataToSend = {
-        name: formData.fullName,
-        email: formData.email,
-        password: formData.password,
-        password_confirmation: formData.passwordConfirm,
-        phone: `${formData.phoneCode}${formData.phone}`,
-        company_name: formData.companyName,
-        brand_name: formData.storeName,
-        country_id: countryIndex >= 0 ? countryIndex + 1 : null,
-        state_id: selectedState?.id || null,
-        address1: formData.address1,
-        address2: formData.address2,
-        city: formData.city,
-        zipcode: formData.zip,
-        eori_number: formData.eoriNumber,
-        terms: true,
-      };
-      try {
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
-          dataToSend
-        );
+  const newErrors = validate();
+  setErrors(newErrors);
+  setTermsError(!accepted);
 
-        if (res.data.status) {
-          router.push("/sign-up/confirmation");
-        } else {
-          setFormError(res.data.message || "Something went wrong.");
-        }
-      } catch (err) {
-        console.error("❌ Registration failed:", err);
-        setFormError("Something went wrong. Please try again later.");
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
+  // ❗ Eğer hata varsa submission'u iptal et ve spinner'ı kapat
+  if (Object.keys(newErrors).length > 0 || !accepted) {
+    setIsSubmitting(false);
+    return;
+  }
+
+  setIsSubmitting(true);
+
+  const selectedCountry = countryData.find((c) => c.name === formData.country);
+  const selectedState = selectedCountry?.states.find((s) => s.name === formData.state);
+  const countryIndex = countryData.findIndex((c) => c.name === formData.country);
+
+  const dataToSend = {
+    name: formData.fullName,
+    email: formData.email,
+    password: formData.password,
+    password_confirmation: formData.passwordConfirm,
+    phone: `${formData.phoneCode}${formData.phone}`,
+    company_name: formData.companyName,
+    brand_name: formData.storeName,
+    country_id: countryIndex >= 0 ? countryIndex + 1 : null,
+    state_id: selectedState?.id || null,
+    address1: formData.address1,
+    address2: formData.address2,
+    city: formData.city,
+    zipcode: formData.zip,
+    eori_number: formData.eoriNumber,
+    terms: true,
   };
 
+  try {
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/warehouse/register`,
+      dataToSend
+    );
+
+    if (res.data.status) {
+      router.push("/sign-up/confirmation");
+    } else {
+      setFormError(res.data.message || "Something went wrong.");
+    }
+  } catch (err) {
+    console.error("❌ Registration failed:", err);
+    setFormError("Something went wrong. Please try again later.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
