@@ -41,11 +41,7 @@ const res = await axios.get(
           setStatus("error");
         }
 
-        if (res.data.status || msg?.includes("already")) {
-          setTimeout(() => {
-            router.push("/login");
-          }, 3000);
-        }
+
       } catch (err) {
         console.error("Verification failed:", err);
         setStatus("error");
