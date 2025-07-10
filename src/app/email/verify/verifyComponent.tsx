@@ -54,7 +54,7 @@ const res = await axios.get(
   const statusMessage = {
     loading: "⏳ Verifying your email...",
     success: "✅ Your email has been successfully verified!",
-    already: "⚠️ Your email was already verified. Redirecting...",
+    already: "⚠️ Your email was already verified.",
     error: "❌ Verification failed. Invalid or expired link.",
   };
 
@@ -80,7 +80,14 @@ const res = await axios.get(
           📩 Email Verification
         </h1>
         <p className="text-gray-700 text-sm mb-3">{statusMessage[status]}</p>
-
+{(status === "success" || status === "already") && (
+  <a
+    href="/login"
+    className="mt-4 inline-block px-4 py-2 bg-blue-600 text-white text-sm rounded-full shadow hover:bg-blue-700 transition"
+  >
+    Go to Login
+  </a>
+)}
       </div>
     </div>
   );
