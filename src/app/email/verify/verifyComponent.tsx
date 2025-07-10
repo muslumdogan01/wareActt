@@ -27,9 +27,9 @@ export default function EmailVerifyPage() {
       try {
         console.log(`${process.env.NEXT_PUBLIC_API_BASE_URL}/email/verify?id=${id}&hash=${hash}&depotid=${depotid}`);
 
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/email/verify?id=${id}&hash=${hash}&depotid=${depotid}`
-        );
+const res = await axios.get(
+  `${process.env.NEXT_PUBLIC_API_BASE_URL}/email/verify/${id}/${hash}`
+);
 
         const msg = res.data.message?.toLowerCase();
 
