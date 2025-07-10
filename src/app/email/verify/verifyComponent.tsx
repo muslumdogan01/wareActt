@@ -81,11 +81,6 @@ const res = await axios.get(
         </h1>
         <p className="text-gray-700 text-sm mb-3">{statusMessage[status]}</p>
 
-        {(status === "success" || status === "already") && (
-          <p className="text-xs text-gray-400 animate-pulse">
-            Redirecting to login page...
-          </p>
-        )}
       </div>
     </div>
   );
