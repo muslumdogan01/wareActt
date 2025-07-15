@@ -1,12 +1,12 @@
 "use client";
-
+import "../../globals.css";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Image from "next/image";
-import WelcomePage from "@/components/congrats/page";
-import AlreadyVerified from "@/components/alreadyVerified/page";
-import Unsuccessful from "@/components/unsuccessful/page";
+import WelcomePage from "./congrats/page";
+import AlreadyVerified from "./alreadyVerified/page";
+import Unsuccessful from "./unsuccessful/page";
+
 
 export default function EmailVerifyPage() {
   const searchParams = useSearchParams();
@@ -54,30 +54,11 @@ export default function EmailVerifyPage() {
     verifyEmail();
   }, [searchParams, router]);
 
-
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F9FAFB] px-4">
-    <div className="min-h-screen flex items-center justify-center bg-[#F9FAFB] px-4">
-    <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-center border border-gray-200 animate-fade-in">
-      {status === "loading" && (
-        <>
-          <Image
-            src="/images/verify/loading.svg"
-            alt="Loading"
-            width={120}
-            height={120}
-            className="mx-auto mb-4"
-          />
-          <p className="text-gray-700 text-sm">⏳ Verifying your email...</p>
-        </>
-      )}
-
+    <>
       {status === "success" && <WelcomePage />}
       {status === "already" && <AlreadyVerified />}
       {status === "error" && <Unsuccessful />}
-    </div>
-  </div>
-    </div>
+    </>
   );
 }
