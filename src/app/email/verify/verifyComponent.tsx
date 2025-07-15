@@ -4,6 +4,9 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import WelcomePage from "@/components/congrats/page";
+import AlreadyVerified from "@/components/alreadyVerified/page";
+import Unsuccessful from "@/components/unsuccessful/page";
 
 export default function EmailVerifyPage() {
   const searchParams = useSearchParams();
@@ -25,11 +28,13 @@ export default function EmailVerifyPage() {
 
     const verifyEmail = async () => {
       try {
-        console.log(`${process.env.NEXT_PUBLIC_API_BASE_URL}/email/verify?id=${id}&hash=${hash}&depotid=${depotid}`);
+        console.log(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/email/verify?id=${id}&hash=${hash}&depotid=${depotid}`
+        );
 
-const res = await axios.get(
-  `${process.env.NEXT_PUBLIC_API_BASE_URL}/email/verify/${id}/${hash}`
-);
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/email/verify/${id}/${hash}`
+        );
 
         const msg = res.data.message?.toLowerCase();
 
@@ -40,8 +45,6 @@ const res = await axios.get(
         } else {
           setStatus("error");
         }
-
-
       } catch (err) {
         console.error("Verification failed:", err);
         setStatus("error");
@@ -51,44 +54,30 @@ const res = await axios.get(
     verifyEmail();
   }, [searchParams, router]);
 
-  const statusMessage = {
-    loading: "⏳ Verifying your email...",
-    success: "✅ Your email has been successfully verified!",
-    already: "⚠️ Your email was already verified.",
-    error: "❌ Verification failed. Invalid or expired link.",
-  };
 
-  const illustrationSrc = {
-    loading: "/images/verify/loading.svg",
-    success: "/images/verify/success.svg",
-    already: "/images/verify/already.svg",
-    error: "/images/verify/error.svg",
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F9FAFB] px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-center border border-gray-200 animate-fade-in">
-        <Image
-          src={illustrationSrc[status]}
-          alt="status illustration"
-          width={120}
-          height={120}
-          className="mx-auto mb-4 transition-all duration-300"
-        />
+    <div className="min-h-screen flex items-center justify-center bg-[#F9FAFB] px-4">
+    <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-center border border-gray-200 animate-fade-in">
+      {status === "loading" && (
+        <>
+          <Image
+            src="/images/verify/loading.svg"
+            alt="Loading"
+            width={120}
+            height={120}
+            className="mx-auto mb-4"
+          />
+          <p className="text-gray-700 text-sm">⏳ Verifying your email...</p>
+        </>
+      )}
 
-        <h1 className="text-2xl font-bold text-blue-600 mb-3">
-          📩 Email Verification
-        </h1>
-        <p className="text-gray-700 text-sm mb-3">{statusMessage[status]}</p>
-{(status === "success" || status === "already") && (
-  <a
-    href="/login"
-    className="mt-4 inline-block px-4 py-2 bg-blue-600 text-white text-sm rounded-full shadow hover:bg-blue-700 transition"
-  >
-    Go to Login
-  </a>
-)}
-      </div>
+      {status === "success" && <WelcomePage />}
+      {status === "already" && <AlreadyVerified />}
+      {status === "error" && <Unsuccessful />}
+    </div>
+  </div>
     </div>
   );
 }
