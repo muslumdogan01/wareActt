@@ -127,7 +127,6 @@ const SignUpForm: React.FC = () => {
   setErrors(newErrors);
   setTermsError(!accepted);
 
-  // ❗ Eğer hata varsa submission'u iptal et ve spinner'ı kapat
   if (Object.keys(newErrors).length > 0 || !accepted) {
     setIsSubmitting(false);
     return;
@@ -135,8 +134,7 @@ const SignUpForm: React.FC = () => {
 
   setIsSubmitting(true);
 
-  const selectedCountry = countryData.find((c) => c.name === formData.country);
-  const selectedState = selectedCountry?.states.find((s) => s.name === formData.state);
+  const selectedState = states.find((s) => s.name === formData.state);
   const countryIndex = countryData.findIndex((c) => c.name === formData.country);
 
   const dataToSend = {
