@@ -27,7 +27,7 @@ export default function SignupCard() {
             />
 
             <button
-              className="w-[329px]  lg:w-[104px] h-14 lg:h-[70px]  bg-black hover:bg-black/90 text-white rounded-[10px] lg:rounded-bl-none lg:rounded-tl-none  font-medium transition-colors"
+              className="w-[329px] cursor-pointer lg:w-[104px] h-14 lg:h-[70px]  bg-black hover:bg-black/60 text-white rounded-[10px] lg:rounded-bl-none lg:rounded-tl-none  font-medium transition-colors"
               type="button"
             >
               Start
