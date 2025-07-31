@@ -58,11 +58,11 @@ const Pricing = () => {
             </h1>
           </div>
           <div className="w-full rounded-[40px] border-[4px] mt-[50px]  border-white/10 bg-[#065AF1] shadow-[inset_0_0_30px_-4px_rgba(10,40,191,0.06),0_20px_80px_-20px_rgba(0,0,0,0.10)]">
-            <div className="w-full flex space-x-[10px] p-[6px]">
-              <div className=" h-[480px] 2xl:w-[550px] px-5 rounded-2xl w-full max-w-sm 2xl:max-w-lg text-center flex flex-col justify-between">
+          <div className="w-full flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-[10px] p-[6px]">
+              <div className=" w-full lg:h-[480px] 2xl:w-[550px] px-5 rounded-2xl max-w-sm 2xl:max-w-lg text-center flex flex-col justify-between mx-auto">
                 <div className="flex flex-col justify-between h-full my-[30px]">
                   <div>
-                    <div className="w-[320px] h-[50px] flex justify-center items-center gap-2 bg-white/10 p-1 rounded-full">
+                    <div className="lg:w-[320px] h-[50px] flex justify-center items-center gap-2 bg-white/10 p-1 rounded-full">
                       <button
                         onClick={() => setPlan("yearly")}
                         className={`px-[4px] cursor-pointer rounded-[60px] w-[156px] h-[42px] py-[4px]  text-sm font-normal leading-[1.4] transition ${
@@ -93,20 +93,20 @@ const Pricing = () => {
                     </div>
                   </div>
                   <div>
-                    <button className="text-white text-sm w-full font-normal leading-[1.46] cursor-pointer  border border-white rounded-full px-4 py-2 hover:bg-white hover:text-blue-500 transition">
+                    <button className="mt-[40px] lg:mt-0 text-white text-sm w-full font-normal leading-[1.46] cursor-pointer  border border-white rounded-full px-4 py-2 hover:bg-white hover:text-blue-500 transition">
                       Customer Pays
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white h-[480px]  w-[412px] 2xl:w-[550px]  text-center rounded-tl-[40px] rounded-bl-[40px] rounded-br-lg rounded-tr-lg flex flex-col ">
-                <div className="bg-[#E7EEF6] py-[24px] text-sm font-semibold rounded-tl-[40px] rounded-tr-lg  ">
+              <div className="bg-white h-[400px] lg:h-[480px] rounded-4xl w-full lg:w-[412px] 2xl:w-[550px]  text-center lg:rounded-tl-[40px] lg:rounded-bl-[40px] lg:rounded-br-lg lg:rounded-tr-lg flex flex-col ">
+                <div className="bg-[#E7EEF6] py-[24px] text-sm font-semibold lg:rounded-tl-[40px] rounded-3xl lg:rounded-tr-lg  ">
                   FBA / UFS
                 </div>
                 <div className="flex flex-col justify-between h-full mb-[30px]">
                   <div className="w-full text-left pl-[40px]">
-                    <div className="pt-[56px] text-black font-normal text-[40px] leading-[1.4]">
+                    <div className="lg:pt-[56px] pt-[30px] text-black font-normal text-[40px] leading-[1.4]">
                       $4.5
                     </div>
                     <p className="pt-[10px] text-black font-normal text-[18px] leading-[1.46]">
@@ -127,8 +127,8 @@ const Pricing = () => {
                   </button>
                 </div>
               </div>
-              <div className="bg-white h-[480px]  w-[412px] 2xl:w-[550px] text-center rounded-tl-lg rounded-bl-lg rounded-br-[40px] rounded-tr-[40px] flex flex-col ">
-                <div className="bg-[#E7EEF6] py-[24px] text-sm font-semibold rounded-tl-lg rounded-tr-[40px]  ">
+              <div className="bg-white h-[400px] lg:h-[480px] rounded-4xl w-full lg:w-[412px] 2xl:w-[550px] text-center lg:rounded-tl-lg lg:rounded-bl-lg lg:rounded-br-[40px] lg:rounded-tr-[40px] flex flex-col ">
+                <div className="bg-[#E7EEF6] py-[24px] text-sm font-semibold lg:rounded-tl-lg rounded-3xl lg:rounded-tr-[40px]  ">
                   FBM
                 </div>
                 <div className="flex flex-col justify-between h-full ">
@@ -152,9 +152,9 @@ const Pricing = () => {
             </div>
           </div>
           <div className="w-full flex flex-col mt-[150px] items-center">
-            <div className="max-w-[1050px] px-[50px] rounded-[30px] border border-[#065AF11A] bg-white shadow-[inset_0_0_30px_-4px_rgba(10,40,191,0.06),0_20px_80px_-20px_rgba(0,0,0,0.10)]">
+            <div className="max-w-[1050px] lg:px-[50px] px-4 rounded-[30px] border border-[#065AF11A] bg-white shadow-[inset_0_0_30px_-4px_rgba(10,40,191,0.06),0_20px_80px_-20px_rgba(0,0,0,0.10)]">
               {/* Sample Calculations Section */}
-              <div className="bg-white mt-[50px] p-[40px] rounded-[30px] max-w-[800px] mx-auto mb-[50px] ">
+              <div className="bg-white mt-[50px] lg:p-[40px] rounded-[30px] lg:max-w-[800px] mx-auto mb-[50px] ">
                 <h2 className="text-center text-black text-[24px] font-normal leading-[1.4] mb-[30px]">
                   Sample Calculations
                 </h2>
