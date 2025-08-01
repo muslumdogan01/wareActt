@@ -12,6 +12,7 @@ const MenuList = () => {
     { href: '/pricing', label: 'Pricing' },
     { href: '/insight', label: 'Insight' },
     { href: '/faq', label: 'F.A.Q' },
+    { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ]
 

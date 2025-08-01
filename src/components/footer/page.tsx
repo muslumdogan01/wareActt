@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import { SocialIcon } from "./socialIcon";
@@ -107,12 +107,35 @@ export default function Footer() {
             <h1 className="hidden lg:block text-white text-[14px] not-italic font-normal leading-[140%]">
               © 2024 WareAct. All rights reserved
             </h1>
-            <div className="flex space-x-[40px] text-white/30 lg:text-white text-[14px] not-italic font-normal leading-[140%]">
+            <div className="flex space-x-[20px] text-white/30 lg:text-white text-[14px] not-italic font-normal leading-[140%]">
+
               <span className="cursor-pointer hover:text-gray-300">
-                Privacy Policy
+                <Link
+                  href="/legal/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy Policy
+                </Link>
+              </span>
+
+              <span className="cursor-pointer hover:text-gray-300">
+                <Link
+                  href="/legal/terms-and-conditions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Terms & Conditions
+                </Link>
               </span>
               <span className="cursor-pointer hover:text-gray-300">
-                Terms and Condition
+                <Link
+                  href="/legal/cookies-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Cookie Policy
+                </Link>
               </span>
             </div>
           </div>
