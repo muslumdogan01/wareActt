@@ -1,0 +1,187 @@
+[
+  {
+    "number": 1,
+    "title": "Dynamic Billing",
+    "description": "Seamlessly create and pay invoices directly within the platform—no manual tracking required."
+  },
+  {
+    "number": 2,
+    "title": "Informative & Live Dashboard",
+    "description": "Real-time dashboard widgets deliver critical operational insights at a glance."
+  },
+  {
+    "number": 3,
+    "title": "Orders Management",
+    "description": "Centralize orders from all marketplaces for effortless management by teams and customers."
+  },
+  {
+    "number": 4,
+    "title": "Advanced Notifications",
+    "description": "Instant notifications keep warehouse customers informed about critical actions."
+  },
+  {
+    "number": 5,
+    "title": "In-Transit Parcel Tracking",
+    "description": "Proactive parcel tracking identifies issues early to ensure smooth deliveries."
+  },
+  {
+    "number": 6,
+    "title": "Unlimited User Licenses",
+    "description": "Unlimited users at no extra cost—scale your team and clients effortlessly."
+  },
+  {
+    "number": 7,
+    "title": "Customizable Roles & Users",
+    "description": "Customize user roles and permissions to align with your operational needs."
+  },
+  {
+    "number": 8,
+    "title": "Employee Performance Tracking",
+    "description": "Monitor employee performance in real-time to drive operational excellence."
+  },
+  {
+    "number": 9,
+    "title": "Multi-Carrier Integrations",
+    "description": "Integrate your preferred carrier accounts for seamless shipping management."
+  },
+  {
+    "number": 10,
+    "title": "Online Payment Methods",
+    "description": "Accept payments via Stripe, Wise, Payoneer, and other popular gateways."
+  },
+  {
+    "number": 11,
+    "title": "Smart Pricing Calculator",
+    "description": "Instantly generate service pricing tailored to your product details."
+  },
+  {
+    "number": 12,
+    "title": "User Friendly Workflows",
+    "description": "Built for warehouse efficiency—optimize workflows with our purpose-driven design."
+  },
+  {
+    "number": 13,
+    "title": "Smooth Inbounding",
+    "description": "End-to-end goods receipt processes ensure error-free warehouse intake."
+  },
+  {
+    "number": 14,
+    "title": "Easy & Fast Onboarding",
+    "description": "Launch in 5 minutes and start delivering warehouse services immediately."
+  },
+  {
+    "number": 15,
+    "title": "Client Management",
+    "description": "Adjust client privileges and pricing dynamically to meet your goals."
+  },
+  {
+    "number": 16,
+    "title": "User Management",
+    "description": "Easily create sub-users with tailored roles and permissions for clients."
+  },
+  {
+    "number": 17,
+    "title": "Announcement Management",
+    "description": "Broadcast announcements directly to clients via the customer dashboard."
+  },
+  {
+    "number": 18,
+    "title": "Dynamic Pricing Management",
+    "description": "Design tiered pricing plans for distinct client groups effortlessly."
+  },
+  {
+    "number": 19,
+    "title": "Expiry Date Tracking",
+    "description": "Automatically track product expiration dates and send alerts to customers and teams."
+  },
+  {
+    "number": 20,
+    "title": "Advanced Reporting",
+    "description": "Smart reports provide a comprehensive overview of warehouse operations in seconds."
+  },
+  {
+    "number": 21,
+    "title": "Smart Shipping Rules",
+    "description": "Pre-set shipping rules slash carrier costs and boost profit margins."
+  },
+  {
+    "number": 22,
+    "title": "Affiliate System",
+    "description": "Grow your client base organically with our built-in affiliate program."
+  },
+  {
+    "number": 23,
+    "title": "Multi-Language Use",
+    "description": "Fully multilingual—add new languages to your platform in 48 hours."
+  },
+  {
+    "number": 24,
+    "title": "Marketplace Integrations",
+    "description": "Automate order fulfillment with integrations for top e-commerce platforms."
+  },
+  {
+    "number": 25,
+    "title": "Returns Management",
+    "description": "Streamline return management with dedicated tools for warehouse teams."
+  },
+  {
+    "number": 26,
+    "title": "Client Approval System",
+    "description": "Prospects can self-register accounts for quick approval by your team."
+  },
+  {
+    "number": 27,
+    "title": "Client Groups Management",
+    "description": "Group clients for targeted discounts and personalized pricing strategies."
+  },
+  {
+    "number": 28,
+    "title": "Data Export/Import",
+    "description": "Export or import data effortlessly to streamline workflows and reporting."
+  },
+  {
+    "number": 29,
+    "title": "User Activity Summary Reports",
+    "description": "Activity logs empower data-driven optimization of user workflows."
+  },
+  {
+    "number": 30,
+    "title": "Product Activity Reports",
+    "description": "Every product action is logged as a transaction for full auditability."
+  },
+  {
+    "number": 31,
+    "title": "Tablet Friendly Design",
+    "description": "Tablet-friendly design accelerates warehouse tasks with intuitive workflows."
+  },
+  {
+    "number": 32,
+    "title": "Client Categorization",
+    "description": "Segment clients by profitability to tailor services and maximize revenue."
+  },
+  {
+    "number": 33,
+    "title": "Explanatory Operation Videos",
+    "description": "On-demand tutorial videos simplify onboarding for teams and customers."
+  },
+  {
+    "number": 34,
+    "title": "Transaction Reports",
+    "description": "Track and manage all customer transactions seamlessly on the Billing dashboard."
+  },
+  {
+    "number": 35,
+    "title": "Detailed List Filtering",
+    "description": "Advanced filters on listings pages simplify transaction and shipment analysis."
+  },
+  {
+    "number": 36,
+    "title": "Customizable Client Agreements",
+    "description": "Customize client agreements to match your warehouse’s unique needs."
+  },
+  {
+    "number": 37,
+    "title": "Dangerous Goods Limitations",
+    "description": "Automatically flag restricted items to prevent non-compliant shipments."
+  }
+]
