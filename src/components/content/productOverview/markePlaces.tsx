@@ -14,18 +14,20 @@ export default function Marketplaces() {
     { name: "eBay", logo: "/icons/features/erbay.svg" },
     { name: "Walmart", logo: "/icons/features/walmart.svg" },
     { name: "Etsy", logo: "/icons/features/etsy.svg" },
+    { name: "tiktok", logo: "/images/content/tiktok.png" },
   ];
 
   const carrierBrands = [
-    { name: "Amazon", logo: "/icons/features/amazon.svg" },
-    { name: "Amazon", logo: "/icons/features/amazon.svg" },
-    { name: "Amazon", logo: "/icons/features/amazon.svg" },
-    { name: "Amazon", logo: "/icons/features/amazon.svg" },
+    { name: "Amazon", logo: "/images/content/fed.jpg" },
+    { name: "Amazon", logo: "/images/content/ups.png" },
+    { name: "Amazon", logo: "/images/content/dhl.png" },
+    { name: "Amazon", logo: "/images/content/asen.png" },
+    { name: "Amazon", logo: "/images/content/epost.png" },
 
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-8">
+    <div className="w-full max-w-7xl mx-auto p-8">
       {/* Tab Navigation */}
       <div className="flex justify-center mb-12">
         <div className="flex space-x-[50px]">

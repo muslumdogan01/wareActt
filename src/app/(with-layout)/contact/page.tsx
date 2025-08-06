@@ -75,11 +75,9 @@ const Contact = () => {
             </div>
           </div>
           <div
-            style={{
-              boxShadow: `0px 20px 80px -20px #0000001A, inset 0px 0px 30px -4px #0A28BF0F`,
-            }}
-            className="flex flex-col md:w-[808px] h-[650px]  md:rounded-[40px] md:border md:border-[rgba(6,90,241,0.1)] "
-          >
+  className="flex flex-col md:w-[808px] h-[650px] md:rounded-[40px] md:border md:border-[rgba(6,90,241,0.1)] 
+             shadow-none md:shadow-[0px_20px_80px_-20px_#0000001A,inset_0px_0px_30px_-4px_#0A28BF0F]"
+>
             <div className="h-full md:pl-[40px] pl-[20px] pt-[40px]  flex flex-col">
               <div className="hidden md:block">
                 <Image

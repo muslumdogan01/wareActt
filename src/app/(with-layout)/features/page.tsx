@@ -31,7 +31,7 @@ const Features = () => {
 
       <div className="container mx-auto ">
         <div className="px-4 w-full ">
-          <div className="w-full lg:flex lg:space-x-[52px] pt-[50px]">
+          <div className="w-full lg:flex lg:space-x-[52px] py-[50px] ">
             <div className=" hidden lg:flex ">
               <span className="w-[2px] h-[130px] bg-[#065AF1] "></span>
               <Image

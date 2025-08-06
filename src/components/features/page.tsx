@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const FeaturesItems = () => {
@@ -20,7 +19,7 @@ const FeaturesItems = () => {
       }}
       className={styleClass}
     >
-      <div className="rounded-full flex justify-center items-center bg-[#065AF1] h-[92px] w-[92px] text-white">
+      <div className="rounded-full flex justify-center items-center bg-[#065AF1] lg:h-[92px] lg:w-[92px] h-[52px] w-[52px] text-white">
         <span className="text-white text-2xl "> {item.number} </span>
       </div>
       <div>
@@ -34,7 +33,7 @@ const FeaturesItems = () => {
     </div>
   );
 
-  const renderBottomBox = (item, index) => (
+  const renderBottomBox = (item,index) => (
     <div
       key={index}
       style={{
@@ -43,7 +42,7 @@ const FeaturesItems = () => {
       }}
       className="lg:py-[40px] py-[20px] flex flex-col justify-between lg:pl-[40px] pl-[20px] w-[354px]  lg:w-[392px] 2xl:w-[482px] md:h-[300px] lg:h-[450px] 2xl:h-[500px]  bg-white rounded-[40px] border border-[#065AF11A] shadow-[0px_20px_80px_-20px_#0000001A]"
     >
-      <div className="rounded-full flex justify-center items-center bg-[#065AF1] h-[92px] w-[92px] text-white">
+      <div className="rounded-full flex justify-center items-center bg-[#065AF1] lg:h-[92px] lg:w-[92px] h-[52px] w-[52px] text-white">
         <span className="text-white text-2xl "> {item.number} </span>
       </div>
       <div>
@@ -71,7 +70,7 @@ const FeaturesItems = () => {
     <div>
       {chunkedRows.map((chunk, chunkIndex) => (
         <React.Fragment key={chunkIndex}>
-          <div className="flex flex-col justify-center items-center md:flex-row md:space-x-[24px] w-full pt-[50px]">
+          <div className="flex flex-col justify-center items-center space-y-2 md:flex-row md:space-x-[24px] w-full ">
             {chunk.topRow.slice(0, 2).map((item, index) =>
               renderBox(
                 item,
@@ -80,7 +79,7 @@ const FeaturesItems = () => {
               )
             )}
           </div>
-          <div className="flex flex-col md:flex-row md:space-x-[24px] justify-center items-center w-full lg:pt-[24px] pt-[16px]">
+          <div className="flex flex-col md:flex-row md:space-x-[24px] justify-center items-center w-full lg:pt-[24px] pt-[1px]">
             {chunk.topRow.slice(2, 4).map((item, index) =>
               renderBox(
                 item,
@@ -89,7 +88,7 @@ const FeaturesItems = () => {
               )
             )}
           </div>
-          <div className="w-full flex flex-wrap justify-center items-center md:space-x-[24px] space-y-[20px] py-10">
+          <div className="w-full flex flex-wrap justify-center items-center md:space-x-[24px] lg:space-y-[20px] space-y-[10px] py-10">
             {chunk.bottomRow.map((item, index) => renderBottomBox(item, index))}
           </div>
         </React.Fragment>
