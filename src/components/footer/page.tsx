@@ -70,6 +70,12 @@ export default function Footer() {
               F.A.Q
             </Link>
             <Link
+              href="/about"
+              className="text-[#7A7A7A] hover:text-[#949494] font-inter text-[14px] not-italic font-semibold leading-[140%]"
+            >
+             About
+            </Link>
+            <Link
               href="/contact"
               className="text-[#7A7A7A] hover:text-[#949494] font-inter text-[14px] not-italic font-semibold leading-[140%]"
             >
