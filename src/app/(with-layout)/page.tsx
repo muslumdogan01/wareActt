@@ -47,7 +47,7 @@ export default function Home() {
         <div className="max-w-[1440px] mx-auto -mt-70 z-20 relative hidden lg:block">
           <InsightWeb />
         </div>
-        <div className="lg:max-w-[1440px] lg:mx-auto">
+        <div className="lg:max-w-[1440px] mt-[200px] lg:mx-auto">
           <FAQSection />
         </div>
 

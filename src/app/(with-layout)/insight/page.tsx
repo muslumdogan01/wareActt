@@ -124,7 +124,7 @@ const Insight = () => {
           </div>
         </div>
 
-        <div className="px-4 mt-[74px] grid grid-cols-1 justify-items-center  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-[24px]">
+        <div className="px-4 mt-[74px] mb-[100px] grid grid-cols-1 justify-items-center  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-[24px]">
           {insightItems.map((item, index) => (
             <Link href={`/insight/${item.slug}`} key={index}>
               <div className="lg:w-[288px] lg:h-[350px] w-[360px] h-[322px] 2xl:w-[350px] 2xl:h-[400px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col cursor-pointer">

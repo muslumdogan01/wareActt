@@ -78,11 +78,10 @@ export default function FAQSection() {
   };
 
   return (
-    <div className="w-full flex flex-col lg:flex-row lg:space-x-[88px] justify-center lg:items-start items-center rounded-xl px-4 py-[100px] lg:py-[250px]">
+    <div className="w-full flex flex-col lg:flex-row lg:space-x-[88px] justify-center lg:items-start items-center rounded-xl px-4 py-[100px] ">
       <div className="lg:min-w-[400px] flex flex-col justify-start text-left space-y-5">
         <h2 className="text-black text-center lg:text-left font-inter text-[36px] not-italic font-semibold leading-[1.32]">
-          F.A.Q Lorem ipsum <br />
-          dolor sit amet
+          F.A.Q 
         </h2>
         <Link
           href="/faq"

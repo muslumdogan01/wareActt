@@ -3,7 +3,8 @@ import React from "react";
 
 const AboutPage: React.FC = () => {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-40 text-black">
+  <div className="w-full relative bg-white 4xl:h-full">
+      <div className="max-w-6xl mx-auto px-6 py-40 text-black">
       {/* Hero Section */}
       <div className="text-left mb-20">
         <h1 className="text-4xl font-extrabold mb-4">About WareAct</h1>
@@ -20,7 +21,7 @@ const AboutPage: React.FC = () => {
             WareAct was created by a passionate team of logistics experts, software engineers, and business owners who deeply understand the everyday challenges of warehouse operations.
           </p>
           <p>
-            From inventory headaches to shipping delays, we've lived it — and built WareAct to solve it. Our platform helps you take control, eliminate bottlenecks, and deliver top-notch service to your customers.
+            From inventory headaches to shipping delays, we ve lived it — and built WareAct to solve it. Our platform helps you take control, eliminate bottlenecks, and deliver top-notch service to your customers.
           </p>
         </div>
       </section>
@@ -77,6 +78,7 @@ const AboutPage: React.FC = () => {
         </a>
       </section>
     </div>
+  </div>
   );
 };
 
