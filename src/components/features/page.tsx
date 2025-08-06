@@ -1,6 +1,12 @@
 "use client"
 import React, { useEffect, useState } from "react";
 
+interface FeatureItem {
+  number: number;
+  title: string;
+  description: string;
+}
+
 const FeaturesItems = () => {
   const [features, setFeatures] = useState([]);
 
@@ -10,7 +16,11 @@ const FeaturesItems = () => {
       .then((data) => setFeatures(data));
   }, []);
 
-  const renderBox = (item, index, styleClass) => (
+  const renderBox = (
+    item: FeatureItem,
+    index: number,
+    styleClass: string
+  ) => (
     <div
       key={index}
       style={{
@@ -20,7 +30,7 @@ const FeaturesItems = () => {
       className={styleClass}
     >
       <div className="rounded-full flex justify-center items-center bg-[#065AF1] lg:h-[92px] lg:w-[92px] h-[52px] w-[52px] text-white">
-        <span className="text-white text-2xl "> {item.number} </span>
+        <span className="text-white text-2xl ">{item.number}</span>
       </div>
       <div>
         <h1 className="pt-[30px] lg:pt-[40px] font-normal text-[20px] lg:text-[30px] leading-[1.22] text-black ">
@@ -33,7 +43,7 @@ const FeaturesItems = () => {
     </div>
   );
 
-  const renderBottomBox = (item,index) => (
+  const renderBottomBox = (item: FeatureItem, index: number) => (
     <div
       key={index}
       style={{
