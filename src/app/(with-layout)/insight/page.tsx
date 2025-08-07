@@ -22,7 +22,7 @@ interface InsightItem {
 
 const Insight = () => {
   const [insights, setInsights] = useState<InsightItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchInsights = async () => {
@@ -31,7 +31,7 @@ const Insight = () => {
         const json = await res.json();
         setInsights(json.data);
       } catch (error) {
-        console.error("Failed to fetch insights:", error);
+        console.error("Failed to fetch insightss:", error);
       } finally {
         setIsLoading(false);
       }
