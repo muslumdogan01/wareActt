@@ -22,7 +22,7 @@ interface InsightItem {
 
 const Insight = () => {
   const [insights, setInsights] = useState<InsightItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
     const fetchInsights = async () => {
