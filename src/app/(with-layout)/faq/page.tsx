@@ -8,47 +8,67 @@ const faqData = [
   {
     question: "How can WareAct benefit my business?",
     answer:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "WareAct is designed to simplify and streamline your 3PL warehouse operations. From real-time inventory tracking to automated order management and seamless integration with marketplaces and carriers, WareAct helps reduce manual work, minimize errors, and improve customer satisfaction — so you can focus on growing your business.WareAct is designed to simplify and streamline your 3PL warehouse operations. From real-time inventory tracking to automated order management and seamless integration with marketplaces and carriers, WareAct helps reduce manual work, minimize errors, and improve customer satisfaction — so you can focus on growing your business.",
   },
   {
     question: "Is WareAct suitable for small warehouses?",
     answer:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "Absolutely! WareAct is built to scale. Whether you’re managing a single warehouse or multiple locations, our flexible system can adapt to your needs. Small warehouses benefit from the same powerful tools and automation as larger operations, without unnecessary complexity.",
   },
   {
     question: "Can WareAct integrate with marketplaces?",
     answer:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "Yes! WareAct integrates with popular eCommerce marketplaces like Amazon, eBay, Shopify, WooCommerce, and more. These integrations ensure that orders, inventory, and shipment updates flow automatically between your warehouse and your sales channels.",
   },
   {
     question: "Can WareAct integrate with carriers?",
     answer:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "Definitely. WareAct supports direct integrations with major carriers such as UPS, FedEx, DHL, USPS, and many others. This allows you to generate shipping labels, track shipments, and automate notifications — all within the platform.",
   },
   {
     question: "Is WareAct cloud-based or on-premise?",
     answer:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "WareAct is a cloud-based solution, meaning you can access your warehouse data anytime, anywhere, from any device with an internet connection. No expensive hardware, installations, or maintenance are required on your side.",
   },
   {
     question: "How secure is WareAct?",
     answer:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "Security is a top priority at WareAct. We use industry-leading encryption protocols, secure data centers, and regular backups to ensure your business data is protected 24/7. You can trust WareAct to keep your sensitive information safe.",
   },
   {
     question: "How do I get started with WareAct?",
     answer:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "Getting started is easy! Reach out to our team, and we’ll guide you through the onboarding process — from setup and configuration to training and go-live support. We’re here to ensure a smooth and successful start. You can also just sign up and start using immediately.",
   },
   {
     question: "What is the cost of WareAct software?",
     answer:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "Our pricing is designed to fit businesses of all sizes. We modeled a pricing that will ask payment for each transaction made. Warehouse owner only pays $29 per month and the warehouse customers pay for their transactions.",
   },
   {
     question: "How does the pricing work with WareAct?",
     answer:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "WareAct offers flexible, transaction-based pricing. Your customers only pay for what they use — no hidden fees. Let's say a customer asked from you to prepare an FBA box and paid you $150, s/he will also pay $4.5 technology fee and it will come to us. Warehouse owner only pays $29 subscription fee per month.",
+  },
+  {
+    question: "How long does it take to implement WareAct?",
+    answer:
+      "It only takes a few minutes to implement WareAct for your warehouse. You can also show your domain, your logo and brand all over the software.",
+  },
+  {
+    question: "Do you offer training for new users?",
+    answer:
+      "We have training videos within the software for both warehouse customers and warehouse employees. These videos will be enough to learn everything about the software.",
+  },
+  {
+    question: "How often is WareAct updated?",
+    answer:
+      "WareAct has a lot to offer and limitless updates are on the way to help your business. New features will bring you more customers and more profit.",
+  },
+  {
+    question: "Is there a mobile app available for WareAct?",
+    answer:
+      "WareAct was designed with a mobile friendly user interface. However, a mobile app will be available soon on App Store and Google Play very soon.",
   },
 ];
 
