@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const carriers = [
   {
-    imgSrc: "/images/content/fed.jpg",
+    imgSrc: "/images/content/fed.png",
     descriptionLines:
       "Get fast, reliable shipping with full FedEx integration from label generation to tracking.",
   },

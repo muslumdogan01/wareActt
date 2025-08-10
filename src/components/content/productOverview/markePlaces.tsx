@@ -18,7 +18,7 @@ export default function Marketplaces() {
   ];
 
   const carrierBrands = [
-    { name: "Amazon", logo: "/images/content/fed.jpg" },
+    { name: "Amazon", logo: "/images/content/fed.png" },
     { name: "Amazon", logo: "/images/content/ups.png" },
     { name: "Amazon", logo: "/images/content/dhl.png" },
     { name: "Amazon", logo: "/images/content/asen.png" },
@@ -79,8 +79,8 @@ export default function Marketplaces() {
                 <Image
                   src={brand.logo}
                   alt="Header background"
-                  width={74}
-                  height={30}
+                  width={100}
+                  height={100}
                 />
               </div>
             ))}
@@ -104,8 +104,8 @@ export default function Marketplaces() {
                 <Image
                   src={brand.logo}
                   alt="Header background"
-                  width={74}
-                  height={30}
+                  width={100}
+                  height={100}
                 />
               </div>
             ))}
