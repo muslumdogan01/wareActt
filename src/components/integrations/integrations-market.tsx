@@ -35,14 +35,14 @@ const integrations = [
     ],
   },
   {
-    imgSrc: "/images/content/tiktok.png",
+    imgSrc: "/images/integrations/tiktok.png",
     descriptionLines: [
       "Sync your TikTok Shop with our system and ",
       "turn trends into tracked shipments with ease.",
     ],
   },
   {
-    imgSrc: "/images/content/etsy.png",
+    imgSrc: "/icons/features/etsy.svg",
     descriptionLines: [
       "Enhance your Etsy fulfillment with real-time ",
       "integration that keeps your creative business moving.",
@@ -67,7 +67,7 @@ const IntegrationsMarket = () => {
                   width={0}
                   height={0}
                   sizes="auto"
-                  className="lg:h-auto w-[120px] lg:w-auto max-h-[50px] object-contain"
+                  className="lg:h-[50px] w-[120px] lg:w-[150px] object-left object-contain"
                   unoptimized
                 />
               </div>

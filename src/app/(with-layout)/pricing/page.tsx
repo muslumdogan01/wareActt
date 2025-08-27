@@ -88,7 +88,7 @@ const Pricing = () => {
                   </div>
                   <div>
                     <button className="mt-[40px] lg:mt-0 text-white text-sm w-full font-normal leading-[1.46] cursor-pointer  border border-white rounded-full px-4 py-2 hover:bg-white hover:text-blue-500 transition">
-                    Warehouse owner pays	
+                    Warehouse Owner Pays	
                     </button>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ const Pricing = () => {
                 <div className="flex flex-col justify-between h-full ">
                   <div className="w-full text-left pl-[40px]">
                     <div className="pt-[56px] text-black font-normal text-[40px] leading-[1.4]">
-                      $0.40
+                      $0.15
                     </div>
                     <p className="pt-[10px] text-black font-normal text-[18px] leading-[1.46]">
                       Per Order
@@ -179,6 +179,7 @@ const Pricing = () => {
                       subscription fee for using our platform.
                     </p>
                   </div>
+                  <div className="my-12 h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
 
                   <div>
                     <p className="font-semibold mt-3">Sample Order: FBA Pallet</p>
@@ -199,6 +200,7 @@ const Pricing = () => {
                       maintain access to the system and tools we provide.
                     </p>
                   </div>
+                  <div className="my-12 h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
 
                   <div>
                     <p className="font-semibold">

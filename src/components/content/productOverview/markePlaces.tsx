@@ -14,7 +14,7 @@ export default function Marketplaces() {
     { name: "eBay", logo: "/icons/features/erbay.svg" },
     { name: "Walmart", logo: "/icons/features/walmart.svg" },
     { name: "Etsy", logo: "/icons/features/etsy.svg" },
-    { name: "tiktok", logo: "/images/content/tiktok.png" },
+    { name: "tiktok", logo: "/images/integrations/tiktok.png" },
   ];
 
   const carrierBrands = [
@@ -79,8 +79,11 @@ export default function Marketplaces() {
                 <Image
                   src={brand.logo}
                   alt="Header background"
-                  width={100}
-                  height={100}
+                  width={0}
+                  height={0}
+                  sizes="auto"
+                  className="w-[126px] h-[30px] object-contain"
+                  unoptimized
                 />
               </div>
             ))}
@@ -104,8 +107,8 @@ export default function Marketplaces() {
                 <Image
                   src={brand.logo}
                   alt="Header background"
-                  width={100}
-                  height={100}
+                  width={80}
+                  height={80}
                 />
               </div>
             ))}
