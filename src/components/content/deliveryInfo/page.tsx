@@ -5,9 +5,10 @@ const DeliveryInfo = () => {
     <div className="w-full flex justify-center items-center px-4  ">
       {/* Ana container: yan yana hizalama */}
       <div className="lg:max-w-[1280px] w-full flex py-[100px]  lg:py-15  flex-col lg:flex-row gap-4 lg:gap-16 justify-center items-center relative">
-      <h2 className="lg:absolute z-40 lg:top-28 text-center lg:left-42 text-[35px] font-semibold leading-[1.32] text-black">
-              Teslimat, Paketleme <br className="lg:hidden block" /> ve <br className="hidden lg:block" /> Kargo Hizmeti Sunuyoruz!
-            </h2>
+        <h2 className="lg:absolute z-40 lg:top-28 text-center lg:left-42 text-[35px] font-semibold leading-[1.32] text-black">
+          Designed for Smart <br className="lg:hidden block" /> ve{" "}
+          <br className="hidden lg:block" /> Management of 3PLs
+        </h2>
         <div className="w-full lg:w-1/2 lg:h-[500px] relative flex justify-center items-center ">
           {/* Orta kutu */}
           <div className="hidden lg:block w-[500px] h-[462px] absolute left-1/2 transform -translate-x-1/2 z-30">
@@ -17,7 +18,6 @@ const DeliveryInfo = () => {
               fill
               className="object-contain"
             />
-
           </div>
 
           {/* Alt kutular */}
@@ -44,19 +44,19 @@ const DeliveryInfo = () => {
         <div className="w-full lg:w-1/2">
           <div className="lg:max-w-[496px] text-[18px] text-center lg:text-left leading-[1.6] font-normal text-[#333] space-y-4">
             <p>
-              İhtiyacınız olan her türlü teslimat, paketleme ve kargo işlemlerini
-              hızlı ve güvenilir bir şekilde gerçekleştiriyoruz. Profesyonel
-              ekibimiz, gönderilerinizi en iyi şekilde paketleyerek hasar riskini
-              minimize eder ve zamanında teslimat garantisi sunar. İster küçük bir
-              zarf, ister büyük bir koliyi gönderiyor olun, her gönderiye aynı
-              özeni gösteriyoruz.
+              Experience a powerful, intuitive platform designed to simplify
+              every step of warehouse operations. Gain real-time visibility,
+              automate key tasks, and keep your clients informed every moment.
+              Our software helps you work faster, reduce errors, and scale
+              effortlessly—no matter the size of your logistics network.
             </p>
             <p>
-              Yüksek kaliteli paketleme malzemeleriyle, ürünlerinizin güvende
-              olduğundan emin olabilirsiniz. Ayrıca, geniş kargo ağımız sayesinde
-              ulusal ve uluslararası gönderilerinizi hızlı ve güvenilir şekilde
-              ulaştırıyoruz. Tüm bu hizmetleri, bütçenize uygun fiyatlarla sunarak
-              işlerinizi kolaylaştırıyoruz.
+              We combine smart technology with a user-friendly experience to
+              help you deliver exceptional service. From onboarding to
+              day-to-day management, our platform ensures smooth operations and
+              satisfied clients. Stay ahead of the competition, unlock new
+              opportunities, and take your 3PL business to the next level with
+              confidence and control.
             </p>
           </div>
         </div>

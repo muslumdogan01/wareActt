@@ -33,8 +33,8 @@ const InsightWeb = () => {
         <h1 className="text-4xl text-black font-semibold leading-[1.3] ">
           Insight
         </h1>
-<Link href="/features" className="cursor-pointer hover:bg-blue-50 inline-flex items-center px-[20px] py-[10px] gap-[10px] rounded-[100px] border border-[#065AF1] text-[#065AF1] font-inter text-[14px] not-italic font-semibold leading-[140%]">
-  More Feature
+<Link href="/insight" className="cursor-pointer hover:bg-blue-50 inline-flex items-center px-[20px] py-[10px] gap-[10px] rounded-[100px] border border-[#065AF1] text-[#065AF1] font-inter text-[14px] not-italic font-semibold leading-[140%]">
+More Insight
 </Link>
       </div>
       <div className="flex w-full space-x-[24px]">

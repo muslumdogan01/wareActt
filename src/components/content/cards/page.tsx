@@ -10,7 +10,7 @@ const ReusableSlider = ({
 }) => {
   const data = [
     {
-      title: "Suspendisse <br/> mattis non leo",
+      title: "Easy & Fast<br/> Onboarding",
       icon:
         iconPosition === "bottom"
           ? "/icons/content/testiCircle.svg"
@@ -22,7 +22,7 @@ const ReusableSlider = ({
       hasBorder: iconPosition === "bottom",
     },
     {
-      title: "Suspendisse <br/> mattis non leo",
+      title: "Carrier & Marketplace <br/> Integrations",
       icon:
         iconPosition === "bottom"
           ? "/icons/content/testiCircle.svg"
@@ -34,7 +34,7 @@ const ReusableSlider = ({
       hasBorder: iconPosition === "bottom",
     },
     {
-      title: "Suspendisse <br/> mattis non leo",
+      title: "Smart Inventory <br/> Management",
       icon:
         iconPosition === "bottom"
           ? "/icons/content/testiCircle.svg"
@@ -49,9 +49,7 @@ const ReusableSlider = ({
 
   return (
     <div className="w-full overflow-hidden  lg:mt-[70px] md:flex  md:justify-center md:items-center">
-<Swiper
-spaceBetween={20} slidesPerView={"auto"} 
->
+      <Swiper spaceBetween={20} slidesPerView={"auto"}>
         {data.map((item, index) => (
           <SwiperSlide
             key={index}

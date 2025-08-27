@@ -23,7 +23,7 @@ const SliderCard = ({
     <div
       className={`relative ${width} ${height} max-w-[80vw] bg-white ${
         hasBorder ? "border border-[#C2C2C2] rounded-[30px] " : ""
-      } shadow-[0_4px_20px_rgba(0,0,0,0.05)] lg:shadow-none m-8 lg:m-0 rounded-2xl p-6  shrink-0 flex flex-col ${
+      } shadow-[0_4px_20px_rgba(0,0,0,0.05)] lg:shadow-none m-8 lg:m-0 rounded-[40px] p-6  shrink-0 flex flex-col ${
         iconPosition === "top"
           ? "justify-between text-[20px] font-normal leading-[1.2] text-black "
           : "justify-end space-y-[10px] text-[26px] font-normal leading-[1.2] text-black"

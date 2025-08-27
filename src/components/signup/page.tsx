@@ -30,7 +30,7 @@ export default function SignupCard() {
               className="w-[329px] cursor-pointer lg:w-[104px] h-14 lg:h-[70px]  bg-black hover:bg-black/60 text-white rounded-[10px] lg:rounded-bl-none lg:rounded-tl-none  font-medium transition-colors"
               type="button"
             >
-              Join
+              Start
             </button>
           </div>
         </div>

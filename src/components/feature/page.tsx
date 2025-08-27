@@ -14,23 +14,23 @@ const Feature = () => {
               <div className="space-y-6 absolute top-0 left-0">
                 <div>
                   <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                    and discover
+                  Every feature needed 
                     <br />
-                    moooooore features
+                    in one software.
                   </h2>
                   <p className="text-gray-600 text-lg leading-relaxed">
-                    Possimus cicuta non depromo
+                  Our user experience team has made tons
                     <br />
-                    tamquam cornu abbas unus cinis
+                    of researches to optimize the features needed
                     <br />
-                    verbum tamdiu damnatio.
+                    by any kind and size of warehouse. 
                   </p>
                 </div>
                 <Link
                   href="/features"
                   className="cursor-pointer hover:bg-blue-50 inline-flex items-center px-[20px] py-[10px] gap-[10px] rounded-[100px] border border-[#065AF1] text-[#065AF1] font-inter text-[14px] not-italic font-semibold leading-[140%]"
                 >
-                  More Feature
+                  All Feature
                 </Link>
               </div>
               <div className="grid grid-cols-1 gap-16 items-center  ">
@@ -48,7 +48,7 @@ const Feature = () => {
                         </div>
                         <div>
                           <h3 className="text-black font-inter text-[26px] not-italic font-normal leading-[122%]">
-                            Suspendisse <br /> mattis non leo
+                          Smart Shipping <br /> Rules
                           </h3>
                         </div>
                       </div>
@@ -65,7 +65,7 @@ const Feature = () => {
                         </div>
                         <div>
                           <h3 className="text-black font-inter text-[26px] not-italic font-normal leading-[122%]">
-                            Suspendisse <br /> mattis non leo
+                          Dynamic <br /> Billing
                           </h3>
                         </div>
                       </div>
@@ -86,7 +86,7 @@ const Feature = () => {
                         </div>
                         <div>
                           <h3 className="text-black font-inter text-[26px] not-italic font-normal leading-[122%]">
-                            Suspendisse <br /> mattis non leo
+                          Customizable Roles <br /> & Users Management
                           </h3>
                         </div>
                       </div>
@@ -104,7 +104,7 @@ const Feature = () => {
                         </div>
                         <div>
                           <h3 className="text-black font-inter text-[26px] not-italic font-normal leading-[122%]">
-                            Suspendisse <br /> mattis non leo
+                          Advanced Notification <br /> Management
                           </h3>
                         </div>
                       </div>
@@ -122,7 +122,7 @@ const Feature = () => {
                         </div>
                         <div>
                           <h3 className="text-black font-inter text-[26px] not-italic font-normal leading-[122%]">
-                            Suspendisse <br /> mattis non leo
+                          Smart Price <br /> Calculator 
                           </h3>
                         </div>
                       </div>
