@@ -1,4 +1,5 @@
 "use client";
+import BookDemoButton from "@/components/bookDemo/page";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -27,9 +28,9 @@ const Hero = () => {
                 faster, smarter, <br className="hidden lg:block" /> and more
                 accurate <br className="lg:hidden block" /> fulfillment.
               </p>
-              <button className="cursor-pointer hover:bg-white hover:border-[#065AF1] hover:border-[1px] transition-all duration-300 ease-in-out hover:text-[#065AF1] block lg:hidden mt-[30px] bg-[#065AF1] text-white  w-[179px] h-[40px] rounded-[100px]">
-                Book a Demo
-              </button>
+          <div className="md:hidden mt-4">
+          <BookDemoButton/>
+          </div>
 
               <Link href="/pricing">
                 <button className="cursor-pointer hover:bg-white hover:border-[#065AF1] hover:border-[1px] transition-all duration-300 ease-in-out hover:text-[#065AF1] hidden lg:block mt-[30px] bg-[#065AF1] text-white w-[179px] h-[40px] rounded-[100px]">

@@ -360,10 +360,7 @@ const SignUpForm: React.FC = () => {
             </div>
           </div>
 
-          {formData.country &&
-            renderInput("eoriNumber", "text", "EORI Number (optional)")}
-
-          <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2">
             <input
               type="checkbox"
               checked={accepted}

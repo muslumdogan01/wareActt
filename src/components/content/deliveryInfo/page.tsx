@@ -6,7 +6,7 @@ const DeliveryInfo = () => {
       {/* Ana container: yan yana hizalama */}
       <div className="lg:max-w-[1280px] w-full flex py-[100px]  lg:py-15  flex-col lg:flex-row gap-4 lg:gap-16 justify-center items-center relative">
         <h2 className="lg:absolute z-40 lg:top-28 text-center lg:left-42 text-[35px] font-semibold leading-[1.32] text-black">
-          Designed for Smart <br className="lg:hidden block" /> ve{" "}
+          Designed for Smart <br className="lg:hidden block" />{" "}
           <br className="hidden lg:block" /> Management of 3PLs
         </h2>
         <div className="w-full lg:w-1/2 lg:h-[500px] relative flex justify-center items-center ">
