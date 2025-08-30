@@ -1,8 +1,54 @@
+"use client";
+import React, { useState } from "react";
 import FAQSection from "@/components/faq/page";
 import Image from "next/image";
-import React from "react";
 
 const Contact = () => {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle"
+  );
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    // honeypot (botlar için)
+    if ((fd.get("website") as string)?.trim()) {
+      form.reset();
+      return;
+    }
+
+    const payload = {
+      name: (fd.get("name") as string) || "",
+      company: (fd.get("company") as string) || "",
+      email: (fd.get("email") as string) || "",
+      phone: (fd.get("phone") as string) || "",
+      message: (fd.get("message") as string) || "",
+      website: (fd.get("website") as string) || "",
+    };
+
+    try {
+      setStatus("loading");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        form.reset();
+        setStatus("success");
+        // 4 sn sonra mesajı gizle (opsiyonel)
+        setTimeout(() => setStatus("idle"), 4000);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <div className="w-full relative bg-white 4xl:h-full ">
       <div className="lg:bg-[url('/icons/featuresPage/headerBg.svg')] lg:bg-cover lg:bg-center lg:h-[348px] w-full ">
@@ -53,31 +99,30 @@ const Contact = () => {
               </p>
 
               <div className="pt-[30px] flex space-x-4 ">
-                {" "}
                 <Image
                   src="/icons/contact/phone.svg"
                   alt="phone Icon"
                   width={24}
                   height={24}
-                />{" "}
-                <span>+1 (908) 244-6809 </span>{" "}
+                />
+                <span>+1 (908) 244-6809 </span>
               </div>
               <div className="pt-[10px] flex space-x-4">
-                {" "}
                 <Image
                   src="/icons/contact/email.svg"
                   alt="email Icon"
                   width={24}
                   height={24}
-                />{" "}
-                <span>support@wareact.com </span>{" "}
+                />
+                <span>support@wareact.com </span>
               </div>
             </div>
           </div>
+
           <div
-  className="flex flex-col md:w-[808px] h-[650px] md:rounded-[40px] md:border md:border-[rgba(6,90,241,0.1)] 
+            className="flex flex-col md:w-[808px] h-[650px] md:rounded-[40px] md:border md:border-[rgba(6,90,241,0.1)] 
              shadow-none md:shadow-[0px_20px_80px_-20px_#0000001A,inset_0px_0px_30px_-4px_#0A28BF0F]"
->
+          >
             <div className="h-full md:pl-[40px] pl-[20px] pt-[40px]  flex flex-col">
               <div className="hidden md:block">
                 <Image
@@ -95,29 +140,44 @@ const Contact = () => {
                 We are here to help.
               </p>
 
-              <form className="w-full mt-[30px] pr-[40px] ">
+              <form className="w-full mt-[30px] pr-[40px]" onSubmit={handleSubmit}>
+                {/* honeypot */}
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input
                     type="text"
+                    name="name"
                     placeholder="First & Last Name"
                     className="w-full px-4 py-3 rounded-md border border-[rgba(0,0,0,0.1)]  text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <input
                     type="text"
+                    name="company"
                     placeholder="Company Name"
                     className="w-full px-4 py-3 rounded-md border border-[rgba(0,0,0,0.1)]  text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
+                    required
                     className="w-full px-4 py-3 rounded-md border border-[rgba(0,0,0,0.1)]  text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <input
                     type="tel"
+                    name="phone"
                     placeholder="Phone number"
                     className="w-full px-4 py-3 rounded-md border border-[rgba(0,0,0,0.1)]  text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
+
                 <div className="w-full pt-4">
                   <textarea
                     name="message"
@@ -126,18 +186,36 @@ const Contact = () => {
                     placeholder="Type your message here..."
                     className="w-full p-4 border border-gray-300 rounded-lg resize-none overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
                     style={{ maxHeight: "200px" }}
+                    required
                   ></textarea>
                 </div>
+
                 <button
                   type="submit"
-                  className="w-full mt-6 py-3 cursor-pointer bg-[#065AF1] text-white text-sm font-medium rounded-full hover:bg-blue-700 transition"
+                  disabled={status === "loading"}
+                  className="w-full mt-6 py-3 cursor-pointer bg-[#065AF1] text-white text-sm font-medium rounded-full hover:bg-blue-700 transition disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                 Send Message	
+                  {status === "loading" ? "Sending..." : "Send Message"}
                 </button>
+
+                {/* başarı / hata bildirimi (stili sade tutuyoruz) */}
+                <div aria-live="polite" className="min-h-[20px]">
+                  {status === "success" && (
+                    <p className="mt-3 text-sm text-green-600">
+                      Message sent successfully ✅
+                    </p>
+                  )}
+                  {status === "error" && (
+                    <p className="mt-3 text-sm text-red-600">
+                      Something went wrong. Please try again.
+                    </p>
+                  )}
+                </div>
               </form>
             </div>
           </div>
         </div>
+
         <div className="w-full bg-[rgba(0,0,0,0.08)] mt-[100px] h-[1px]"></div>
 
         <div className="lg:max-w-[1440px] lg:mx-auto">
