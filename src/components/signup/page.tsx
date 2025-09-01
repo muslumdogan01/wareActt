@@ -2,9 +2,9 @@
 import { useRef, useState } from "react";
 
 
-const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSeT1fjHsNvAM6L4FRHieG-wPZFrcru3pLCsjdlDzN5VVamJfQ/formResponse";
+const FORM_ACTION = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf15x8Xc8RefIRhfKkKTLlggVUssu8vIDRikWJk05NDaFFFXQ/formResponse"
 
-const ENTRY_ID = "entry.266831941"; 
+const ENTRY_ID = "emailAddress";
 
 export default function SignupCard() {
   const [email, setEmail] = useState("");
@@ -46,12 +46,12 @@ export default function SignupCard() {
             </h2>
 
             <div className="space-y-5 lg:space-y-0 flex flex-col lg:flex-row justify-center items-center">
-              {/* Honeypot (botlara tuzak) */}
+            
               <input type="text" name="company" className="hidden" tabIndex={-1} aria-hidden="true" />
 
               <input
                 type="email"
-                name={ENTRY_ID}            // 🔥 kritik: entry id burada
+                name={ENTRY_ID}     
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
