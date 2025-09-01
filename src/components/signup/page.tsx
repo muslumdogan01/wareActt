@@ -64,7 +64,7 @@ export default function SignupCard() {
                 type="submit"
                 disabled={status === "loading"}
               >
-                {status === "loading" ? "…" : "Start"}
+                {status === "loading" ? "…" : "Join"}
               </button>
 
     
