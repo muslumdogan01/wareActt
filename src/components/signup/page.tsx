@@ -12,13 +12,11 @@ export default function SignupCard() {
   const [msg, setMsg] = useState("");
   const submittedRef = useRef(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault(); //ok
+  function onSubmit() {
     if (!email) return;
     setStatus("loading");
     setMsg("");
-    submittedRef.current = true;
-  
+    submittedRef.current = true; 
   }
 
   function onIframeLoad() {
