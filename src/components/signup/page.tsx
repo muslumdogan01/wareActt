@@ -13,7 +13,7 @@ export default function SignupCard() {
   const submittedRef = useRef(false);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+    e.preventDefault(); //ok
     if (!email) return;
     setStatus("loading");
     setMsg("");
