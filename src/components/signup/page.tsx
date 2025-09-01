@@ -12,8 +12,8 @@ export default function SignupCard() {
   const [msg, setMsg] = useState("");
   const submittedRef = useRef(false);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     if (!email) return;
     setStatus("loading");
     setMsg("");
