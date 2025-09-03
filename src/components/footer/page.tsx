@@ -86,7 +86,7 @@ export default function Footer() {
 
         {/* Social icons */}
         <div className="flex justify-center mt-[50px] md:mt-0 space-x-4">
-          <Link href="#" className="hover:opacity-80 transition-opacity">
+          <Link href="https://www.facebook.com/people/WareAct-3PL-Warehouse-Management-Software/61580201852225/" className="hover:opacity-80 transition-opacity">
             <SocialIcon name="Facebook" />
             <span className="sr-only">Facebook</span>
           </Link>
@@ -94,11 +94,11 @@ export default function Footer() {
             <SocialIcon name="Twitter" />
             <span className="sr-only">Twitter</span>
           </Link>
-          <Link href="#" className="hover:opacity-80 transition-opacity">
+          <Link href="https://www.instagram.com/wareactcom/" className="hover:opacity-80 transition-opacity">
             <SocialIcon name="Instagram" />
             <span className="sr-only">Instagram</span>
           </Link>
-          <Link href="#" className="hover:opacity-80 transition-opacity">
+          <Link href="https://www.youtube.com/@WareAct" className="hover:opacity-80 transition-opacity">
             <SocialIcon name="YouTube" />
             <span className="sr-only">YouTube</span>
           </Link>
