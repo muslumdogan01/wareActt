@@ -11,28 +11,23 @@ interface SlideData {
 const slides: SlideData[] = [
   {
     image: "/images/content/mobileDash.png",
-    title: "A more innovative<br/>experience",
+    title: "User Friendly<br/>Interfaces",
     description:
-      "Possimus cicuta non depromo tamquam<br/>cornu abbas unus cinis verbum<br/>tamdiu damnatio.",
+      "We designed with warehouse<br/>managers and customers for<br/>the most efficient use.",
   },
   {
     image: "/images/content/mobileDash.png",
-    title: "A more innovative<br/>experience",
+    title: "Easy to Handle<br/>Warehouse Processes",
     description:
-     "Possimus cicuta non depromo tamquam<br/>cornu abbas unus cinis verbum<br/>tamdiu damnatio.",
+     "Standardized smart<br/>processes for world-class<br/>warehousing. No need<br/>for employee trainings.",
   },
   {
     image: "/images/content/mobileDash.png",
-    title: "A more innovative<br/>experience",
+    title: "Unlimited Users<br/>and Clients",
     description:
-      "Possimus cicuta non depromo tamquam<br/>cornu abbas unus cinis verbum<br/>tamdiu damnatio.",
+      "Opportunity to handle<br/>thousands of clients<br/>and employees with <br/>one subscription.",
   },
-  {
-    image: "/images/content/mobileDash.png",
-    title: "A more innovative<br/>experience",
-    description:
-      "Possimus cicuta non depromo tamquam<br/>cornu abbas unus cinis verbum<br/>tamdiu damnatio.",
-  },
+
 ];
 
 const MobileDashboard = () => {

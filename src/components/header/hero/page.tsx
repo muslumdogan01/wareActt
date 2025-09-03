@@ -17,7 +17,7 @@ const Hero = () => {
             </h1>
 
             <h1 className="text-4xl md:text-[56px] block lg:hidden text-center font-semibold leading-[1.22] text-black">
-              Precision-Driven 3PL Software for Next-Level Logistics
+              3PL Warehouse Management Software for Next Level Logistics
             </h1>
             <div className="flex flex-col lg:items-start justify-center items-center">
               <p className="text-center lg:text-left mt-[50px] lg:mt-0 text-[18px] leading-[1.46] font-normal">
@@ -28,9 +28,9 @@ const Hero = () => {
                 faster, smarter, <br className="hidden lg:block" /> and more
                 accurate <br className="lg:hidden block" /> fulfillment.
               </p>
-          <div className="md:hidden mt-4">
-          <BookDemoButton/>
-          </div>
+              <div className="md:hidden mt-4">
+                <BookDemoButton />
+              </div>
 
               <Link href="/pricing">
                 <button className="cursor-pointer hover:bg-white hover:border-[#065AF1] hover:border-[1px] transition-all duration-300 ease-in-out hover:text-[#065AF1] hidden lg:block mt-[30px] bg-[#065AF1] text-white w-[179px] h-[40px] rounded-[100px]">
