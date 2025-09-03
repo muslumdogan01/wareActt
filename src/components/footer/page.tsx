@@ -90,10 +90,7 @@ export default function Footer() {
             <SocialIcon name="Facebook" />
             <span className="sr-only">Facebook</span>
           </Link>
-          <Link href="#" className="hover:opacity-80 transition-opacity">
-            <SocialIcon name="Twitter" />
-            <span className="sr-only">Twitter</span>
-          </Link>
+  
           <Link href="https://www.instagram.com/wareactcom/" className="hover:opacity-80 transition-opacity">
             <SocialIcon name="Instagram" />
             <span className="sr-only">Instagram</span>
