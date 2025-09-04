@@ -6,7 +6,7 @@ import FAQSection from "@/components/faq/page";
 import SignupCard from "@/components/signup/page";
 import { useEffect, useState } from "react";
 
-/** ---------------- Types (both shapes supported) ---------------- */
+/** ---------------- Types ---------------- */
 
 interface MediaFormat {
   url: string;
@@ -29,13 +29,19 @@ type MediaFlat = {
 
 type Media = MediaV4 | MediaFlat;
 
+interface Tag {
+  id: number;
+  label: string;
+}
+
 interface InsightFlat {
   id: number;
   title?: string;
   slug?: string;
   image?: Media;
+  coverImage?: Media;
   description?: unknown;
-  // ... diğer alanlar
+  tags?: Tag[];
 }
 
 interface InsightAttr {
@@ -44,7 +50,9 @@ interface InsightAttr {
     title?: string;
     slug?: string;
     image?: Media;
+    coverImage?: Media;
     description?: unknown;
+    tags?: { data: { id: number; attributes: { label: string } }[] };
   };
 }
 
@@ -69,28 +77,64 @@ function pickSlug(item?: Insight) {
 }
 
 function pickImagePath(item?: Insight): string | null {
-  // v4 attributes -> formats.medium -> url
   const a = (item as InsightAttr)?.attributes;
-  const v4Medium = a?.image && "data" in a.image
-    ? a.image?.data?.attributes?.formats?.medium?.url
-    : undefined;
-  const v4Raw = a?.image && "data" in a.image
-    ? a.image?.data?.attributes?.url
-    : undefined;
 
-  // flat -> formats.medium / url
-  const flat = (item as InsightFlat)?.image as MediaFlat | undefined;
+  const media = a?.coverImage || a?.image;
+
+  const v4Medium =
+    media && "data" in media
+      ? media?.data?.attributes?.formats?.medium?.url
+      : undefined;
+
+  const v4Raw =
+    media && "data" in media ? media?.data?.attributes?.url : undefined;
+
+  const flat = ((item as InsightFlat)?.coverImage ||
+    (item as InsightFlat)?.image) as MediaFlat | undefined;
+
   const flatMedium = flat?.formats?.medium?.url;
   const flatRaw = flat?.url;
 
   return v4Medium ?? v4Raw ?? flatMedium ?? flatRaw ?? null;
 }
 
-function toAbsolute(src: string | null): string {
+function pickDescription(item?: Insight): string {
+  const desc =
+    (item as InsightAttr)?.attributes?.description ??
+    (item as InsightFlat)?.description ??
+    "";
+
+  if (typeof desc === "string") return desc;
+  if (
+    typeof desc === "object" &&
+    desc !== null &&
+    Array.isArray(desc) &&
+    "children" in desc[0] &&
+    Array.isArray(desc[0].children) &&
+    typeof desc[0].children[0]?.text === "string"
+  ) {
+    return desc[0].children[0].text;
+  }
+  return "No description available.";
+}
+
+function pickTags(item?: Insight): string[] {
+  const attrTags = (item as InsightAttr)?.attributes?.tags?.data;
+  if (attrTags) return attrTags.map((tag) => tag.attributes.label);
+
+  const flatTags = (item as InsightFlat)?.tags;
+  if (flatTags) return flatTags.map((tag) => tag.label);
+
+  return [];
+}
+
+function toAbsolute(src: string | null | undefined): string {
   if (!src) return "/images/Placeholder.png";
   if (src.startsWith("http")) return src;
-  // Strapi genelde /uploads/... döner
-  return `${process.env.NEXT_PUBLIC_CMS_API_URL}${src}`;
+
+  const base = process.env.NEXT_PUBLIC_CMS_API_URL?.replace(/\/$/, "") ?? "";
+  const path = src.startsWith("/") ? src : `/${src}`;
+  return `${base}${path}`;
 }
 
 /** ---------------- Page ---------------- */
@@ -103,7 +147,7 @@ const InsightPage = () => {
     const fetchInsights = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_CMS_API_URL}/api/insights?populate=*`,
+          `${process.env.NEXT_PUBLIC_CMS_API_URL}/api/articles?populate=*`,
           { cache: "no-store" }
         );
         const json: { data: Insight[] } = await res.json();
@@ -115,6 +159,7 @@ const InsightPage = () => {
         setIsLoading(false);
       }
     };
+
     fetchInsights();
   }, []);
 
@@ -122,6 +167,8 @@ const InsightPage = () => {
   const featuredImgSrc = toAbsolute(pickImagePath(featured));
   const featuredTitle = pickTitle(featured);
   const featuredSlug = pickSlug(featured);
+  const featuredDescription = pickDescription(featured);
+  const featuredTags = pickTags(featured);
 
   return (
     <div className="w-full relative bg-white">
@@ -151,24 +198,25 @@ const InsightPage = () => {
       <div className="container mx-auto">
         {/* FEATURED */}
         {featured && (
-          <div className="px-4 w-full mt-[80px]">
-            <div className="flex lg:flex-row flex-col w-full bg-black rounded-[30px]">
-              <div className="lg:w-1/2 w-[350px] md:w-full md:min-h-[390px] min-h-[290px] lg:min-h-[490px] relative">
+          <div className="px-4 lg:w-full mt-[80px]">
+            <div className="flex lg:flex-row flex-col lg:w-full bg-black rounded-[30px]">
+              <div className="lg:w-1/2 w-full md:min-h-[390px] min-h-[290px] lg:min-h-[490px] relative">
                 <Image
-                  src={featuredImgSrc || "/images/Placeholder.png"}
+                  src={featuredImgSrc}
                   alt={featuredTitle}
                   fill
                   className="object-cover p-[5px] rounded-[30px]"
                 />
               </div>
-              <div className="lg:w-1/2 lg:min-h=[490px] min-h-[440px] relative px-4 lg:px-0">
-                <div className="flex flex-col lg:pl-[70px] mt-[85px]">
+              <div className="lg:w-1/2 lg:min-h=[490px] min-h-[340px] relative px-4 lg:px-0">
+                <div className="flex flex-col lg:pl-[70px] lg:pr-[170px] lg:pt-[90px] pt-5 lg:pb-[50px] lg:h-full relative">
                   <h1 className="text-white font-inter lg:text-[30px] text-[26px] font-normal leading-[140%]">
                     {featuredTitle}
                   </h1>
                   <p className="mt-[10px] text-white font-inter text-[16px] font-normal leading-[26px]">
-                    Featured insight description goes here...
+                    {featuredDescription}
                   </p>
+          
                   {featuredSlug && (
                     <Link
                       href={`/insight/${featuredSlug}`}
@@ -177,6 +225,16 @@ const InsightPage = () => {
                       Read More
                     </Link>
                   )}
+                          <div className="flex flex-wrap gap-[10px] mt-3 lg:absolute lg:bottom-0 lg:pb-[50px]">
+                    {featuredTags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] text-white bg-[#065AF1] rounded-[30px] py-1 px-2"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -194,22 +252,33 @@ const InsightPage = () => {
               const title = pickTitle(item);
               const slug = pickSlug(item);
               const imgSrc = toAbsolute(pickImagePath(item));
+              const tags = pickTags(item);
 
               return (
                 <Link href={slug ? `/insight/${slug}` : "#"} key={item.id}>
                   <div className="lg:w-[288px] lg:h-[350px] w-[360px] h-[322px] 2xl:w-[350px] 2xl:h-[400px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col cursor-pointer">
                     <div className="relative w-full h-full">
                       <Image
-                        src={imgSrc || "/images/Placeholder.png"}
+                        src={imgSrc}
                         alt={title}
                         fill
                         className="object-cover rounded-lg"
                       />
                     </div>
-                    <div className="flex flex-col justify-end h-full pl-5">
+                    <div className="flex flex-col justify-end h-full pl-5 pb-3">
                       <h3 className="text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
                         {title}
                       </h3>
+                      <div className="flex flex-wrap gap-[10px]">
+                        {tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[10px] text-white bg-[#065AF1] rounded-[30px] py-1 px-2"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </Link>

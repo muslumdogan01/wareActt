@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useParams } from "next/navigation";
@@ -7,19 +8,28 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
+interface Tag {
+  id: number;
+  label: string;
+}
+
+interface CoverImage {
+  url: string;
+}
+
 interface InsightData {
   id: number;
   title: string;
   slug: string;
   description: string;
-  image?: {
-    url: string;
-  };
-  tags?: string[];
+  image?: CoverImage;
+  tags?: Tag[];
 }
 
 const InsightDetailPage = () => {
-  const { slug } = useParams();
+  const params = useParams();
+  const slug = typeof params.slug === "string" ? params.slug : "";
+
   const [insight, setInsight] = useState<InsightData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -27,23 +37,40 @@ const InsightDetailPage = () => {
     const fetchInsight = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_CMS_API_URL}/api/insights?filters[slug][$eq]=${slug}&populate=*`
+          `${process.env.NEXT_PUBLIC_CMS_API_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`
         );
         const json = await res.json();
-        const item = json.data?.[0];
-        console.log('item',item);
-        
 
-        if (item) {
-          setInsight({
-            id: item.id,
-            title: item.title,
-            slug: item.slug,
-            description: item.description?.[0]?.children?.[0]?.text || "No description available.",
-            image: item.image ? { url: item.image.url } : undefined,
-            tags: item.tags || [],
-          });
+        const item = json.data?.[0];
+
+        if (!item) {
+          setInsight(null);
+          return;
         }
+
+        const descriptionText =
+          item.description?.[0]?.children?.[0]?.text || "No description available.";
+
+        const imageUrl =
+          typeof item.coverImage?.url === "string"
+            ? item.coverImage.url
+            : undefined;
+
+        const tags: Tag[] = Array.isArray(item.tags)
+          ? item.tags.map((tag: any) => ({
+              id: tag.id,
+              label: tag.label ?? "untitled",
+            }))
+          : [];
+
+        setInsight({
+          id: item.id,
+          title: item.title,
+          slug: item.slug,
+          description: descriptionText,
+          image: imageUrl ? { url: imageUrl } : undefined,
+          tags,
+        });
       } catch (err) {
         console.error("Error fetching insight:", err);
       } finally {
@@ -95,10 +122,20 @@ const InsightDetailPage = () => {
 
           <p className=" w-full max-w-[1016px] text-left text-black font-inter text-[18px] font-normal leading-[160%] ">
             {insight.description}
-         
           </p>
 
-          <div className="w-full h-[1px] max-w-[1260px] bg-[rgba(0,0,0,0.08)] my-[100px] "></div>
+          <div className="flex flex-wrap gap-[10px] mt-10">
+            {insight.tags?.map((tag) => (
+              <span
+                key={tag.id}
+                className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
+              >
+                #{tag.label}
+              </span>
+            ))}
+          </div>
+
+          <div className="w-full h-[1px] max-w-[1260px] bg-[rgba(0,0,0,0.08)] my-[100px] " />
 
           <div className="w-full ">
             <h2 className="text-left px-5 mb-[30px] text-[36px] font-semibold leading-[132%] text-black">
@@ -107,14 +144,14 @@ const InsightDetailPage = () => {
           </div>
 
           <Swiper
-            slidesPerView={"auto"}
+            slidesPerView="auto"
             className="w-full"
             breakpoints={{
               640: { spaceBetween: 0 },
               768: { spaceBetween: 0 },
               1024: { slidesPerView: 4, allowTouchMove: false, spaceBetween: 24 },
             }}
-            allowTouchMove={true}
+            allowTouchMove
           >
             {[...Array(5)].map((_, i) => (
               <SwiperSlide key={i} style={{ width: "auto" }} className="flex">
