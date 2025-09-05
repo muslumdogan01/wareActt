@@ -85,7 +85,6 @@ const InsightDetailPage = () => {
     if (slug) fetchInsight();
   }, [slug]);
 
-  // NEW: fetch related after we know current slug
   useEffect(() => {
     const fetchRelated = async () => {
       if (!slug) return;
@@ -104,7 +103,7 @@ const InsightDetailPage = () => {
         const json = await res.json();
 
         const list: InsightData[] = (json?.data || []).map((it: any) => {
-          // Destek: düz alanlar veya attributes yapısı
+     
           const a = it.attributes ?? it;
           const img =
             a?.coverImage?.url ??
