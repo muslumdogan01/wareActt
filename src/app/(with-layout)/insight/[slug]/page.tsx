@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Grid } from "swiper/modules";
 
 interface Tag {
   id: number;
@@ -33,6 +34,10 @@ const InsightDetailPage = () => {
   const [insight, setInsight] = useState<InsightData | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // NEW: related items state
+  const [related, setRelated] = useState<InsightData[]>([]);
+  const [loadingRelated, setLoadingRelated] = useState(true);
+
   useEffect(() => {
     const fetchInsight = async () => {
       try {
@@ -40,7 +45,6 @@ const InsightDetailPage = () => {
           `${process.env.NEXT_PUBLIC_CMS_API_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`
         );
         const json = await res.json();
-
         const item = json.data?.[0];
 
         if (!item) {
@@ -52,9 +56,7 @@ const InsightDetailPage = () => {
           item.description?.[0]?.children?.[0]?.text || "No description available.";
 
         const imageUrl =
-          typeof item.coverImage?.url === "string"
-            ? item.coverImage.url
-            : undefined;
+          typeof item.coverImage?.url === "string" ? item.coverImage.url : undefined;
 
         const tags: Tag[] = Array.isArray(item.tags)
           ? item.tags.map((tag: any) => ({
@@ -63,14 +65,16 @@ const InsightDetailPage = () => {
             }))
           : [];
 
-        setInsight({
+        const current: InsightData = {
           id: item.id,
           title: item.title,
           slug: item.slug,
           description: descriptionText,
           image: imageUrl ? { url: imageUrl } : undefined,
           tags,
-        });
+        };
+
+        setInsight(current);
       } catch (err) {
         console.error("Error fetching insight:", err);
       } finally {
@@ -79,6 +83,68 @@ const InsightDetailPage = () => {
     };
 
     if (slug) fetchInsight();
+  }, [slug]);
+
+  // NEW: fetch related after we know current slug
+  useEffect(() => {
+    const fetchRelated = async () => {
+      if (!slug) return;
+      setLoadingRelated(true);
+      try {
+        const params = new URLSearchParams({
+          "filters[slug][$ne]": slug,
+          "pagination[limit]": "8",
+          "sort[0]": "publishedAt:desc",
+          populate: "*",
+        }).toString();
+
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_CMS_API_URL}/api/articles?${params}`
+        );
+        const json = await res.json();
+
+        const list: InsightData[] = (json?.data || []).map((it: any) => {
+          // Destek: düz alanlar veya attributes yapısı
+          const a = it.attributes ?? it;
+          const img =
+            a?.coverImage?.url ??
+            a?.image?.data?.attributes?.url ??
+            a?.image?.url ??
+            undefined;
+
+          const tgs: Tag[] = Array.isArray(a?.tags?.data)
+            ? a.tags.data.map((t: any) => ({
+                id: t.id,
+                label: t.attributes?.label ?? t.attributes?.name ?? "untitled",
+              }))
+            : Array.isArray(a?.tags)
+            ? a.tags.map((t: any) => ({
+                id: t.id,
+                label: t.label ?? t.name ?? "untitled",
+              }))
+            : [];
+
+          return {
+            id: it.id,
+            title: a?.title ?? "Untitled",
+            slug: a?.slug ?? `${it.id}`,
+            description:
+              a?.description?.[0]?.children?.[0]?.text ?? a?.description ?? "",
+            image: img ? { url: img } : undefined,
+            tags: tgs,
+          };
+        });
+
+        setRelated(list);
+      } catch (e) {
+        console.error("Error fetching related:", e);
+        setRelated([]);
+      } finally {
+        setLoadingRelated(false);
+      }
+    };
+
+    fetchRelated();
   }, [slug]);
 
   if (loading) return <p className="text-center py-20">Loading...</p>;
@@ -97,14 +163,14 @@ const InsightDetailPage = () => {
                 ← Back to Insight
               </Link>
             </div>
-            <h2 className="whitespace-pre-line text-black font-inter lg:text-[56px] text-[36px]  not-italic font-semibold leading-[122%] mt-[20px]">
+            <h2 className="whitespace-pre-line break-words text-black font-inter lg:text-[56px] text-[36px]  not-italic font-semibold leading-[122%] mt-[20px]">
               {insight.title}
             </h2>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto lg:mt-[100px] mt-[50px] mb-[200px] flex flex-col items-center text-center ">
+      <div className="container mx-auto lg:mt-[100px] mt:[50px] mb-[200px] flex flex-col items-center text-center ">
         <div className="w-full max-w-[1300px] flex flex-col items-center px-4 lg:px-0">
           <div className="lg:w-[1016px] lg:h-[564px] w-[361px] h-[200px] relative rounded-xl mb-[50px]">
             <Image
@@ -120,19 +186,10 @@ const InsightDetailPage = () => {
             />
           </div>
 
-          <p className=" w-full max-w-[1016px] text-left text-black font-inter text-[18px] font-normal leading-[160%] ">
-            {insight.description}
-          </p>
-
-          <div className="flex flex-wrap gap-[10px] mt-10">
-            {insight.tags?.map((tag) => (
-              <span
-                key={tag.id}
-                className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
-              >
-                #{tag.label}
-              </span>
-            ))}
+          <div className="w-full flex justify-center px-4">
+            <p className="w-full max-w-[1024px] text-left whitespace-pre-wrap break-words max-sm:break-all sm:break-words text-black font-inter text-[18px] font-normal leading-[160%]">
+              {insight.description}
+            </p>
           </div>
 
           <div className="w-full h-[1px] max-w-[1260px] bg-[rgba(0,0,0,0.08)] my-[100px] " />
@@ -143,44 +200,74 @@ const InsightDetailPage = () => {
             </h2>
           </div>
 
-          <Swiper
+          
+<div className="w-full max-w-[1400px] pl-5 lg:pl-0">
+<Swiper
             slidesPerView="auto"
+            modules={[Grid]}
             className="w-full"
             breakpoints={{
-              640: { spaceBetween: 0 },
-              768: { spaceBetween: 0 },
-              1024: { slidesPerView: 4, allowTouchMove: false, spaceBetween: 24 },
+              640: {
+                slidesPerView: 2,
+            
+                spaceBetween: 0,
+                allowTouchMove: true,
+              },
+              768: {
+                slidesPerView: 2,
+           
+                spaceBetween: 24,
+                allowTouchMove: true,
+              },
+              1024: {
+                slidesPerView: 3,
+                grid: { rows: 2, fill: "row" }, 
+                spaceBetween: 24,
+                allowTouchMove: true,
+              },
+              1500: { slidesPerView: 4, allowTouchMove: false, spaceBetween: 24 },
             }}
             allowTouchMove
           >
-            {[...Array(5)].map((_, i) => (
-              <SwiperSlide key={i} style={{ width: "auto" }} className="flex">
-                <div className="w-[288px] h-[350px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col">
+            {(loadingRelated ? [...Array(4)] : related).map((item: any, i: number) => (
+              <SwiperSlide key={item?.id ?? i} style={{ width: "auto",   }} className="flex ">
+                <Link
+                  href={item?.slug ? `/insight/${item.slug}` : "#"}
+                  className="w-[288px] h-[350px]  rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col"
+                >
                   <div className="relative w-full h-full">
                     <Image
-                      src="/images/insight/insight.png"
-                      alt="Warehouse"
+                      src={
+                        item?.image?.url
+                          ? `${process.env.NEXT_PUBLIC_CMS_API_URL}${item.image.url}`
+                          : "/images/insight/insight.png"
+                      }
+                      alt={item?.title ?? "Warehouse"}
                       fill
                       className="object-cover rounded-lg"
                     />
                   </div>
-                  <div className="flex flex-col justify-end h-full pl-5">
-                    <h3 className="text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
-                      Suspendisse <br /> mattis non leo
+                  <div className="flex flex-col justify-end h-full pl-5 pr-2 text-left">
+                    <h3 className="text-[20px] leading-[1.2] line-clamp-2 overflow-hidden text-ellipsis text-white font-normal mb-[10px]">
+                      {item?.title ?? "Suspendisse mattis non leo"}
                     </h3>
                     <div className="flex gap-[10px] mb-[15px]">
-                      <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                        #dropshiping
-                      </span>
-                      <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                        #e-commerce
-                      </span>
+                      {(item?.tags ?? []).slice(0, 2).map((t: Tag) => (
+                        <span
+                          key={t.id}
+                          className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
+                        >
+                          #{t.label}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </div>
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>
+</div>
+
         </div>
       </div>
     </div>

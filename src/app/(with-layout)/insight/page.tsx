@@ -70,9 +70,7 @@ function pickTitle(item?: Insight) {
 
 function pickSlug(item?: Insight) {
   return (
-    (item as InsightAttr)?.attributes?.slug ??
-    (item as InsightFlat)?.slug ??
-    ""
+    (item as InsightAttr)?.attributes?.slug ?? (item as InsightFlat)?.slug ?? ""
   );
 }
 
@@ -175,11 +173,11 @@ const InsightPage = () => {
       {/* Header */}
       <div className="lg:bg-[url('/icons/featuresPage/headerBg.svg')] lg:bg-cover lg:bg-center lg:h-[348px] w-full">
         <div className="container mx-auto relative">
-          <div className="px-4 text-center lg:text-left flex flex-col lg:absolute lg:top-[160px] w-full">
+          <div className="px-4 text-center lg:text-left flex flex-col  lg:absolute lg:top-[160px] w-full">
             <h1 className="text-black font-inter text-[56px] font-semibold leading-[122%]">
               Insight
             </h1>
-            <h2 className="mt-[10px] text-black font-inter text-[18px] font-normal leading-[146%]">
+            <h2 className="mt-[10px] text-black font-inter text-[17px] xl:text-[18px] 2xl:text-[20px] break-words whitespace-normal font-normal leading-[146%]">
               Built for 3PL warehouses, our software automates everything from
               inventory tracking
             </h2>
@@ -209,23 +207,23 @@ const InsightPage = () => {
                 />
               </div>
               <div className="lg:w-1/2 lg:min-h=[490px] min-h-[340px] relative px-4 lg:px-0">
-                <div className="flex flex-col lg:pl-[70px] lg:pr-[170px] lg:pt-[90px] pt-5 lg:pb-[50px] lg:h-full relative">
+                <div className="flex flex-col lg:pl-[70px] xl:pr-[170px] lg:pt-[90px] pt-5 lg:pb-[50px] lg:h-full relative">
                   <h1 className="text-white font-inter lg:text-[30px] text-[26px] font-normal leading-[140%]">
                     {featuredTitle}
                   </h1>
                   <p className="mt-[10px] text-white font-inter text-[16px] font-normal leading-[26px]">
                     {featuredDescription}
                   </p>
-          
+
                   {featuredSlug && (
                     <Link
                       href={`/insight/${featuredSlug}`}
-                      className="lg:mt-[40px] mt-[24px] hover:underline text-white font-inter text-[12px] font-medium leading-[20px]"
+                      className="lg:mt-[40px] 2xl:mt-[60px] mt-[24px] hover:underline text-white font-inter text-[12px] font-medium leading-[20px]"
                     >
                       Read More
                     </Link>
                   )}
-                          <div className="flex flex-wrap gap-[10px] mt-3 lg:absolute lg:bottom-0 lg:pb-[50px]">
+                  <div className="flex flex-wrap gap-[10px] mt-3 lg:absolute lg:bottom-0 lg:pb-[50px]">
                     {featuredTags.map((tag) => (
                       <span
                         key={tag}
@@ -265,8 +263,11 @@ const InsightPage = () => {
                         className="object-cover rounded-lg"
                       />
                     </div>
-                    <div className="flex flex-col justify-end h-full pl-5 pb-3">
-                      <h3 className="text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
+                    <div className="flex flex-col justify-end h-full pl-5 pr-2 pb-3">
+                      <h3
+                        className="text-[20px] leading-[1.2] text-white font-normal mb-[10px] 
+             line-clamp-2 overflow-hidden text-ellipsis"
+                      >
                         {title}
                       </h3>
                       <div className="flex flex-wrap gap-[10px]">
