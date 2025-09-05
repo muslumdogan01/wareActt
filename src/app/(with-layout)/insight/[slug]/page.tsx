@@ -27,6 +27,13 @@ interface InsightData {
   tags?: Tag[];
 }
 
+const absUrl = (u?: string) =>
+  u
+    ? u.startsWith("http")
+      ? u
+      : `${process.env.NEXT_PUBLIC_CMS_API_URL}${u}`
+    : "";
+
 const InsightDetailPage = () => {
   const params = useParams();
   const slug = typeof params.slug === "string" ? params.slug : "";
@@ -53,10 +60,13 @@ const InsightDetailPage = () => {
         }
 
         const descriptionText =
-          item.description?.[0]?.children?.[0]?.text || "No description available.";
+          item.description?.[0]?.children?.[0]?.text ||
+          "No description available.";
 
         const imageUrl =
-          typeof item.coverImage?.url === "string" ? item.coverImage.url : undefined;
+          typeof item.coverImage?.url === "string"
+            ? item.coverImage.url
+            : undefined;
 
         const tags: Tag[] = Array.isArray(item.tags)
           ? item.tags.map((tag: any) => ({
@@ -103,7 +113,6 @@ const InsightDetailPage = () => {
         const json = await res.json();
 
         const list: InsightData[] = (json?.data || []).map((it: any) => {
-     
           const a = it.attributes ?? it;
           const img =
             a?.coverImage?.url ??
@@ -175,7 +184,7 @@ const InsightDetailPage = () => {
             <Image
               src={
                 insight.image?.url
-                  ? `${process.env.NEXT_PUBLIC_CMS_API_URL}${insight.image.url}`
+                  ? absUrl(insight.image.url)
                   : "/images/placeholder.png"
               }
               alt={insight.title}
@@ -199,74 +208,82 @@ const InsightDetailPage = () => {
             </h2>
           </div>
 
-          
-<div className="w-full max-w-[1400px] pl-5 lg:pl-0">
-<Swiper
-            slidesPerView="auto"
-            modules={[Grid]}
-            className="w-full"
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-            
-                spaceBetween: 0,
-                allowTouchMove: true,
-              },
-              768: {
-                slidesPerView: 2,
-           
-                spaceBetween: 24,
-                allowTouchMove: true,
-              },
-              1024: {
-                slidesPerView: 3,
-                grid: { rows: 2, fill: "row" }, 
-                spaceBetween: 24,
-                allowTouchMove: true,
-              },
-              1500: { slidesPerView: 4, allowTouchMove: false, spaceBetween: 24 },
-            }}
-            allowTouchMove
-          >
-            {(loadingRelated ? [...Array(4)] : related).map((item: any, i: number) => (
-              <SwiperSlide key={item?.id ?? i} style={{ width: "auto",   }} className="flex ">
-                <Link
-                  href={item?.slug ? `/insight/${item.slug}` : "#"}
-                  className="w-[288px] h-[350px]  rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col"
-                >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={
-                        item?.image?.url
-                          ? `${process.env.NEXT_PUBLIC_CMS_API_URL}${item.image.url}`
-                          : "/images/insight/insight.png"
-                      }
-                      alt={item?.title ?? "Warehouse"}
-                      fill
-                      className="object-cover rounded-lg"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-end h-full pl-5 pr-2 text-left">
-                    <h3 className="text-[20px] leading-[1.2] line-clamp-2 overflow-hidden text-ellipsis text-white font-normal mb-[10px]">
-                      {item?.title ?? "Suspendisse mattis non leo"}
-                    </h3>
-                    <div className="flex gap-[10px] mb-[15px]">
-                      {(item?.tags ?? []).slice(0, 2).map((t: Tag) => (
-                        <span
-                          key={t.id}
-                          className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
-                        >
-                          #{t.label}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-</div>
+          <div className="w-full max-w-[1400px] pl-5 lg:pl-0">
+            <Swiper
+              slidesPerView="auto"
+              modules={[Grid]}
+              className="w-full"
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
 
+                  spaceBetween: 0,
+                  allowTouchMove: true,
+                },
+                768: {
+                  slidesPerView: 2,
+
+                  spaceBetween: 24,
+                  allowTouchMove: true,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  grid: { rows: 2, fill: "row" },
+                  spaceBetween: 24,
+                  allowTouchMove: true,
+                },
+                1500: {
+                  slidesPerView: 4,
+                  allowTouchMove: false,
+                  spaceBetween: 24,
+                },
+              }}
+              allowTouchMove
+            >
+              {(loadingRelated ? [...Array(4)] : related).map(
+                (item: any, i: number) => (
+                  <SwiperSlide
+                    key={item?.id ?? i}
+                    style={{ width: "auto" }}
+                    className="flex "
+                  >
+                    <Link
+                      href={item?.slug ? `/insight/${item.slug}` : "#"}
+                      className="w-[288px] h-[350px]  rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col"
+                    >
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={
+                            item?.image?.url
+                              ? absUrl(item.image.url)
+                              : "/images/insight/insight.png"
+                          }
+                          alt={item?.title ?? "Warehouse"}
+                          fill
+                          className="object-cover rounded-lg"
+                        />
+                      </div>
+                      <div className="flex flex-col justify-end h-full pl-5 pr-2 text-left">
+                        <h3 className="text-[20px] leading-[1.2] line-clamp-2 overflow-hidden text-ellipsis text-white font-normal mb-[10px]">
+                          {item?.title ?? "Suspendisse mattis non leo"}
+                        </h3>
+                        <div className="flex gap-[10px] mb-[15px]">
+                          {(item?.tags ?? []).slice(0, 2).map((t: Tag) => (
+                            <span
+                              key={t.id}
+                              className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
+                            >
+                              #{t.label}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                )
+              )}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>
