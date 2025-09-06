@@ -178,7 +178,7 @@ const InsightDetailPage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto lg:mt-[100px] mt:[50px] mb-[200px] flex flex-col items-center text-center ">
+      <div className="container mx-auto mt-[60px] lg:mt-[100px] mt:[50px] mb-[200px] flex flex-col items-center text-center ">
         <div className="w-full max-w-[1300px] flex flex-col items-center px-4 lg:px-0">
           <div className="lg:w-[1016px] lg:h-[564px] w-[361px] h-[200px] relative rounded-xl mb-[50px]">
             <Image

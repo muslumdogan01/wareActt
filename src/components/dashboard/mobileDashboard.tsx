@@ -118,7 +118,7 @@ const MobileDashboard = () => {
         ))}
       </div>
       <div className="flex justify-center space-x-3 ">
-        {[0, 1, 2, 3].map((index) => (
+        {[0, 1, 2].map((index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
