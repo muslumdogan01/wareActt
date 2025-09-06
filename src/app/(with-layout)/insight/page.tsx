@@ -228,7 +228,7 @@ const InsightPage = () => {
                     {featuredTags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] text-white bg-[#065AF1] rounded-[30px] py-1 px-2"
+                        className="text-[12px] text-white bg-[#065AF1] rounded-[30px] py-1 px-[10px] lg:w-[100px]"
                       >
                         #{tag}
                       </span>
@@ -275,7 +275,7 @@ const InsightPage = () => {
                         {tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] text-white bg-[#065AF1] rounded-[30px] py-1 px-2 lg:w-[100px] "
+                           className="text-[12px] text-white bg-[#065AF1] rounded-[30px] py-1 px-[10px] lg:w-[100px]"
                           >
                             #{tag}
                           </span>
