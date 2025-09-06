@@ -95,7 +95,7 @@ const Contact = () => {
                 New Jersey
               </h1>
               <p className="pt-[10px] font-normal text-[18px] leading-[1.46] text-black ">
-                65 Harristown Rd, Suite 210, <br /> Glen Rock NJ 07452
+                272 US-46 Elmwood Park, <br /> NJ 07407
               </p>
 
               <div className="pt-[30px] flex space-x-4 ">
