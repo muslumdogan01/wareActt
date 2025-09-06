@@ -264,7 +264,7 @@ const InsightPage = () => {
                         className="object-cover rounded-lg"
                       />
                     </div>
-                    <div className="flex flex-col justify-end h-full pl-5 pr-2 pb-3">
+                    <div className="flex flex-col justify-end h-full pl-5 pr-3 pb-3">
                       <h3
                         className="text-[20px] leading-[1.2] text-white font-normal mb-[10px] 
              line-clamp-2 overflow-hidden text-ellipsis"
@@ -275,7 +275,7 @@ const InsightPage = () => {
                         {tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] text-white bg-[#065AF1] rounded-[30px] py-1 px-2"
+                            className="text-[10px] text-white bg-[#065AF1] rounded-[30px] py-1 px-2 lg:w-[100px] "
                           >
                             #{tag}
                           </span>
