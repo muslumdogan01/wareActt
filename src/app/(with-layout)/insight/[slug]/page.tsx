@@ -271,7 +271,7 @@ const InsightDetailPage = () => {
                           {(item?.tags ?? []).slice(0, 2).map((t: Tag) => (
                             <span
                               key={t.id}
-                              className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
+                              className="bg-[#065AF1] text-white text-[12px] rounded-[30px] py-1 pl-[10px] pr-[12px] whitespace-nowrap overflow-hidden text-ellipsis lg:max-w-[110px]"
                             >
                               #{t.label}
                             </span>
