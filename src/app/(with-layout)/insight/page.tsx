@@ -208,7 +208,7 @@ const InsightPage = () => {
               </div>
               <div className="lg:w-1/2 lg:min-h=[490px] min-h-[340px] relative px-4 lg:px-0">
                 <div className="flex flex-col lg:pl-[70px] xl:pr-[170px] lg:pt-[90px] pt-5 lg:pb-[50px] lg:h-full relative">
-                <h1 className="text-white font-inter lg:text-[30px] text-[26px] font-normal leading-[140%] line-clamp-2">
+                <h1 className="text-white font-inter lg:text-[30px] text-[26px] font-normal leading-[140%] line-clamp-3">
   {featuredTitle}
 </h1>
 <p className="mt-[10px] text-white font-inter text-[16px] font-normal leading-[26px] line-clamp-3">
@@ -224,16 +224,16 @@ const InsightPage = () => {
                       Read More
                     </Link>
                   )}
-                  <div className="flex flex-wrap gap-[10px] mt-3 lg:absolute lg:bottom-0 lg:pb-[50px]">
-                    {featuredTags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[12px] line-clamp-2 text-white bg-[#065AF1] rounded-[30px] py-1 px-[10px] lg:w-[100px]"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
+   <div className="flex flex-wrap gap-[10px] mt-3 lg:absolute lg:bottom-0 lg:pb-[50px]">
+  {featuredTags.map((tag) => (
+    <span
+      key={tag}
+      className="text-[12px] line-clamp-2 text-white bg-[#065AF1] rounded-[30px] py-1 pl-[10px] pr-[12px] lg:w-[100px]"
+    >
+      #{tag}
+    </span>
+  ))}
+</div>
                 </div>
               </div>
             </div>
