@@ -228,7 +228,7 @@ const InsightPage = () => {
                       <span
                         key={tag}
                         className="
-  bg-[#065AF1] text-white text-[12px] rounded-[30px] py-1 pl-[10px] pr-[12px] whitespace-nowrap overflow-hidden text-ellipsis lg:max-w-[100px] 
+  bg-[#065AF1] text-white text-[12px] rounded-[30px] py-1 pl-[10px] pr-[12px] whitespace-nowrap overflow-hidden text-ellipsis lg:max-w-[110px] 
     "
                       >
                         #{tag}
@@ -277,7 +277,7 @@ const InsightPage = () => {
                           <span
                             key={tag}
                             className="
-          bg-[#065AF1] text-white text-[12px] rounded-[30px] py-1 pl-[10px] pr-[12px] whitespace-nowrap overflow-hidden text-ellipsis lg:max-w-[100px] 
+          bg-[#065AF1] text-white text-[12px] rounded-[30px] py-1 pl-[10px] pr-[12px] whitespace-nowrap overflow-hidden text-ellipsis lg:max-w-[110px] 
                           "
                           >
                             #{tag}
