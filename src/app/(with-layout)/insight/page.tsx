@@ -208,12 +208,13 @@ const InsightPage = () => {
               </div>
               <div className="lg:w-1/2 lg:min-h=[490px] min-h-[340px] relative px-4 lg:px-0">
                 <div className="flex flex-col lg:pl-[70px] xl:pr-[170px] lg:pt-[90px] pt-5 lg:pb-[50px] lg:h-full relative">
-                  <h1 className="text-white font-inter lg:text-[30px] text-[26px] font-normal leading-[140%] line-clamp-3">
-                    {featuredTitle}
-                  </h1>
-                  <p className="mt-[10px] text-white font-inter text-[16px] font-normal leading-[26px] line-clamp-3">
-                    {featuredDescription}
-                  </p>
+                <h1 className="text-white font-inter lg:text-[30px] text-[26px] font-normal leading-[140%] line-clamp-3">
+  {featuredTitle}
+</h1>
+<p className="mt-[10px] text-white font-inter text-[16px] font-normal leading-[26px] line-clamp-3">
+  {featuredDescription}
+</p>
+
 
                   {featuredSlug && (
                     <Link
@@ -223,22 +224,23 @@ const InsightPage = () => {
                       Read More
                     </Link>
                   )}
-                  <div className="flex flex-wrap gap-[10px] mt-3 lg:absolute lg:bottom-0 lg:pb-[50px]">
-                    {featuredTags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="
+   <div className="flex flex-wrap gap-[10px] mt-3 lg:absolute lg:bottom-0 lg:pb-[50px]">
+  {featuredTags.map((tag) => (
+    <span
+      key={tag}
+      className="
       inline-flex items-center
       bg-[#065AF1] text-white text-[12px]
       rounded-[30px] py-1 pl-[10px] pr-[12px]
       whitespace-nowrap overflow-hidden text-ellipsis
       lg:max-w-[100px]
+      after:content-[''] after:inline-block after:w-[6px] after:flex-shrink-0
     "
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
+    >
+      #{tag}
+    </span>
+  ))}
+</div>
                 </div>
               </div>
             </div>
@@ -280,7 +282,14 @@ const InsightPage = () => {
                         {tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-[12px] text-white line-clamp-2 bg-[#065AF1] rounded-[30px] py-1 px-[10px] lg:w-[100px]"
+                            className="
+                            inline-flex items-center
+                            bg-[#065AF1] text-white text-[12px]
+                            rounded-[30px] py-1 pl-[10px] pr-[12px]
+                            whitespace-nowrap overflow-hidden text-ellipsis
+                            lg:max-w-[100px]
+                            after:content-[''] after:inline-block after:w-[6px] after:flex-shrink-0
+                          "
                           >
                             #{tag}
                           </span>
