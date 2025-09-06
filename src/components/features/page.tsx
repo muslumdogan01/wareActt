@@ -98,7 +98,7 @@ const FeaturesItems = () => {
               )
             )}
           </div>
-          <div className="w-full flex flex-wrap justify-center items-center md:space-x-[24px] lg:space-y-[20px] space-y-[10px] py-5 lg:py-10">
+          <div className="w-full flex flex-wrap justify-center items-center md:space-x-[24px] lg:space-y-[20px] space-y-[10px] py-4 lg:py-10">
             {chunk.bottomRow.map((item, index) => renderBottomBox(item, index))}
           </div>
         </React.Fragment>
