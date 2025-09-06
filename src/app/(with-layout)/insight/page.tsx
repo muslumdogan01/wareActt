@@ -219,7 +219,7 @@ const InsightPage = () => {
                   {featuredSlug && (
                     <Link
                       href={`/insight/${featuredSlug}`}
-                      className="lg:mt-[40px] 2xl:mt-[60px] mt-[24px] hover:underline text-white font-inter text-[12px] font-medium leading-[20px]"
+                      className="lg:mt-[40px] 2xl:mt-[60px] mt-[24px] hover:underline text-white font-inter text-[12px] 2xl:text-[14px] font-medium leading-[20px]"
                     >
                       Read More
                     </Link>
@@ -228,7 +228,7 @@ const InsightPage = () => {
                     {featuredTags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[12px] text-white bg-[#065AF1] rounded-[30px] py-1 px-[10px] lg:w-[100px]"
+                        className="text-[12px] line-clamp-3 text-white bg-[#065AF1] rounded-[30px] py-1 px-[10px] lg:w-[100px]"
                       >
                         #{tag}
                       </span>
@@ -275,7 +275,7 @@ const InsightPage = () => {
                         {tags.map((tag) => (
                           <span
                             key={tag}
-                           className="text-[12px] text-white bg-[#065AF1] rounded-[30px] py-1 px-[10px] lg:w-[100px]"
+                           className="text-[12px] text-white line-clamp-3 bg-[#065AF1] rounded-[30px] py-1 px-[10px] lg:w-[100px]"
                           >
                             #{tag}
                           </span>
