@@ -208,12 +208,13 @@ const InsightPage = () => {
               </div>
               <div className="lg:w-1/2 lg:min-h=[490px] min-h-[340px] relative px-4 lg:px-0">
                 <div className="flex flex-col lg:pl-[70px] xl:pr-[170px] lg:pt-[90px] pt-5 lg:pb-[50px] lg:h-full relative">
-                  <h1 className="text-white font-inter lg:text-[30px] text-[26px] font-normal leading-[140%]">
-                    {featuredTitle}
-                  </h1>
-                  <p className="mt-[10px] text-white font-inter text-[16px] font-normal leading-[26px]">
-                    {featuredDescription}
-                  </p>
+                <h1 className="text-white font-inter lg:text-[30px] text-[26px] font-normal leading-[140%] line-clamp-2">
+  {featuredTitle}
+</h1>
+<p className="mt-[10px] text-white font-inter text-[16px] font-normal leading-[26px] line-clamp-3">
+  {featuredDescription}
+</p>
+
 
                   {featuredSlug && (
                     <Link
