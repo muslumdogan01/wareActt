@@ -7,8 +7,8 @@ const LogoTitle = () => {
     <Image
       src="/icons/header/logoTitle.svg"
       alt="title"
-      width={92}
-      height={15}
+      width={101}
+      height={16}
       priority
     />
   );
