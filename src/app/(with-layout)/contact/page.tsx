@@ -219,7 +219,7 @@ const Contact = () => {
         <div className="w-full bg-[rgba(0,0,0,0.08)] mt-[100px] h-[1px]"></div>
 
         <div className="lg:max-w-[1440px] lg:mx-auto">
-          <FAQSection />
+          <FAQSection limit={5} />
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ export default function Home() {
           <InsightWeb />
         </div>
         <div className="lg:max-w-[1440px] mt-[200px] lg:mx-auto">
-          <FAQSection />
+          <FAQSection limit={5} />
         </div>
 
         <div className="">

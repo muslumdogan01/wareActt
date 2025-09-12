@@ -30,7 +30,7 @@ const Feature = () => {
                   href="/features"
                   className="cursor-pointer hover:bg-blue-50 inline-flex items-center px-[20px] py-[10px] gap-[10px] rounded-[100px] border border-[#065AF1] text-[#065AF1] font-inter text-[14px] not-italic font-semibold leading-[140%]"
                 >
-                  All Feature
+                  All Features
                 </Link>
               </div>
               <div className="grid grid-cols-1 gap-16 items-center  ">

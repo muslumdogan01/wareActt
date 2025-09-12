@@ -70,12 +70,21 @@ const faqData = [
   },
 ];
 
-export default function FAQSection() {
+interface FaqProps {
+  limit?: number; // opsiyonel
+}
+
+
+const FAQSection: React.FC<FaqProps> = ({ limit }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+    const visibleFaqs = limit ? faqData.slice(0, limit) : faqData;
+
 
   return (
     <div className="w-full flex flex-col lg:flex-row lg:space-x-[88px] justify-center lg:items-start items-center rounded-xl px-4 py-[100px] ">
@@ -91,8 +100,8 @@ export default function FAQSection() {
         </Link>
       </div>
       <div className="space-y-3 w-full lg:max-w-[600px] mt-5 lg:mt-0">
-        {faqData.map((item, index) => {
-          const isOpen = openIndex === index;
+     {visibleFaqs.map((item, index) => {
+                const isOpen = openIndex === index;
           return (
             <div
               key={index}
@@ -129,3 +138,6 @@ export default function FAQSection() {
     </div>
   );
 }
+
+
+export default FAQSection

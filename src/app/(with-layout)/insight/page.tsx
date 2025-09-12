@@ -294,7 +294,7 @@ const InsightPage = () => {
 
         {/* FAQ + Signup */}
         <div className="lg:max-w-[1440px] lg:mx-auto">
-          <FAQSection />
+          <FAQSection limit={5} />
         </div>
         <div>
           <SignupCard />
