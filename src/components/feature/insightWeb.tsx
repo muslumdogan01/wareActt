@@ -2,31 +2,42 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const insightItems = [
-  {
-    image: "/images/insight/insight.png",
-    title: "Suspendisse mattis non leo",
-    tags: ["#dropshiping", "#e-commerce"],
-  },
-  {
-    image: "/images/insight/insight2.png",
-    title: "Cras gravida convallis",
-    tags: ["#logistics", "#b2b"],
-  },
-  {
-    image: "/images/insight/insight3.png",
-    title: "Curabitur blandit tempus",
-    tags: ["#digital", "#marketing"],
-  },
-  {
-    image: "/images/insight/insight3.png",
-    title: "Curabitur blandit tempus",
-    tags: ["#digital", "#marketing"],
-  },
-];
+interface Article {
+  id: number;
+  title: string;
+  description: string;
+  image?: {
+    url: string;
+  };
+  tags?: { id: number; label: string }[];
+}
+
 
 const InsightWeb = () => {
+      const [articles, setArticles] = useState<Article[]>([]);
+    const [loading, setLoading] = useState(true);
+
+        useEffect(() => {
+        const fetchArticles = async () => {
+          try {
+            const res = await fetch(
+              `${process.env.NEXT_PUBLIC_CMS_API_URL}/api/articles?populate=*`
+            );
+            const data = await res.json();
+            setArticles(data.data || []);
+          } catch (error) {
+            console.error("Error fetching articles:", error);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchArticles();
+      }, []);
+
+
   return (
     <div className="w-full ">
       <div className=" flex  justify-between items-center  mb-[35px]">
@@ -38,15 +49,20 @@ More Insight
 </Link>
       </div>
       <div className="flex w-full space-x-[24px]">
-        {insightItems.map((item, index) => (
+              {loading && <p>Loading…</p>}
+        {articles.slice(0, 4).map((article, index) => (
           <div
             key={index}
             className="w-[288px] h-[350px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col"
           >
             <div className="relative w-full h-full">
               <Image
-                src="/images/insight/insight.png"
-                alt="Warehouse"
+                 src={
+                      article.image?.url
+                        ? `${process.env.NEXT_PUBLIC_CMS_API_URL}${article.image.url}`
+                        : "/images/insight/insight.png"
+                    }
+                    alt={article.title}
                 fill
                 className="object-cover rounded-lg"
               />
@@ -55,16 +71,18 @@ More Insight
             {/* Alt içerik */}
             <div className="flex flex-col justify-end h-full pl-5">
               <h3 className="text-[20px] leading-[1.2] text-white font-normal mb-[10px]">
-                Suspendisse <br /> mattis non leo
+                 {article.title}
               </h3>
 
-              <div className="flex  gap-[10px] mb-[15px]">
-                <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                  #dropshiping
-                </span>
-                <span className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]">
-                  #e-commerce
-                </span>
+       <div className="flex gap-[10px] mb-[15px] flex-wrap">
+                 {article.tags?.map((tag) => (
+                  <span
+                    key={tag.id}
+                    className="bg-[#065AF1] text-[12px] leading-[1.2] text-white font-normal px-[10px] py-[4px] rounded-[30px]"
+                  >
+                    #{tag.label || "tag"}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
