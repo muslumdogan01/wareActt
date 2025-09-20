@@ -10,19 +10,19 @@ interface SlideData {
 
 const slides: SlideData[] = [
   {
-    image: "/images/content/mobileDash.png",
+    image: "/images/content/home1.png",
     title: "User Friendly<br/>Interfaces",
     description:
       "We designed with warehouse<br/>managers and customers for<br/>the most efficient use.",
   },
   {
-    image: "/images/content/mobileDash.png",
+    image: "/images/content/home2.png",
     title: "Easy to Handle<br/>Warehouse Processes",
     description:
      "Standardized smart<br/>processes for world-class<br/>warehousing. No need<br/>for employee trainings.",
   },
   {
-    image: "/images/content/mobileDash.png",
+    image: "/images/content/home3.png",
     title: "Unlimited Users<br/>and Clients",
     description:
       "Opportunity to handle<br/>thousands of clients<br/>and employees with <br/>one subscription.",

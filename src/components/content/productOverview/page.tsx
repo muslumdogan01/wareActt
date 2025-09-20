@@ -10,7 +10,7 @@ const ProductOverview = () => {
         {/* Sol Görsel */}
         <div className="-ml-128 flex-shrink-0">
           <Image
-            src="/images/content/product1.png"
+            src="/images/content/home1.png"
             alt="Dashboard Preview"
             width={780}
             height={600}
@@ -43,7 +43,7 @@ const ProductOverview = () => {
         {/* Sağ Görsel */}
         <div className="-mr-30 flex-shrink-0">
           <Image
-            src="/images/content/product2.png"
+            src="/images/content/home2.png"
             alt="Dashboard Preview"
             width={780}
             height={600}
@@ -55,7 +55,7 @@ const ProductOverview = () => {
         {/* Görsel */}
         <div className="-ml-32 flex-shrink-0 ">
           <Image
-            src="/images/content/product1.png"
+            src="/images/content/home3.png"
             width={809}
             height={600}
             alt="Dashboard Preview"
@@ -85,7 +85,7 @@ const ProductOverview = () => {
         </div>
         <div className=" -mr-129  flex-shrink-0 ">
           <Image
-            src="/images/content/product2.png"
+            src="/images/content/home1.png"
             width={809}
             height={600}
             alt="Dashboard Preview"
@@ -97,7 +97,7 @@ const ProductOverview = () => {
         {/* Sol Görsel */}
         <div className="-ml-128 flex-shrink-0">
           <Image
-            src="/images/content/product1.png"
+            src="/images/content/home2.png"
             alt="Dashboard Preview"
             width={780}
             height={600}
@@ -131,7 +131,7 @@ const ProductOverview = () => {
         {/* Sağ Görsel */}
         <div className="-mr-30 flex-shrink-0">
           <Image
-            src="/images/content/product2.png"
+            src="/images/content/home3.png"
             alt="Dashboard Preview"
             width={780}
             height={600}
