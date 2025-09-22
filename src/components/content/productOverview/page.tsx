@@ -5,8 +5,10 @@ import Marketplaces from "./markePlaces";
 
 const ProductOverview = () => {
   return (
-    <section className="w-full bg-[url('/images/content/productBg.png')] bg-no-repeat bg-cover hidden lg:block">
-        <div className="w-full mx-auto flex 2xl:justify-center ">
+    <section className="w-full  bg-[url('/images/content/productBg.png')] bg-no-repeat bg-cover hidden lg:block">
+        
+        
+        <div className="w-full mx-auto flex 2xl:justify-center  ">
         {/* Sol Görsel */}
         <div className="-ml-128 2xl:-ml-180  flex-shrink-0 pt-[152px]">
           <Image
@@ -41,7 +43,7 @@ const ProductOverview = () => {
         </div>
 
         {/* Sağ Görsel */}
-        <div className="-mr-30 2xl:-mr-40 flex-shrink-0 pt-[341px]">
+        <div className="-mr-30 2xl:-mr-40  flex-shrink-0 pt-[341px]">
           <Image
             src="/images/content/home2.png"
             alt="Dashboard Preview"
