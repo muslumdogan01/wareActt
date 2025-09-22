@@ -10,14 +10,17 @@ const ProductOverview = () => {
         
         <div className="w-full mx-auto flex 2xl:justify-center  ">
         {/* Sol Görsel */}
-        <div className="-ml-128 2xl:-ml-180  flex-shrink-0 pt-[152px]">
+        <div className="-ml-128 2xl:-ml-180 flex-shrink-0 pt-[152px]">
           <Image
             src="/images/content/home1.png"
-            alt="Dashboard Preview"
-            width={809}
-            height={600}
-            className="w-[809px] h-[auto]  2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
-          />
+    alt="Dashboard Preview"
+    width={2400}        
+    height={1780}       
+    quality={80}
+    priority
+    sizes="(min-width:1536px) 1200px, 809px" 
+    className="w-[809px] h-auto 2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
+  />
         </div>
 
         {/* Metin + Çizgi */}
@@ -46,11 +49,14 @@ const ProductOverview = () => {
         <div className="-mr-30 2xl:-mr-40  flex-shrink-0 pt-[341px]">
           <Image
             src="/images/content/home2.png"
-            alt="Dashboard Preview"
-            width={809}
-            height={600}
-            className="w-[809px] h-auto  2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
-          />
+     alt="Dashboard Preview"
+    width={2400}          
+    height={1780}         
+    quality={80}
+    priority
+    sizes="(min-width:1536px) 1200px, 809px" 
+    className="w-[809px] h-auto 2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
+  />
         </div>
       </div>
      
@@ -60,11 +66,14 @@ const ProductOverview = () => {
         <div className="-ml-70 2xl:-ml-32   flex-shrink-0 pt-[200px] ">
           <Image
             src="/images/content/home3.png"
-            width={809}
-            height={600}
-            alt="Dashboard Preview"
-           className="w-[809px] h-auto  2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
-          />
+    alt="Dashboard Preview"
+    width={2400}          
+    height={1780}       
+       quality={80}
+    priority
+    sizes="(min-width:1536px) 1200px, 809px" 
+    className="w-[809px] h-auto 2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
+  />
         </div>
         <div className="w-[580px]  2xl:pr-[97px] pl-[44px] text-center space-x-[24px] justify-center lg:text-left flex pt-[401px]">
           <div className="min-w-[60px] pt-2">
@@ -90,10 +99,13 @@ const ProductOverview = () => {
         <div className=" 2xl:-mr-80 -mr-50  flex-shrink-0 pt-[550px] ">
           <Image
             src="/images/content/home1.png"
-            width={809}
-            height={600}
-            alt="Dashboard Preview"
-        className="w-[809px] h-auto  2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
+           alt="Dashboard Preview"
+    width={2400}          
+    height={1780}       
+       quality={80}
+    priority
+    sizes="(min-width:1536px) 1200px, 809px" 
+    className="w-[809px] h-auto 2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
           />
         </div>
       </div>
@@ -102,11 +114,14 @@ const ProductOverview = () => {
         {/* Sol Görsel */}
         <div className="-ml-128 2xl:-ml-180  flex-shrink-0 pt-[152px]">
           <Image
-            src="/images/content/home1.png"
+            src="/images/content/home2.png"
             alt="Dashboard Preview"
-            width={809}
-            height={600}
-            className="w-[809px] h-[auto]  2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
+    width={2400}          
+    height={1780}       
+       quality={80}
+    priority
+    sizes="(min-width:1536px) 1200px, 809px" 
+    className="w-[809px] h-auto 2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
           />
         </div>
 
@@ -139,9 +154,12 @@ const ProductOverview = () => {
           <Image
             src="/images/content/home1.png"
             alt="Dashboard Preview"
-            width={809}
-            height={600}
-            className="w-[809px] h-auto  2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
+    width={2400}          
+    height={1780}       
+       quality={80}
+    priority
+    sizes="(min-width:1536px) 1200px, 809px" 
+    className="w-[809px] h-auto 2xl:w-[1200px] border-[10px] border-[#F0F0F0] rounded-[30px]"
           />
         </div>
       </div>
