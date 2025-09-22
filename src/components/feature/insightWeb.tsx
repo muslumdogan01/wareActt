@@ -51,8 +51,11 @@ More Insight
       <div className="flex w-full space-x-[24px]">
               {loading && <p>Loading…</p>}
         {articles.slice(0, 4).map((article, index) => (
-          <div
+          <Link
             key={index}
+      href="/insight"
+      prefetch={false}
+            aria-label={`Open insight`}
             className="w-[288px] h-[350px] rounded-2xl p-1.5 overflow-hidden shadow-xl bg-black text-white flex flex-col"
           >
             <div className="relative w-full h-full">
@@ -85,7 +88,7 @@ More Insight
                 ))}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
