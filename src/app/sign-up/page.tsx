@@ -387,11 +387,11 @@ const SignUpForm: React.FC = () => {
             className="w-[151px] h-[40px] rounded-[100px] cursor-pointer font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1] border-[1px] flex items-center justify-center"
             disabled={isSubmitting}
           >
-            {isSubmitting ? (
-              <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></div>
-            ) : (
-              "Sign Up"
-            )}
+   {isSubmitting ? (
+  <div className="animate-spin w-4 h-4 border-2 border-[#065AF1] border-t-transparent rounded-full"></div>
+) : (
+  "Sign Up"
+)}
           </button>
         </form>
         <div className="w-full flex justify-center mt-[72px] items-center space-x-[10px] ">
