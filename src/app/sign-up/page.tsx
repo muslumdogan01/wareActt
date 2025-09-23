@@ -384,12 +384,12 @@ const SignUpForm: React.FC = () => {
 
 <button
   type="submit"
-  className={`w-[151px] h-[40px] rounded-[100px] cursor-pointer font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out
-    flex items-center justify-center
+  className={`w-[151px] h-[40px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out
+    flex items-center justify-center border-[1px] border-[#065AF1]
     ${
       isSubmitting
-        ? "bg-white text-[#065AF1] border-[#065AF1] cursor-not-allowed"
-        : "text-[#065AF1] border-[#065AF1] border-[1px] hover:bg-[#065AF1] hover:text-white"
+        ? "bg-white text-[#065AF1] cursor-not-allowed"
+        : "text-[#065AF1] hover:bg-[#065AF1] hover:text-white cursor-pointer"
     }`}
   disabled={isSubmitting}
 >
