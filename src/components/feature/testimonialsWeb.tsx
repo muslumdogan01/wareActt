@@ -7,69 +7,33 @@ import { useState } from "react";
 const testimonials = [
   {
     id: 1,
-    name: "Camille Conroy",
-    title: "CEO at Shiphack",
-    company: "Shipback",
-    text: "Ara aspernatur canis bonus aeneus. do corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-    image: "/icons/testimonials/profile.svg",
+    name: "Kemal Kaya",
+    title: "Founder of PrepLarge",
+    text: "Amazing interface—everything a 3PL manager could ask for, all in one place!",
+    image: "/images/testimonials/kemal.jpeg",
   },
   {
     id: 2,
-    name: "Alex Morgan",
-    title: "CTO at asdasdasd",
-    company: "TechFlow",
-    text: "Ara aspernatur canis bonus aeneus. Vox amicitia s templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-    image: "/icons/testimonials/profile.svg",
+    name: "İrfan Çiftçi",
+    title: "Founder of ComfyShip",
+    text: "Finally, the 3PL software we’ve been waiting for. Quick setup, effortless to use—highly recommend!",
+        image: "/images/testimonials/irfan.jpeg",
   },
   {
     id: 3,
-    name: "Sophia Chen",
-    title: "Design Director",
-    company: "Artistry Digital",
-    text: "Ara aspernatur canis bonus aeneus. Vox amicitia um vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-    image: "/icons/testimonials/profile.svg",
+    name: "İsmet Güneş",
+    title: "Owner of ShipHack",
+    text: "You can tell it’s built by true 3PL experts. The experience is seamless and spot-on.",
+      image: "/images/testimonials/ismet.jpeg",
   },
   {
     id: 4,
-    name: "Marcus Johnson",
-    title: "Product Manager",
-    company: "Innovate Inc",
-    text: "Ara aspernatur canis bonus aeneus. Vox amicitia ulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-    image: "/icons/testimonials/profile.svg",
+    name: "Fatih Vatan",
+    title: "Founder of FairHouse",
+    text: "Managing our warehouse has never been this easy—and our customers love it too!",
+    image: "/images/testimonials/fatih.jpeg",
   },
-  {
-    id: 5,
-    name: "Sophia Chen",
-    title: "Design Director",
-    company: "Artistry Digital",
-    text: "Ara aspernatur canis bonus aeneus. Vox amicitia um vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-    image: "/icons/testimonials/profile.svg",
-  },
-  {
-    id: 6,
-    name: "Marcus Johnson",
-    title: "Product Manager",
-    company: "Innovate Inc",
-    text: "Ara aspernatur canis bonus aeneus. Vox amicitia speculum asporto cum vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-    image: "/icons/testimonials/profile.svg",
-  },
-  {
-    id: 7,
-    name: "Sophia Chen",
-    title: "Design Director",
-    company: "Artistry Digital",
-    text: "Ara aspernatur canis bonus aeneus. Vox amicitia um vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-    image: "/icons/testimonials/profile.svg",
-  },
-  {
-    id: 8,
-    name: "Marcus Johnson",
-    title: "Product Manager",
-    company: "Innovate Inc",
-    text: "Ara aspernatur canis bonus aeneus. Vox amicitia speculum asporto cum vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-    image: "/icons/testimonials/profile.svg",
-  },
-  // Diğerleri de burada olabilir...
+  
 ];
 export default function TestimonialsWeb() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -166,7 +130,7 @@ export default function TestimonialsWeb() {
                     <button
                       key={testimonial.id}
                       onClick={() => handleProfileClick(actualIndex)}
-                      className={`relative rounded-full transition-all my-2 duration-200 flex-shrink-0 ${
+                      className={`relative cursor-pointer rounded-full transition-all my-2 duration-200 flex-shrink-0 ${
                         actualIndex === activeIndex
                           ? "ring-2 ring-[#065AF1] ring-offset-2"
                           : "hover:ring-2 hover:ring-gray-300 hover:ring-offset-1"

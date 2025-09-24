@@ -6,83 +6,47 @@ import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-// Testimonial veri tipi
 interface Testimonial {
   id: number;
   name: string;
   title: string;
-  company: string;
   text: string;
   image: string;
 }
 
 export default function TestimonialsCarousel() {
   const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      name: "Camille Conroy",
-      title: "CEO",
-      company: "Shipback",
-      text: "Ara aspernatur canis bonus aeneus. do corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-      image: "/icons/testimonials/profile.svg",
-    },
-    {
-      id: 2,
-      name: "Alex Morgan",
-      title: "CTO",
-      company: "TechFlow",
-      text: "Ara aspernatur canis bonus aeneus. Vox amicitia s templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-      image: "/icons/testimonials/profile.svg",
-    },
-    {
-      id: 3,
-      name: "Sophia Chen",
-      title: "Design Director",
-      company: "Artistry Digital",
-      text: "Ara aspernatur canis bonus aeneus. Vox amicitia um vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-      image: "/icons/testimonials/profile.svg",
-    },
-    {
-      id: 4,
-      name: "Marcus Johnson",
-      title: "Product Manager",
-      company: "Innovate Inc",
-      text: "Ara aspernatur canis bonus aeneus. Vox amicitia ulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-      image: "/icons/testimonials/profile.svg",
-    },
-    {
-      id: 5,
-      name: "Marcus Johnson",
-      title: "Product Manager",
-      company: "Innovate Inc",
-      text: "Ara aspernatur canis bonus aeneus. Vox amicitia speculum asporto cum vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-      image: "/icons/testimonials/profile.svg",
-    },
-    {
-      id: 6,
-      name: "Marcus Johnson",
-      title: "Product Manager",
-      company: "Innovate Inc",
-      text: "Ara aspernatur canis bonus aeneus. Vox amicitia speculum asporto cum vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-      image: "/icons/testimonials/profile.svg",
-    },
-    {
-      id: 7,
-      name: "Marcus Johnson",
-      title: "Product Manager",
-      company: "Innovate Inc",
-      text: "Ara aspernatur canis bonus aeneus. Vox amicitia speculum asporto cum vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-      image: "/icons/testimonials/profile.svg",
-    },
-    {
-      id: 8,
-      name: "Marcus Johnson",
-      title: "Product Manager",
-      company: "Innovate Inc",
-      text: "Ara aspernatur canis bonus aeneus. Vox amicitia speculum asporto cum vulgaris vicissitudo corrupti aestus. Certus templum contabesco. Aggredior ceno vacuus theatrum amiculum cogo armarium facilis magnam.",
-      image: "/icons/testimonials/profile.svg",
-    },
-    // Diğerleri de burada olabilir...
+   {
+    id: 1,
+    name: "Kemal Kaya",
+    title: "Founder of PrepLarge",
+    text: "Amazing interface—everything a 3PL manager could ask for, all in one place!",
+    image: "/images/testimonials/kemal.jpeg",
+  },
+  {
+    id: 2,
+    name: "İrfan Çiftçi",
+    title: "Founder of ComfyShip",
+  
+    text: "Finally, the 3PL software we’ve been waiting for. Quick setup, effortless to use—highly recommend!",
+        image: "/images/testimonials/irfan.jpeg",
+  },
+  {
+    id: 3,
+    name: "İsmet Güneş",
+    title: "Owner of ShipHack",
+
+    text: "You can tell it’s built by true 3PL experts. The experience is seamless and spot-on.",
+      image: "/images/testimonials/ismet.jpeg",
+  },
+  {
+    id: 4,
+    name: "Fatih Vatan",
+    title: "Founder of FairHouse",
+  
+    text: "Managing our warehouse has never been this easy—and our customers love it too!",
+    image: "/images/testimonials/fatih.jpeg",
+  },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -152,8 +116,8 @@ useEffect(() => {
           </span>
           <span className="text-black/50 text-[14px] font-normal leading-[1.6]">
             {" "}
-            {testimonials[activeIndex].title} at{" "}
-            {testimonials[activeIndex].company}
+            {testimonials[activeIndex].title}
+           
           </span>
         </div>
       </div>
@@ -167,7 +131,7 @@ useEffect(() => {
               ref={(el) => {
                 avatarRefs.current[index] = el;
               }}
-              className="shrink-0 w-[63px] h-[63px] relative flex justify-center"
+              className="shrink-0 w-[63px] rounded-full overflow-hidden h-[63px] relative flex justify-center"
             >
               <button
                 onClick={() => handleAvatarClick(index)}
