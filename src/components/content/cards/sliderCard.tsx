@@ -49,7 +49,7 @@ const SliderCard = ({
         </div>
       )}
       <div
-        className=" "
+        className="text-sm lg:text-[30px] font-normal leading-[1.2] lg:px-3 " 
         dangerouslySetInnerHTML={{ __html: title }}
       ></div>
     </div>

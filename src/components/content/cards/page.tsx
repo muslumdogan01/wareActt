@@ -13,7 +13,7 @@ const ReusableSlider = ({
       title: "Easy & Fast<br/> Onboarding",
       icon:
         iconPosition === "bottom"
-          ? "/icons/content/testiCircle.svg"
+          ? "/icons/features/icon1.svg"
           : "/icons/content/rocket.svg",
       width:
         iconPosition === "bottom" ? "w-[312px] " : "w-[200px] xl:w-[392px]",
@@ -25,7 +25,7 @@ const ReusableSlider = ({
       title: "Carrier & Marketplace <br/> Integrations",
       icon:
         iconPosition === "bottom"
-          ? "/icons/content/testiCircle.svg"
+          ? "/icons/features/icon2.svg"
           : "/icons/content/fasten.svg",
       width:
         iconPosition === "bottom" ? "w-[312px] " : "w-[200px] xl:w-[392px]",
@@ -37,7 +37,7 @@ const ReusableSlider = ({
       title: "Smart Inventory <br/> Management",
       icon:
         iconPosition === "bottom"
-          ? "/icons/content/testiCircle.svg"
+         ? "/icons/features/icon3.svg"
           : "/icons/content/finance.svg",
       width:
         iconPosition === "bottom" ? "w-[312px] " : "w-[200px] xl:w-[392px]",
@@ -45,6 +45,7 @@ const ReusableSlider = ({
         iconPosition === "bottom" ? "h-[270px] " : "h-[240px] xl:h-[450px]",
       hasBorder: iconPosition === "bottom",
     },
+
   ];
 
   return (
