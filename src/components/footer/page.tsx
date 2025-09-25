@@ -73,7 +73,7 @@ export default function Footer() {
               href="/about"
               className="text-[#7A7A7A] hover:text-[#949494] font-inter text-[14px] not-italic font-semibold leading-[140%]"
             >
-             About
+              About
             </Link>
             <Link
               href="/contact"
@@ -86,16 +86,37 @@ export default function Footer() {
 
         {/* Social icons */}
         <div className="flex justify-center mt-[50px] md:mt-0 space-x-4">
-          <Link href="https://www.facebook.com/people/WareAct-3PL-Warehouse-Management-Software/61580201852225/" className="hover:opacity-80 transition-opacity">
-            <SocialIcon name="Facebook" />
-            <span className="sr-only">Facebook</span>
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/people/WareAct-3PL-Warehouse-Management-Software/61580201852225/"
+            className="hover:opacity-70 transition-opacity"
+          >
+            <SocialIcon name="Facebook" className="text-white " size={20} />
           </Link>
-  
-          <Link href="https://www.instagram.com/wareactcom/" className="hover:opacity-80 transition-opacity">
-            <SocialIcon name="Instagram" />
-            <span className="sr-only">Instagram</span>
+
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/wareactcom/"
+            className="hover:opacity-80 transition-opacity"
+          >
+            <SocialIcon name="Instagram" className="text-white " size={20} />
           </Link>
-          <Link href="https://www.youtube.com/@WareAct" className="hover:opacity-80 transition-opacity">
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/company/wareact-3pl-warehouse-management-software/"
+            className="hover:opacity-80 transition-opacity"
+          >
+            <SocialIcon name="LinkedIn" className="text-white " size={20} />
+          </Link>
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.youtube.com/@WareAct"
+            className="hover:opacity-80 transition-opacity"
+          >
             <SocialIcon name="YouTube" />
             <span className="sr-only">YouTube</span>
           </Link>
@@ -111,7 +132,6 @@ export default function Footer() {
               © 2024 WareAct. All rights reserved
             </h1>
             <div className="flex lg:flex-row flex-col space-x-[20px] text-white/30 lg:text-white text-[14px] not-italic font-normal leading-[140%]">
-
               <span className="cursor-pointer hover:text-gray-300">
                 <Link
                   href="/legal/privacy-policy"
