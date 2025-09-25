@@ -40,7 +40,7 @@ const Feature = () => {
                       <div className="space-y-[10px] px-[30px]  py-[30px]">
                         <div className="w-8 h-8">
                           <Image
-                            src="/icons/features/kutu.svg"
+                            src="/icons/features/icon1.svg"
                             alt="Star icon"
                             width={30}
                             height={30}
@@ -57,7 +57,7 @@ const Feature = () => {
                       <div className="space-y-[10px] px-[30px]  py-[30px]">
                         <div className="w-8 h-8">
                           <Image
-                            src="/icons/features/kutu.svg"
+                            src="/icons/features/icon2.svg"
                             alt="Star icon"
                             width={30}
                             height={30}
@@ -78,7 +78,7 @@ const Feature = () => {
                       <div className="space-y-[10px] px-[30px]  py-[30px]">
                         <div className="w-8 h-8">
                           <Image
-                            src="/icons/features/kutu.svg"
+                            src="/icons/features/icon3.svg"
                             alt="Star icon"
                             width={30}
                             height={30}
@@ -96,7 +96,7 @@ const Feature = () => {
                       <div className="space-y-[10px] px-[30px]  py-[30px]">
                         <div className="w-8 h-8">
                           <Image
-                            src="/icons/features/kutu.svg"
+                            src="/icons/features/icon4.svg"
                             alt="Star icon"
                             width={30}
                             height={30}
@@ -114,7 +114,7 @@ const Feature = () => {
                       <div className="space-y-[10px] px-[30px]  py-[30px]">
                         <div className="w-8 h-8">
                           <Image
-                            src="/icons/features/kutu.svg"
+                            src="/icons/features/icon5.svg"
                             alt="Star icon"
                             width={30}
                             height={30}
