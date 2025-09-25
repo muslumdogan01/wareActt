@@ -14,7 +14,7 @@ const ReusableSlider = ({
       icon:
         iconPosition === "bottom"
           ? "/icons/content/testiCircle.svg"
-          : "/icons/content/blueCircle.svg",
+          : "/icons/content/rocket.svg",
       width:
         iconPosition === "bottom" ? "w-[312px] " : "w-[200px] xl:w-[392px]",
       height:
@@ -26,7 +26,7 @@ const ReusableSlider = ({
       icon:
         iconPosition === "bottom"
           ? "/icons/content/testiCircle.svg"
-          : "/icons/content/blueCircle.svg",
+          : "/icons/content/fasten.svg",
       width:
         iconPosition === "bottom" ? "w-[312px] " : "w-[200px] xl:w-[392px]",
       height:
@@ -38,7 +38,7 @@ const ReusableSlider = ({
       icon:
         iconPosition === "bottom"
           ? "/icons/content/testiCircle.svg"
-          : "/icons/content/blueCircle.svg",
+          : "/icons/content/finance.svg",
       width:
         iconPosition === "bottom" ? "w-[312px] " : "w-[200px] xl:w-[392px]",
       height:

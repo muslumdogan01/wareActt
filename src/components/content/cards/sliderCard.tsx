@@ -30,9 +30,9 @@ const SliderCard = ({
       }`}
     >
       {iconPosition === "top" && (
-        <div className="text-3xl">
+        <div className="text-white z-0 bg-[#065AF1] inline-flex lg:w-[92px] w-[60px] h-[60px] lg:h-[92px] justify-center rounded-full items-center ">
           {isImage ? (
-            <Image src={icon as string} alt="icon" width={60} height={60} />
+            <Image src={icon as string} alt="icon" width={0} height={0}   className="relative z-10 lg:w-[40px] w-[20px] h-[20px] lg:h-[40px]" />
           ) : (
             icon
           )}
