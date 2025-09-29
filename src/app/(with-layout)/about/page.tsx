@@ -1,19 +1,33 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 
 const AboutPage: React.FC = () => {
   return (
-  <div className="w-full relative bg-white 4xl:h-full">
-      <div className="max-w-6xl mx-auto px-6 py-40 text-black">
-      {/* Hero Section */}
-      <div className="text-left mb-20">
-        <h1 className="text-4xl font-extrabold mb-4">About WareAct</h1>
-        <p className="text-xl text-gray-800">
-          Simplifying Warehouse Management — One Shipment at a Time
-        </p>
+       <div className="w-full relative bg-white  ">
+      <div className="lg:bg-[url('/icons/featuresPage/headerBg.svg')] lg:bg-cover lg:bg-center lg:h-[348px] w-full ">
+        <div className="container mx-auto relative">
+          <div className="px-4 text-center lg:text-left flex flex-col lg:absolute lg:top-[160px] w-full ">
+            <h1 className="text-black font-inter  text-[56px] not-italic font-semibold leading-[122%]">
+              About
+            </h1>
+            <h2 className="mt-[10px] text-black font-inter text-[18px] not-italic font-normal leading-[146%]">
+        Simplifying Warehouse Management — One Shipment at a Time
+            </h2>
+          </div>
+          <div className="lg:block hidden absolute top-22 2xl:right-[-80px] right-[-45px]">
+            <Image
+              src="/icons/featuresPage/square.svg"
+              alt="Header background"
+              width={375}
+              height={375}
+            />
+          </div>
+        </div>
       </div>
 
-      {/* Who We Are */}
+      <div className="max-w-6xl mx-auto px-6 py-40 text-black">
+
       <section className="mb-20">
         <h2 className="text-2xl font-semibold mb-6">Who We Are</h2>
         <div className="space-y-4 text-lg leading-relaxed">
@@ -26,7 +40,6 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* What We Do */}
       <section className="mb-20">
         <h2 className="text-2xl font-semibold mb-6">What We Do</h2>
         <p className="text-lg mb-6 leading-relaxed">
@@ -41,7 +54,6 @@ const AboutPage: React.FC = () => {
         </ul>
       </section>
 
-      {/* Why Choose Us */}
       <section className="mb-20">
         <h2 className="text-2xl font-semibold mb-6">Why Choose WareAct?</h2>
         <p className="text-lg mb-6 leading-relaxed">
@@ -56,7 +68,7 @@ const AboutPage: React.FC = () => {
         </ul>
       </section>
 
-      {/* Our Commitment */}
+  
       <section className="mb-20">
         <h2 className="text-2xl font-semibold mb-6">Our Commitment</h2>
         <p className="text-lg leading-relaxed">
@@ -64,8 +76,7 @@ const AboutPage: React.FC = () => {
         </p>
       </section>
 
-      {/* CTA */}
-      <section className="text-center">
+      <section className="text-center min-h-[20vh]">
         <h2 className="text-2xl font-semibold mb-4">Let’s Work Together</h2>
         <p className="text-lg mb-6">
           Ready to simplify your warehouse operations?
@@ -78,7 +89,10 @@ const AboutPage: React.FC = () => {
         </a>
       </section>
     </div>
-  </div>
+
+    </div>
+
+
   );
 };
 

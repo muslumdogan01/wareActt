@@ -50,7 +50,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="w-full relative bg-white 4xl:h-full ">
+    <div className="w-full relative bg-white  ">
       <div className="lg:bg-[url('/icons/featuresPage/headerBg.svg')] lg:bg-cover lg:bg-center lg:h-[348px] w-full ">
         <div className="container mx-auto relative">
           <div className="px-4 text-center lg:text-left flex flex-col lg:absolute lg:top-[160px] w-full ">
@@ -73,7 +73,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="container mx-auto ">
+      <div className="container mx-auto">
         <div className="flex md:flex-row w-full flex-col md:space-x-[24px] justify-center items-center md:items-start pt-[80px]">
           <div
             style={{
@@ -218,7 +218,7 @@ const Contact = () => {
 
         <div className="w-full bg-[rgba(0,0,0,0.08)] mt-[100px] h-[1px]"></div>
 
-        <div className="lg:max-w-[1440px] lg:mx-auto">
+        <div className=" min-h-[50vh] lg:max-w-[1440px] lg:mx-auto">
           <FAQSection limit={5} />
         </div>
       </div>
