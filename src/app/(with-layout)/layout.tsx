@@ -15,7 +15,35 @@ export const metadata: Metadata = {
    icons: {
     icon: "/icons/signup/logo.svg"
   },
+
+openGraph: {
+    type: "website",
+    url: "https://www.wareact.com",
+    title: "Wareact - 3PL Warehouse Software",
+    description:
+      "Booking, inventory, billing and moree...",
+    images: [
+      {
+     
+        url: "/og/log.png?v=1",
+        width: 1200,
+        height: 630,
+        alt: "Wareact – 3PL Warehouse Software",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Wareact - 3PL Warehouse Software",
+    description:
+      "Booking, inventory, billing and moree...",
+    images: ["/og/log.png?v=1"],
+  },
 };
+
+
+
 
 export default function RootLayout({
   children,
