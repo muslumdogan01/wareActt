@@ -21,7 +21,7 @@ openGraph: {
     url: "https://www.wareact.com",
     title: "Wareact - 3PL Warehouse Software",
     description:
-      "Booking, inventory, billing and moree...",
+      "Built for 3PL warehouses, our software automates everything from inventory tracking to billing—helping you deliver faster, smarter, and more accurate fulfillment.",
     images: [
       {
      
@@ -37,7 +37,7 @@ openGraph: {
     card: "summary_large_image",
     title: "Wareact - 3PL Warehouse Software",
     description:
-      "Booking, inventory, billing and moree...",
+      "Built for 3PL warehouses, our software automates everything from inventory tracking to billing—helping you deliver faster, smarter, and more accurate fulfillment.",
     images: ["/og/log.png?v=1"],
   },
 };
