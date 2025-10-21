@@ -28,8 +28,13 @@ const Hero = () => {
                 faster, smarter, <br className="hidden lg:block" /> and more
                 accurate <br className="lg:hidden block" /> fulfillment.
               </p>
-              <div className="md:hidden mt-4">
+              <div className="lg:hidden mt-4 space-x-[10px]">
                 <BookDemoButton />
+                         <Link href="/sign-up">
+                <button className="xl:w-[151px] w-[121px] xl:h-[40px] h-[30px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1]  cursor-pointer border-[1px]">
+                  Sign Up
+                </button>
+              </Link>
               </div>
 
               <Link href="/pricing">

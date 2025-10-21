@@ -42,7 +42,7 @@ export default function BookDemoButton() {
   return (
     <button
       onClick={openPopup}
-      className="w-[151px] h-[40px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1] cursor-pointer border-[1px]"
+      className="xl:w-[151px] w-[121px] xl:h-[40px] h-[30px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1] cursor-pointer border-[1px]"
     >
       Book a Demo
     </button>

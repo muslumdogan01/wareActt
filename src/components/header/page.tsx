@@ -16,11 +16,11 @@ const Header = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <div className="w-full  z-20 lg:absolute lg:top-0 lg:left-0 px-4 lg:px-0 bg-white lg:bg-transparent flex flex-col">
-      <div className="container mx-auto">
+    <div className="w-full  z-20 lg:absolute lg:top-0 lg:left-0 px-4 lg:px-2 bg-white lg:bg-transparent flex flex-col">
+      <div className="xl:container xl:mx-auto sm:mx-auto xs:mx-auto lg:max-w-none lg:mx-auto  sm:container xs:container">
         <header className="w-full relative  z-50 h-full ">
-          <div className=" flex xl:flex-row md:flex-col  items-center justify-between xl:px-4 py-[30px]">
-            <div className="flex items-center space-x-[30px]">
+          <div className=" flex lg:flex-row md:flex-col  items-center justify-between  xl:px-4 py-[30px]">
+            <div className="flex items-center space-x-[10px]">
               <Link
                 href="/"
                 className="flex items-center space-x-[4px] shrink-0"
@@ -43,10 +43,10 @@ const Header = () => {
               <MenuList />
             </div>
 
-            <div className="hidden md:flex ml-6 space-x-[9px]">
+            <div className="hidden lg:flex ml-6 space-x-[9px]">
               <BookDemoButton />
               <Link href="/sign-up">
-                <button className="w-[151px] h-[40px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1]  cursor-pointer border-[1px]">
+                <button className="xl:w-[151px] w-[121px] xl:h-[40px] h-[30px] rounded-[100px] font-semibold text-[14px] leading-[1.4] transition-all duration-300 ease-in-out hover:bg-[#065AF1] hover:text-white text-[#065AF1] border-[#065AF1]  cursor-pointer border-[1px]">
                   Sign Up
                 </button>
               </Link>
